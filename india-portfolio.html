@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>India Portfolio | Butter Property - Curated Luxury Real Estate</title>
+  <meta name="description" content="Explore Butter Property's private India luxury portfolio: Handpicked trophy sea-facing penthouses in Worli Mumbai, luxury residences in UB City Bengaluru, and golf manors at The Camellias Gurugram. Clear title deeds with institutional due diligence.">
+  <link rel="icon" type="image/png" href="./BUTTER-PROPERTY-LO-FF.png">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            butter: {
+              yellow: '#FDDB00',
+              'yellow-hover': '#F5D000',
+              'yellow-light': '#FFF066',
+              'yellow-warm': '#F5C800',
+              'yellow-soft': '#FFFDE6',
+              'yellow-border': '#FAE875',
+              'yellow-dark': '#8C6D00',
+              amber: '#B88E00',
+              charcoal: '#171510',
+              muted: '#78716C',
+            }
+          },
+          fontFamily: {
+            custom: ['"Butter Montserrat"', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    @font-face {
+      font-family: 'Butter Montserrat';
+      src: url('./FONT/Montserrat-Medium.ttf') format('truetype');
+      font-weight: 400 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Butter Montserrat';
+      src: url('./FONT/Montserrat-Bold.ttf') format('truetype');
+      font-weight: 600 700 800;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    body {
+      font-family: 'Butter Montserrat', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #FAFAF9;
+      color: #1C1917;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .font-serif-luxury {
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FAFAF9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #D6D3D1;
+      border-radius: 3px;
+    }
+
+    .glass-nav {
+      background: rgba(250, 250, 249, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+  </style>
+</head>
+<body class="bg-[#FAFAF9] text-stone-900 selection:bg-stone-200 selection:text-stone-900 min-h-screen flex flex-col antialiased">
+
+  <!-- ==================== 1. TOP ANNOUNCEMENT TICKER ==================== -->
+  <aside aria-label="Announcement" class="border-b border-purple-900/40 bg-[#1D0838] text-purple-200/90 text-xs py-2 px-4 text-center tracking-wider uppercase font-medium flex items-center justify-center gap-3">
+    <span class="inline-flex items-center gap-1.5 text-[#FDDB00]">
+      <span class="w-2 h-2 rounded-full bg-[#FDDB00] shadow-sm animate-pulse"></span>
+      <span class="font-bold text-white">India Private Client Desk Active</span>
+    </span>
+    <span class="hidden sm:inline text-purple-700">•</span>
+    <span class="hidden sm:inline text-purple-200">RERA Verified Titles • NRI &amp; Family Office Capital Structuring</span>
+    <span class="text-purple-700">•</span>
+    <a href="#contact" class="text-[#FDDB00] hover:text-[#FFF066] hover:underline underline-offset-4 font-bold tracking-widest text-[11px] transition-colors">Enquire Privately &rarr;</a>
+  </aside>
+
+  <!-- ==================== 2. STICKY NAVIGATION ==================== -->
+  <header class="sticky top-0 z-40 w-full glass-nav border-b border-stone-200/80 shadow-xs transition-all duration-200" id="mainHeader">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Brand Logo -->
+        <a href="index.html" class="flex items-center gap-3 group focus:outline-none">
+          <div class="relative h-12 w-auto flex items-center justify-center overflow-hidden">
+            <img 
+              src="./BUTTER-PROPERTY-LO-FF.png" 
+              alt="Butter Property" 
+              class="h-10 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+            />
+          </div>
+          <span class="sr-only">Butter Property</span>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wide text-stone-600">
+          <a href="index.html#properties" class="hover:text-stone-950 transition-colors py-1">
+            All Properties
+          </a>
+          <a href="dubai-portfolio.html" class="hover:text-stone-950 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-[#7323DC] hover:after:w-full after:transition-all">
+            Dubai Portfolio <span class="text-[10px] uppercase tracking-widest px-1.5 py-0.5 ml-1 bg-[#F4EDFD] text-[#7323DC] font-bold rounded border border-[#E4D2FA]">UAE</span>
+          </a>
+          <!-- Active Page Link: India Portfolio -->
+          <a href="india-portfolio.html" class="text-stone-950 font-bold py-1 relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-[#7323DC]">
+            India Portfolio <span class="text-[10px] uppercase tracking-widest px-1.5 py-0.5 ml-1 bg-[#FFFDE6] text-[#8C6D00] font-bold rounded border border-[#FAE875]">IND</span>
+          </a>
+          <a href="index.html#why-butter" class="hover:text-stone-950 transition-colors py-1">
+            Why Butter
+          </a>
+          <a href="#contact" class="hover:text-stone-950 transition-colors py-1">
+            Advisory Desk
+          </a>
+        </nav>
+
+        <!-- Right Side: Currency Switcher & Consultation CTA -->
+        <div class="hidden sm:flex items-center space-x-4">
+          <div class="flex items-center border border-stone-200 rounded-full p-1 bg-white text-xs font-semibold shadow-xs">
+            <button 
+              id="currencyBtnINR" 
+              onclick="setPageCurrency('INR')" 
+              class="px-2.5 py-1 rounded-full bg-[#7323DC] text-white font-bold transition-all shadow-xs"
+              title="View prices in Indian Rupees"
+            >
+              ₹ INR
+            </button>
+            <button 
+              id="currencyBtnAED" 
+              onclick="setPageCurrency('AED')" 
+              class="px-2.5 py-1 rounded-full text-stone-500 hover:text-stone-900 transition-all font-medium"
+              title="View prices in UAE Dirhams"
+            >
+              AED
+            </button>
+          </div>
+
+          <button 
+            onclick="openInquiryModal('India Portfolio Consultation')" 
+            class="inline-flex items-center justify-center px-5 py-2.5 border border-[#E5C700] text-xs font-bold uppercase tracking-widest text-stone-950 bg-[#FDDB00] hover:bg-[#FFE524] transition-all rounded-sm shadow-sm"
+          >
+            Private Consultation
+          </button>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="flex md:hidden items-center space-x-2">
+          <button 
+            onclick="togglePageCurrencyMobile()" 
+            id="mobileCurrencyBadge" 
+            class="text-[11px] font-semibold border border-stone-300 px-2 py-1 rounded bg-white text-stone-700"
+          >
+            ₹ INR
+          </button>
+          <button 
+            onclick="toggleMobileMenu()" 
+            aria-label="Toggle Navigation Menu"
+            class="p-2 text-stone-700 hover:text-stone-900 focus:outline-none"
+          >
+            <i class="fa-solid fa-bars text-lg" id="mobileMenuIcon"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobileMenu" class="hidden md:hidden border-t border-stone-200 bg-[#FAFAF9] px-6 py-6 space-y-4">
+      <a href="index.html" class="block text-base font-medium text-stone-800">Home</a>
+      <a href="dubai-portfolio.html" class="block text-base font-medium text-stone-800">
+        Dubai Portfolio 🇦🇪
+      </a>
+      <a href="india-portfolio.html" class="block text-base font-semibold text-stone-950 bg-stone-100 p-2 rounded">
+        India Portfolio 🇮🇳
+      </a>
+      <a href="index.html#why-butter" class="block text-base font-medium text-stone-800">Why Butter</a>
+      <a href="#contact" class="block text-base font-medium text-stone-800">Advisory Desk</a>
+    </div>
+  </header>
+
+  <main class="flex-grow">
+    
+    <!-- ==================== 3. INDIA PORTFOLIO HERO ==================== -->
+    <section class="relative pt-12 pb-16 md:pt-16 md:pb-24 border-b border-stone-200 bg-gradient-to-b from-[#FAFAF9] via-[#F4EFEA] to-[#FAFAF9]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="max-w-3xl space-y-4">
+          <div class="inline-flex items-center gap-2 px-3 py-1 bg-stone-900 text-stone-100 rounded-full text-xs font-semibold tracking-wider uppercase">
+            <span>🇮🇳</span>
+            <span>India Luxury Allocations Desk</span>
+          </div>
+
+          <h1 class="text-3xl sm:text-4xl md:text-5xl font-semibold text-stone-950 tracking-tight leading-tight">
+            Curated India Portfolio: Unrivalled Trophy Residences in Mumbai, Bengaluru &amp; Gurugram
+          </h1>
+
+          <p class="text-stone-600 text-base sm:text-lg leading-relaxed">
+            Representing generational family offices and discerning NRI investors. Every asset in our India portfolio has been independently title-audited by senior legal counsel with zero litigation tolerance and full RERA compliance.
+          </p>
+
+          <!-- Key India Market Metrics -->
+          <div class="pt-4 grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs font-medium text-stone-700">
+            <div class="bg-white p-3 rounded border border-stone-200">
+              <div class="text-[#7323DC] font-bold text-sm">100% CLEAR TITLE</div>
+              <div class="text-[11px] text-stone-500">Zero Encumbrance Warranty</div>
+            </div>
+            <div class="bg-white p-3 rounded border border-stone-200">
+              <div class="text-[#7323DC] font-bold text-sm">NRI &amp; FEMA</div>
+              <div class="text-[11px] text-stone-500">Repatriable Capital Protocols</div>
+            </div>
+            <div class="bg-white p-3 rounded border border-stone-200">
+              <div class="text-[#7323DC] font-bold text-sm">PRIME POSTCODES</div>
+              <div class="text-[11px] text-stone-500">Worli • UB City • DLF Camellias</div>
+            </div>
+            <div class="bg-white p-3 rounded border border-stone-200">
+              <div class="text-[#7323DC] font-bold text-sm">RERA AUDITED</div>
+              <div class="text-[11px] text-stone-500">Full OC &amp; Zero GST on Resale</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 4. INDIA CURATED PROPERTIES GRID ==================== -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
+      
+      <!-- Filter Bar for India -->
+      <div class="flex flex-col sm:flex-row items-center justify-between pb-8 mb-10 border-b border-stone-200 gap-4">
+        <div>
+          <span class="text-[#7323DC] text-xs font-semibold uppercase tracking-widest">Handpicked Prime Assets</span>
+          <h2 class="text-2xl font-semibold text-stone-900 tracking-tight">Active India Properties</h2>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <label for="indiaCityFilter" class="text-xs font-semibold text-stone-500 uppercase">Filter Micro-Market:</label>
+          <select 
+            id="indiaCityFilter" 
+            onchange="filterIndiaProperties()"
+            class="bg-white border border-stone-200 text-stone-800 text-xs font-semibold py-2 px-3 rounded focus:outline-none focus:ring-1 focus:ring-[#7323DC] focus:border-[#7323DC]"
+          >
+            <option value="all">All Indian Cities (3)</option>
+            <option value="Mumbai">Mumbai (Worli Sea Face)</option>
+            <option value="Bengaluru">Bengaluru (UB City)</option>
+            <option value="Gurugram">Gurugram (Golf Course Road)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Properties Grid Container -->
+      <div id="indiaPropertiesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Rendered via JavaScript -->
+      </div>
+
+    </section>
+
+    <!-- ==================== 5. INDIA ADVISORY & NRI FRAMEWORK ==================== -->
+    <section class="bg-[#F8F4FD] border-y border-purple-100 py-16 md:py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <span class="text-[#7323DC] text-xs font-semibold uppercase tracking-widest">Institutional Advisory</span>
+          <h3 class="text-2xl sm:text-3xl font-semibold text-stone-900 tracking-tight">
+            Independent Representation for Indian High-Value Real Estate
+          </h3>
+          <p class="text-stone-600 text-sm mt-2">
+            Protecting private wealth against developer delays, opaque title histories, and unverified floor areas.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-white p-6 sm:p-8 rounded-lg border border-purple-100/80 shadow-xs">
+            <div class="w-10 h-10 rounded bg-[#F4EDFD] text-[#7323DC] flex items-center justify-center text-base mb-4 font-bold border border-[#E4D2FA]">
+              01
+            </div>
+            <h4 class="text-lg font-semibold text-stone-900 mb-2">42-Point Title Scrutiny</h4>
+            <p class="text-xs text-stone-600 leading-relaxed">
+              Every prospective asset undergoes search reports back 30 years across registrar records, municipal plans, and litigation searches in High Courts.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 sm:p-8 rounded-lg border border-purple-100/80 shadow-xs">
+            <div class="w-10 h-10 rounded bg-[#FFFDE6] text-[#8C6D00] flex items-center justify-center text-base mb-4 font-bold border border-[#FAE875]">
+              02
+            </div>
+            <h4 class="text-lg font-semibold text-stone-900 mb-2">NRI / OCI Repatriation (NRE/NRO)</h4>
+            <p class="text-xs text-stone-600 leading-relaxed">
+              Assisting non-resident Indians in setting up authorized banking channels under FEMA, capital gains tax computation, and 15CA/15CB outward remittance certifications.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 sm:p-8 rounded-lg border border-purple-100/80 shadow-xs">
+            <div class="w-10 h-10 rounded bg-[#F4EDFD] text-[#7323DC] flex items-center justify-center text-base mb-4 font-bold border border-[#E4D2FA]">
+              03
+            </div>
+            <h4 class="text-lg font-semibold text-stone-900 mb-2">Off-Market Landlord Mandates</h4>
+            <p class="text-xs text-stone-600 leading-relaxed">
+              Over 50% of our Mumbai and Delhi-NCR transactions are quiet family-office resales conducted without public marketing to safeguard vendor privacy.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 6. CONTACT ADVISORY FORM ==================== -->
+    <section id="contact" class="py-20 bg-[#17052E] text-stone-100 border-t border-purple-950/60 relative overflow-hidden">
+      <!-- Dual ambient glows: Royal Purple & Butter Gold -->
+      <div class="absolute top-0 right-1/4 w-96 h-96 bg-[#7323DC]/20 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute bottom-0 left-10 w-80 h-80 bg-[#FDDB00]/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <div class="text-center space-y-2 mb-10">
+          <span class="text-[#FDDB00] text-xs font-semibold tracking-widest uppercase flex items-center justify-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-[#FDDB00]"></span>
+            <span>India Private Desk</span>
+          </span>
+          <h3 class="text-2xl sm:text-3xl font-semibold text-white tracking-tight">Connect with Our India Senior Partner</h3>
+          <p class="text-purple-200 text-xs sm:text-sm">In-person consultations available at Worli Mumbai or Lavelle Road Bengaluru.</p>
+        </div>
+
+        <form onsubmit="handleIndiaInquiry(event)" class="bg-[#120424]/90 p-8 rounded-lg border border-purple-900/60 space-y-5 shadow-2xl">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="indiaClientName" class="block text-xs font-semibold text-purple-200 uppercase tracking-wider mb-1">Investor Name *</label>
+              <input type="text" id="indiaClientName" required placeholder="e.g. Radhakishan Damani" class="w-full bg-[#1F083B] border border-purple-800/60 rounded px-3.5 py-2.5 text-xs text-stone-100 placeholder-purple-300/40 focus:outline-none focus:border-[#FDDB00] focus:ring-1 focus:ring-[#FDDB00]" />
+            </div>
+            <div>
+              <label for="indiaClientEmail" class="block text-xs font-semibold text-purple-200 uppercase tracking-wider mb-1">Email Address *</label>
+              <input type="email" id="indiaClientEmail" required placeholder="investor@familyoffice.com" class="w-full bg-[#1F083B] border border-purple-800/60 rounded px-3.5 py-2.5 text-xs text-stone-100 placeholder-purple-300/40 focus:outline-none focus:border-[#FDDB00] focus:ring-1 focus:ring-[#FDDB00]" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="indiaClientPhone" class="block text-xs font-semibold text-purple-200 uppercase tracking-wider mb-1">Phone / WhatsApp *</label>
+              <input type="tel" id="indiaClientPhone" required placeholder="+91 98200 12345 / +971 50 123 4567" class="w-full bg-[#1F083B] border border-purple-800/60 rounded px-3.5 py-2.5 text-xs text-stone-100 placeholder-purple-300/40 focus:outline-none focus:border-[#FDDB00] focus:ring-1 focus:ring-[#FDDB00]" />
+            </div>
+            <div>
+              <label for="indiaTargetCity" class="block text-xs font-semibold text-purple-200 uppercase tracking-wider mb-1">Target Indian Micro-Market</label>
+              <select id="indiaTargetCity" class="w-full bg-[#1F083B] border border-purple-800/60 rounded px-3 py-2 text-xs text-stone-100 focus:outline-none focus:border-[#FDDB00] focus:ring-1 focus:ring-[#FDDB00]">
+                <option value="South Mumbai (Worli / Malabar Hill)">South Mumbai (Worli / Malabar Hill)</option>
+                <option value="Bengaluru Central (UB City / Lavelle Rd)">Bengaluru Central (UB City / Lavelle Rd)</option>
+                <option value="Gurugram (DLF Golf Course Road)">Gurugram (DLF Golf Course Road)</option>
+                <option value="Multi-City Family Office Mandate">Multi-City Family Office Mandate</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label for="indiaClientNotes" class="block text-xs font-semibold text-purple-200 uppercase tracking-wider mb-1">Confidential Acquisition Brief</label>
+            <textarea id="indiaClientNotes" rows="2" placeholder="Mention size criteria, sea-facing preferences, tax planning horizon (Sec 54)..." class="w-full bg-[#1F083B] border border-purple-800/60 rounded px-3.5 py-2.5 text-xs text-stone-100 placeholder-purple-300/40 focus:outline-none focus:border-[#FDDB00] focus:ring-1 focus:ring-[#FDDB00]"></textarea>
+          </div>
+
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
+            <div class="text-[11px] text-purple-300 flex items-center gap-2">
+              <i class="fa-solid fa-lock text-[#FDDB00]"></i>
+              <span>Full fiduciary buy-side representation.</span>
+            </div>
+            <button type="submit" class="w-full sm:w-auto px-6 py-3 bg-[#FDDB00] hover:bg-[#FFE838] text-stone-950 font-bold text-xs uppercase tracking-widest rounded-sm transition-colors shadow-md border border-[#E5C700]">
+              Request India Portfolio Brief &rarr;
+            </button>
+          </div>
+        </form>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== 7. FOOTER ==================== -->
+  <footer class="bg-stone-950 text-stone-400 border-t border-stone-800 text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+        <div class="space-y-4">
+          <img src="./BUTTER-PROPERTY-LO-FF.png" alt="Butter Property" class="h-10 w-auto object-contain brightness-0 invert opacity-90" />
+          <p class="text-xs text-stone-400 leading-relaxed">
+            Butter Property: Curated boutique luxury real estate consultancy for high-net-worth investors across India and Dubai.
+          </p>
+        </div>
+        <div>
+          <h4 class="text-xs font-semibold text-stone-200 uppercase tracking-widest mb-3">India Desk</h4>
+          <p class="text-xs text-stone-400 leading-relaxed">
+            Worli Sea Face, Mumbai 400018<br>
+            Lavelle Road, Bengaluru 560001<br>
+            india@butterproperty.com<br>
+            +91 22 6100 8000
+          </p>
+        </div>
+        <div>
+          <h4 class="text-xs font-semibold text-stone-200 uppercase tracking-widest mb-3">Dubai Desk</h4>
+          <p class="text-xs text-stone-400 leading-relaxed">
+            Downtown Dubai &amp; DIFC Gate District<br>
+            dubai@butterproperty.com<br>
+            +971 4 800 BUTTER
+          </p>
+        </div>
+        <div>
+          <h4 class="text-xs font-semibold text-stone-200 uppercase tracking-widest mb-3">Navigation</h4>
+          <ul class="text-xs space-y-2 text-stone-400">
+            <li><a href="index.html" class="hover:text-stone-200">Main Portal</a></li>
+            <li><a href="dubai-portfolio.html" class="hover:text-stone-200">Dubai Portfolio</a></li>
+            <li><a href="india-portfolio.html" class="hover:text-stone-200 text-white font-semibold">India Portfolio</a></li>
+            <li><a href="index.html#why-butter" class="hover:text-stone-200">Due Diligence Standards</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-12 pt-8 border-t border-stone-800 text-xs text-stone-500 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>&copy; 2026 Butter Property (butterproperty.com). All rights reserved.</div>
+        <div class="flex gap-4">
+          <a href="index.html" class="hover:text-stone-400">Home</a>
+          <a href="dubai-portfolio.html" class="hover:text-stone-400">Dubai Portfolio</a>
+          <a href="india-portfolio.html" class="hover:text-stone-400">India Portfolio</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== 8. CONFIRMATION TOAST ==================== -->
+  <div id="indiaToast" class="fixed bottom-6 right-6 z-50 bg-stone-900 text-white px-5 py-4 rounded-md shadow-2xl border border-stone-700 max-w-sm flex items-start gap-3 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 text-sm mt-0.5">
+      <i class="fa-solid fa-check"></i>
+    </div>
+    <div>
+      <div class="text-xs font-semibold text-white uppercase tracking-wider">Inquiry Received</div>
+      <p id="indiaToastMsg" class="text-xs text-stone-300 mt-0.5 leading-relaxed">
+        Our India Senior Partner will contact you shortly under mutual non-disclosure.
+      </p>
+    </div>
+  </div>
+
+  <!-- Shared Data & Page Controller Script -->
+  <script src="./properties-data.js"></script>
+  <script>
+    let pageCurrency = localStorage.getItem('butter_currency') || 'INR';
+
+    function formatIndiaPrice(amount, curr) {
+      if (curr === 'AED') {
+        return `AED ${amount.toLocaleString('en-US')}`;
+      } else {
+        const crores = (amount / 10000000).toFixed(1);
+        const formatted = crores.endsWith('.0') ? crores.slice(0, -2) : crores;
+        return `₹ ${formatted} Cr`;
+      }
+    }
+
+    function setPageCurrency(curr) {
+      pageCurrency = curr;
+      localStorage.setItem('butter_currency', curr);
+
+      const btnINR = document.getElementById('currencyBtnINR');
+      const btnAED = document.getElementById('currencyBtnAED');
+      const mobileBadge = document.getElementById('mobileCurrencyBadge');
+
+      if (curr === 'INR') {
+        if (btnINR) btnINR.className = 'px-2.5 py-1 rounded-full bg-stone-900 text-white transition-all shadow-xs';
+        if (btnAED) btnAED.className = 'px-2.5 py-1 rounded-full text-stone-500 hover:text-stone-900 transition-all';
+        if (mobileBadge) mobileBadge.textContent = '₹ INR';
+      } else {
+        if (btnAED) btnAED.className = 'px-2.5 py-1 rounded-full bg-stone-900 text-white transition-all shadow-xs';
+        if (btnINR) btnINR.className = 'px-2.5 py-1 rounded-full text-stone-500 hover:text-stone-900 transition-all';
+        if (mobileBadge) mobileBadge.textContent = 'AED';
+      }
+
+      renderIndiaList();
+    }
+
+    function togglePageCurrencyMobile() {
+      setPageCurrency(pageCurrency === 'INR' ? 'AED' : 'INR');
+    }
+
+    function filterIndiaProperties() {
+      renderIndiaList();
+    }
+
+    function renderIndiaList() {
+      const grid = document.getElementById('indiaPropertiesGrid');
+      const cityFilter = document.getElementById('indiaCityFilter')?.value || 'all';
+      if (!grid || typeof PROPERTIES === 'undefined') return;
+
+      const indiaList = PROPERTIES.filter(p => p.region === 'india' && (cityFilter === 'all' || p.city === cityFilter));
+
+      grid.innerHTML = indiaList.map(item => {
+        const primary = formatIndiaPrice(pageCurrency === 'INR' ? item.priceINR : item.priceAED, pageCurrency);
+        const secondary = pageCurrency === 'INR' ? formatIndiaPrice(item.priceAED, 'AED') : formatIndiaPrice(item.priceINR, 'INR');
+
+        return `
+          <article class="bg-white border border-stone-200 rounded-md overflow-hidden shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between group">
+            <div>
+              <a href="property.html?id=${item.id}" class="block relative overflow-hidden aspect-[16/10] bg-stone-100">
+                <img src="${item.mainImage}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-out" />
+                <div class="absolute top-3 left-3 bg-stone-900/90 text-white text-[11px] font-semibold px-2.5 py-1 rounded flex items-center gap-1.5 border border-stone-700">
+                  <span>${item.flag}</span>
+                  <span>${item.neighborhood.split(',')[0]}</span>
+                </div>
+                <div class="absolute top-3 right-3 bg-white/95 text-stone-900 text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded border border-stone-200">
+                  ${item.badge}
+                </div>
+                <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between pointer-events-none">
+                  <span class="bg-stone-950/85 text-stone-200 text-[10px] px-2 py-0.5 rounded font-medium">
+                    ${item.config}
+                  </span>
+                  <span class="bg-emerald-950/85 text-emerald-300 border border-emerald-800/60 text-[10px] px-2 py-0.5 rounded font-medium">
+                    ${item.sizeSqFt.toLocaleString()} sq.ft
+                  </span>
+                </div>
+              </a>
+
+              <div class="p-6">
+                <div class="flex items-center justify-between text-xs text-stone-500 font-medium mb-1">
+                  <span class="text-[#8C6D00] font-bold uppercase tracking-wider text-[10px] bg-[#FFFDE6] px-2 py-0.5 rounded border border-[#FAE875]">${item.type}</span>
+                  <span class="text-stone-400 text-[11px]">${item.rentalYield}</span>
+                </div>
+
+                <h3 class="text-lg font-semibold text-stone-950 tracking-tight group-hover:text-stone-700 transition-colors">
+                  <a href="property.html?id=${item.id}">${item.title}</a>
+                </h3>
+
+                <p class="text-xs text-stone-500 mt-1 flex items-center gap-1">
+                  <i class="fa-solid fa-location-dot text-[#7323DC] text-[10px]"></i>
+                  <span>${item.neighborhood}</span>
+                </p>
+
+                <ul class="mt-4 pt-4 border-t border-stone-100 space-y-1.5 text-xs text-stone-600">
+                  ${item.highlights.slice(0, 3).map(h => `
+                    <li class="flex items-start gap-2">
+                      <span class="text-[#FDDB00] mt-0.5 text-[10px]">✦</span>
+                      <span class="leading-tight">${h}</span>
+                    </li>
+                  `).join('')}
+                </ul>
+              </div>
+            </div>
+
+            <div class="px-6 pb-6 pt-2">
+              <div class="pt-4 border-t border-stone-100 flex items-center justify-between gap-3">
+                <div>
+                  <div class="text-[10px] font-semibold text-stone-400 uppercase tracking-widest">Guide Price</div>
+                  <div class="text-lg font-bold text-stone-950 tracking-tight leading-none mt-1">${primary}</div>
+                  <div class="text-[10px] text-stone-400 mt-0.5">≈ ${secondary}</div>
+                </div>
+
+                <div class="flex items-center gap-2">
+                  <a href="property.html?id=${item.id}" class="px-3 py-2 bg-[#F4EDFD] hover:bg-[#E4D2FA] text-[#7323DC] text-[11px] font-bold uppercase tracking-wider rounded-sm transition-colors border border-[#E4D2FA]">
+                    View
+                  </a>
+                  <a href="#contact" class="px-3.5 py-2 bg-[#FDDB00] hover:bg-[#FFE524] text-stone-950 text-[11px] font-bold uppercase tracking-wider rounded-sm transition-colors shadow-xs border border-[#E5C700]">
+                    Inquire
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    function handleIndiaInquiry(e) {
+      e.preventDefault();
+      const name = document.getElementById('indiaClientName').value.trim();
+      const toast = document.getElementById('indiaToast');
+      const msg = document.getElementById('indiaToastMsg');
+
+      if (msg) {
+        msg.textContent = `Thank you, ${name || 'Investor'}. Your mandate has been logged with our India Desk. A Senior Partner will contact you within 4 hours.`;
+      }
+
+      if (toast) {
+        toast.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+        toast.classList.add('translate-y-0', 'opacity-100');
+        setTimeout(() => {
+          toast.classList.remove('translate-y-0', 'opacity-100');
+          toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+        }, 5000);
+      }
+
+      e.target.reset();
+    }
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      if (menu) menu.classList.toggle('hidden');
+    }
+
+    function openInquiryModal(context) {
+      const contactSec = document.getElementById('contact');
+      if (contactSec) {
+        contactSec.scrollIntoView({ behavior: 'smooth' });
+        const nameInput = document.getElementById('indiaClientName');
+        if (nameInput) setTimeout(() => nameInput.focus(), 300);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      setPageCurrency(pageCurrency);
+    });
+  </script>
+</body>
+</html>
+

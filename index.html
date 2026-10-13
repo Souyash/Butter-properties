@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Butter Property | Curated Luxury Real Estate in India & Dubai</title>
+  <meta name="description" content="India and Dubai real estate, shortlisted for serious investors. We list fewer, so you only see the best. Curated luxury penthouses, private villas, and high-yield properties.">
+  <link rel="icon" type="image/png" href="./BUTTER-PROPERTY-LO-FF.png">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            butter: {
+              purple: '#7323DC',
+              'purple-dark': '#5515AB',
+              'purple-light': '#8E4CF2',
+              'purple-soft': '#F4EDFD',
+              'purple-border': '#E4D2FA',
+              yellow: '#FDDB00',
+              'yellow-hover': '#F5D000',
+              'yellow-light': '#FFF066',
+              'yellow-warm': '#F5C800',
+              'yellow-soft': '#FFFDE6',
+              'yellow-border': '#FAE875',
+              'yellow-dark': '#8C6D00',
+              amber: '#B88E00',
+              charcoal: '#1D0838',
+              'charcoal-dark': '#17052E',
+              muted: '#716B7C',
+            }
+          },
+          fontFamily: {
+            custom: ['"Butter Montserrat"', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts for Editorial accents & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* Custom Font-face mapping to workspace fonts */
+    @font-face {
+      font-family: 'Butter Montserrat';
+      src: url('./FONT/Montserrat-Medium.ttf') format('truetype');
+      font-weight: 400 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Butter Montserrat';
+      src: url('./FONT/Montserrat-Bold.ttf') format('truetype');
+      font-weight: 600 700 800;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    body {
+      font-family: 'Butter Montserrat', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #FAFAF9;
+      color: #1C1917;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .font-serif-luxury {
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+
+    /* Subtle custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FAFAF9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #D6D3D1;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #A8A29E;
+    }
+
+    /* Modal Backdrop Transitions */
+    .modal-backdrop {
+      transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s;
+    }
+    .modal-panel {
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s;
+    }
+
+    /* Premium Architectural Image Zoom on Card Hover */
+    .property-card {
+      transition: border-color 0.25s ease, box-shadow 0.3s ease, transform 0.25s ease;
+    }
+    .property-card:hover {
+      transform: translateY(-2px);
+    }
+    .property-card .property-img {
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .property-card:hover .property-img {
+      transform: scale(1.08);
+    }
+
+    /* Subtle Glassmorphism for Filter & Header */
+    .glass-nav {
+      background: rgba(250, 250, 249, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+    }
+  </style>
+</head>
+<body class="bg-[#FAFAF9] text-stone-900 selection:bg-stone-200 selection:text-stone-900 min-h-screen flex flex-col antialiased">
+
+  <!-- ==================== 1. TOP ANNOUNCEMENT TICKER ==================== -->
+  <aside aria-label="Announcement" class="border-b border-purple-900/40 bg-[#1D0838] text-purple-200 text-xs py-2 px-4 text-center tracking-wider uppercase font-medium flex items-center justify-center gap-3">
+    <span class="inline-flex items-center gap-1.5 text-purple-300">
+      <span class="w-2 h-2 rounded-full bg-[#FDDB00] shadow-sm animate-pulse"></span>
+      <span class="font-bold text-white">Private Investor Desk Active</span>
+    </span>
+    <span class="hidden sm:inline text-purple-400/50">•</span>
+    <span class="hidden sm:inline text-purple-200/90">Q4 Curated Allocation: Prime Downtown Dubai &amp; South Mumbai</span>
+    <span class="text-purple-400/50">•</span>
+    <a href="#contact" class="text-[#FDDB00] hover:text-[#FFF066] hover:underline underline-offset-4 font-bold tracking-widest text-[11px] transition-colors">Enquire Privately &rarr;</a>
+  </aside>
+
+  <!-- ==================== 2. STICKY NAVIGATION ==================== -->
+  <header class="sticky top-0 z-40 w-full glass-nav border-b border-purple-100/60 shadow-xs transition-all duration-200" id="mainHeader">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Brand Logo -->
+        <a href="#" class="flex items-center gap-3 group focus:outline-none focus-visible:ring-1 focus-visible:ring-purple-400 rounded-sm">
+          <div class="relative h-12 w-auto flex items-center justify-center overflow-hidden">
+            <img 
+              src="./BUTTER-PROPERTY-LO-FF.png" 
+              alt="Butter Property - Curated Luxury Real Estate" 
+              class="h-10 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+            />
+          </div>
+          <span class="sr-only">Butter Property</span>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wide text-stone-700">
+          <a href="#properties" class="hover:text-[#7323DC] transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#7323DC] hover:after:w-full after:transition-all font-medium">
+            Properties
+          </a>
+          <a href="dubai-portfolio.html" class="hover:text-[#7323DC] transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#7323DC] hover:after:w-full after:transition-all">
+            Dubai Portfolio <span class="text-[10px] uppercase tracking-widest px-1.5 py-0.5 ml-1 bg-[#F4EDFD] text-[#7323DC] font-bold rounded border border-[#E4D2FA]">UAE</span>
+          </a>
+          <a href="india-portfolio.html" class="hover:text-[#7323DC] transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#7323DC] hover:after:w-full after:transition-all">
+            India Portfolio <span class="text-[10px] uppercase tracking-widest px-1.5 py-0.5 ml-1 bg-[#FFFDE6] text-[#8C6D00] font-bold rounded border border-[#FAE875]">IND</span>
+          </a>
+          <a href="#why-butter" class="hover:text-[#7323DC] transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#7323DC] hover:after:w-full after:transition-all">
+            Why Butter
+          </a>
+          <a href="#contact" class="hover:text-[#7323DC] transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#7323DC] hover:after:w-full after:transition-all">
+            Contact
+          </a>
+        </nav>
+
+        <!-- Right Side: Currency Switcher & CTA -->
+        <div class="hidden sm:flex items-center space-x-4">
+          <!-- Currency Toggle Button -->
+          <div class="flex items-center border border-purple-200/80 rounded-full p-1 bg-white text-xs font-semibold shadow-xs">
+            <button 
+              id="currencyBtnINR" 
+              onclick="setCurrency('INR')" 
+              class="px-2.5 py-1 rounded-full bg-[#7323DC] text-white font-bold transition-all shadow-xs"
+              title="View prices in Indian Rupees"
+            >
+              ₹ INR
+            </button>
+            <button 
+              id="currencyBtnAED" 
+              onclick="setCurrency('AED')" 
+              class="px-2.5 py-1 rounded-full text-stone-500 hover:text-[#7323DC] transition-all font-medium"
+              title="View prices in UAE Dirhams"
+            >
+              AED
+            </button>
+          </div>
+
+          <!-- Primary Modal Trigger -->
+          <button 
+            onclick="openInquiryModal()" 
+            class="inline-flex items-center justify-center px-5 py-2.5 border border-[#E5C700] text-xs font-bold uppercase tracking-widest text-stone-950 bg-[#FDDB00] hover:bg-[#FFE524] transition-all duration-200 shadow-sm hover:shadow active:scale-[0.99] rounded-sm"
+          >
+            Private Consultation
+          </button>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="flex md:hidden items-center space-x-2">
+          <!-- Currency Toggle mobile -->
+          <button 
+            onclick="toggleCurrencyMobile()" 
+            id="mobileCurrencyBadge" 
+            class="text-[11px] font-bold border border-purple-300 px-2.5 py-1 rounded bg-[#F4EDFD] text-[#7323DC]"
+          >
+            ₹ INR
+          </button>
+          <button 
+            id="mobileMenuBtn" 
+            onclick="toggleMobileMenu()" 
+            aria-label="Toggle Navigation Menu"
+            class="p-2 text-stone-700 hover:text-[#7323DC] rounded-sm focus:outline-none"
+          >
+            <i class="fa-solid fa-bars text-lg" id="mobileMenuIcon"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobileMenu" class="hidden md:hidden border-t border-purple-100 bg-[#FAFAF9] px-6 py-6 space-y-4">
+      <a href="#properties" onclick="toggleMobileMenu()" class="block text-base font-medium text-stone-800 hover:text-[#7323DC]">
+        Curated Properties
+      </a>
+      <a href="dubai-portfolio.html" class="block text-base font-semibold text-[#7323DC] bg-[#F4EDFD] p-2.5 rounded border border-[#E4D2FA]">
+        Dubai Portfolio (UAE) 🇦🇪
+      </a>
+      <a href="india-portfolio.html" class="block text-base font-semibold text-[#8C6D00] bg-[#FFFDE6] p-2.5 rounded border border-[#FAE875]">
+        India Portfolio (IND) 🇮🇳
+      </a>
+      <a href="#why-butter" onclick="toggleMobileMenu()" class="block text-base font-medium text-stone-800 hover:text-[#7323DC]">
+        Why Butter
+      </a>
+      <a href="#contact" onclick="toggleMobileMenu()" class="block text-base font-medium text-stone-800 hover:text-[#7323DC]">
+        Private Advisory
+      </a>
+      <div class="pt-4 border-t border-stone-200 flex flex-col gap-3">
+        <div class="flex items-center justify-between text-xs text-stone-500">
+          <span>Preferred Currency:</span>
+          <div class="flex border border-purple-200 rounded-full p-0.5 bg-white">
+            <button onclick="setCurrency('INR')" class="px-2.5 py-0.5 text-xs rounded-full bg-[#7323DC] text-white font-bold" id="mCurrINR">₹ INR</button>
+            <button onclick="setCurrency('AED')" class="px-2.5 py-0.5 text-xs rounded-full font-medium" id="mCurrAED">AED</button>
+          </div>
+        </div>
+        <button 
+          onclick="toggleMobileMenu(); openInquiryModal()" 
+          class="w-full text-center py-3 bg-[#7323DC] hover:bg-[#5515AB] text-white font-bold text-xs uppercase tracking-widest rounded-sm shadow-md"
+        >
+          Book Private Consultation
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow">
+    
+    <!-- ==================== 3. HERO SECTION ==================== -->
+    <section class="relative pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden border-b border-stone-200 bg-gradient-to-b from-[#FAF7FD] via-[#FFFDEB] to-[#FAFAF9]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          
+          <!-- Hero Copy from docx -->
+          <div class="lg:col-span-7 space-y-6">
+            
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-gradient-to-r from-[#F4EDFD] to-[#FFFDE6] border border-[#E4D2FA] text-[#7323DC] rounded-full text-xs font-bold tracking-wider uppercase shadow-2xs">
+              <span class="w-2.5 h-2.5 rounded-full bg-[#FDDB00] shadow-sm animate-pulse"></span>
+              <span>Private Investment Portal • India &amp; Dubai</span>
+            </div>
+
+            <!-- Official Headline extracted from docx -->
+            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-semibold text-stone-950 tracking-tight leading-[1.12]">
+              India and Dubai real estate, <span class="text-[#7323DC] font-bold">shortlisted</span> for serious investors.
+            </h1>
+
+            <!-- Official Subheading extracted from docx -->
+            <p class="text-lg sm:text-xl text-stone-600 font-normal leading-relaxed max-w-2xl">
+              We list fewer, so you only see the best. Handpicked luxury penthouses, private branded estates, and high-yield residential assets vetted with institutional rigor.
+            </p>
+
+            <!-- Key Proof Points -->
+            <div class="pt-2 flex flex-wrap items-center gap-6 text-xs tracking-wide text-stone-700 uppercase font-semibold">
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-check text-[#7323DC] bg-[#F4EDFD] border border-[#E4D2FA] p-1 rounded-full text-[10px]"></i>
+                <span>Direct Principal Access</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-check text-[#8C6D00] bg-[#FFFDE6] border border-[#FAE875] p-1 rounded-full text-[10px]"></i>
+                <span>Strict Title Due Diligence</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-check text-[#7323DC] bg-[#F4EDFD] border border-[#E4D2FA] p-1 rounded-full text-[10px]"></i>
+                <span>Cross-Border Tax Structuring</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Hero Visual Feature (Workspace Asset: Home page- Hero Section 1) -->
+          <div class="lg:col-span-5 relative">
+            <a href="property.html?id=dxb-01" class="block relative group rounded-md overflow-hidden border border-stone-300 shadow-xl bg-stone-900 cursor-pointer">
+              
+              <!-- Featured Hero Architectural Image -->
+              <img 
+                src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80" 
+                alt="Butter Property - Curated Luxury Living in India and Dubai"
+                class="w-full h-[360px] sm:h-[420px] object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                loading="eager"
+              />
+
+              <!-- Overlay Gradient for contrast -->
+              <div class="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-stone-950/20 to-transparent pointer-events-none"></div>
+
+              <!-- Overlay Card Badge -->
+              <div class="absolute bottom-4 left-4 right-4 p-4 bg-white/95 backdrop-blur-md rounded border border-stone-200/80 shadow-md transition-colors group-hover:bg-white">
+                <div class="flex items-center justify-between text-xs text-stone-500 font-medium pb-1">
+                  <span class="tracking-widest uppercase text-[10px] text-[#7323DC] font-bold">Featured Prime Allocation</span>
+                  <span class="text-stone-700 font-semibold group-hover:underline">Explore Dossier &rarr;</span>
+                </div>
+                <div class="text-sm font-bold text-stone-900">One Canal &amp; Palm Signature Mansions</div>
+                <div class="flex items-center justify-between mt-1 text-xs text-stone-600">
+                  <span>Dubai Water Canal, UAE</span>
+                  <span class="font-semibold text-stone-900" id="heroAssetPrice">AED 24,500,000</span>
+                </div>
+              </div>
+
+            </a>
+
+            <!-- Architectural floating highlight -->
+            <div class="hidden sm:flex absolute -top-4 -right-4 bg-stone-900 text-white text-[11px] font-semibold uppercase tracking-widest px-3 py-1.5 rounded shadow-lg items-center gap-2 border border-stone-700">
+              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+              Verified Title Deeds
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ==================== DYNAMIC FILTER BAR ==================== -->
+        <div class="mt-12 lg:mt-16 bg-white border border-stone-200 rounded-lg p-5 sm:p-6 shadow-sm">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
+            
+            <!-- Filter 1: Region -->
+            <div>
+              <label for="filterRegion" class="block text-[11px] font-semibold text-stone-500 uppercase tracking-wider mb-1.5">
+                Target Region
+              </label>
+              <div class="relative">
+                <select 
+                  id="filterRegion" 
+                  onchange="applyFilters()" 
+                  class="w-full appearance-none bg-stone-50 border border-stone-200 text-stone-900 text-sm font-medium py-2.5 px-3.5 pr-8 rounded focus:outline-none focus:ring-1 focus:ring-stone-400 transition-colors"
+                >
+                  <option value="all">All Regions (India &amp; Dubai)</option>
+                  <option value="dubai">Dubai, UAE 🇦🇪</option>
+                  <option value="india">India 🇮🇳</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-stone-500 text-xs">
+                  <i class="fa-solid fa-chevron-down"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Filter 2: Property Type -->
+            <div>
+              <label for="filterType" class="block text-[11px] font-semibold text-stone-500 uppercase tracking-wider mb-1.5">
+                Asset Classification
+              </label>
+              <div class="relative">
+                <select 
+                  id="filterType" 
+                  onchange="applyFilters()" 
+                  class="w-full appearance-none bg-stone-50 border border-stone-200 text-stone-900 text-sm font-medium py-2.5 px-3.5 pr-8 rounded focus:outline-none focus:ring-1 focus:ring-stone-400 transition-colors"
+                >
+                  <option value="all">All Property Types</option>
+                  <option value="Luxury Apartments">Luxury Apartments</option>
+                  <option value="Penthouses">Penthouses &amp; Sky Mansions</option>
+                  <option value="Private Villas">Private Villas &amp; Estates</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-stone-500 text-xs">
+                  <i class="fa-solid fa-chevron-down"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Filter 3: Budget Range -->
+            <div>
+              <label for="filterBudget" class="block text-[11px] font-semibold text-stone-500 uppercase tracking-wider mb-1.5">
+                Investment Bracket
+              </label>
+              <div class="relative">
+                <select 
+                  id="filterBudget" 
+                  onchange="applyFilters()" 
+                  class="w-full appearance-none bg-stone-50 border border-stone-200 text-stone-900 text-sm font-medium py-2.5 px-3.5 pr-8 rounded focus:outline-none focus:ring-1 focus:ring-stone-400 transition-colors"
+                >
+                  <option value="all">Any Ticket Size</option>
+                  <option value="tier-1">Under $3M USD (Entry Luxury)</option>
+                  <option value="tier-2">$3M - $6M USD (Prime Portfolio)</option>
+                  <option value="tier-3">$6M+ USD (Trophy Assets)</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-stone-500 text-xs">
+                  <i class="fa-solid fa-chevron-down"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Action Buttons: Reset & Filter -->
+            <div class="flex items-center gap-2">
+              <button 
+                onclick="applyFilters()" 
+                class="flex-1 bg-[#7323DC] hover:bg-[#5515AB] text-white text-xs font-bold uppercase tracking-widest py-3 px-4 rounded transition-colors flex items-center justify-center gap-2 shadow-sm"
+              >
+                <i class="fa-solid fa-sliders text-xs text-[#FDDB00]"></i>
+                <span>Filter</span>
+              </button>
+              <button 
+                onclick="resetFilters()" 
+                title="Reset all filters"
+                class="border border-purple-200 hover:border-purple-400 bg-[#F4EDFD] text-[#7323DC] text-xs font-semibold py-3 px-3.5 rounded transition-colors"
+              >
+                <i class="fa-solid fa-arrow-rotate-left"></i>
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Active Filter Tags Status Bar -->
+          <div class="mt-4 pt-3 border-t border-stone-100 flex flex-wrap items-center justify-between text-xs text-stone-500">
+            <div class="flex items-center gap-2">
+              <span class="font-bold text-[#7323DC]" id="propertyCountDisplay">Showing 6 Handpicked Properties</span>
+              <span class="text-stone-300">•</span>
+              <span class="text-stone-500">Updated Daily</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-stone-400">Display Currency:</span>
+              <button onclick="setCurrency('INR')" id="filterToggleINR" class="font-bold text-[#7323DC] underline underline-offset-2">₹ INR</button>
+              <span class="text-stone-300">/</span>
+              <button onclick="setCurrency('AED')" id="filterToggleAED" class="text-stone-500 hover:text-[#7323DC] underline-offset-2">AED</button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 4. CURATED PROPERTY SHOWCASE ==================== -->
+    <section id="properties" class="py-20 md:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-20">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-stone-200 gap-6">
+        <div>
+          <div class="text-[#7323DC] text-xs font-bold tracking-widest uppercase mb-2 flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-[#FDDB00]"></span>
+            <span>Curated Portfolio</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-stone-950 tracking-tight">
+            Handpicked Allocations: India &amp; Dubai
+          </h2>
+          <p class="text-sm sm:text-base text-stone-600 mt-2 max-w-xl">
+            Strictly off-market and vetted prime properties. Every listing undergoes mandatory legal audit, yield projections, and developer pedigree validation.
+          </p>
+        </div>
+
+        <!-- Quick Region Selector Tabs -->
+        <div class="flex items-center border border-purple-200 bg-white p-1 rounded-sm text-xs font-medium self-start md:self-auto shadow-2xs">
+          <button 
+            id="tabAll" 
+            onclick="setRegionTab('all')" 
+            class="px-4 py-2 rounded-xs transition-all bg-[#7323DC] text-white font-bold"
+          >
+            All Portfolios (6)
+          </button>
+          <button 
+            id="tabDubai" 
+            onclick="setRegionTab('dubai')" 
+            class="px-4 py-2 rounded-xs transition-all text-stone-600 hover:text-[#7323DC]"
+          >
+            Dubai, UAE (3)
+          </button>
+          <button 
+            id="tabIndia" 
+            onclick="setRegionTab('india')" 
+            class="px-4 py-2 rounded-xs transition-all text-stone-600 hover:text-[#7323DC]"
+          >
+            India (3)
+          </button>
+        </div>
+      </div>
+
+      <!-- Property Cards Grid -->
+      <div id="propertyGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Rendered dynamically by JavaScript -->
+      </div>
+
+      <!-- Empty State Container -->
+      <div id="emptyState" class="hidden text-center py-20 px-4 bg-white border border-stone-200 rounded-lg">
+        <div class="w-12 h-12 rounded-full bg-stone-100 text-stone-500 mx-auto flex items-center justify-center text-xl mb-4">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-stone-900 mb-2">No Matching Curated Listings</h3>
+        <p class="text-stone-600 text-sm max-w-md mx-auto mb-6">
+          We maintain extreme discipline in our listings. Adjust your filter parameters or request an off-market custom mandate from our advisory team.
+        </p>
+        <button 
+          onclick="resetFilters()" 
+          class="px-5 py-2.5 bg-stone-900 text-white text-xs font-semibold uppercase tracking-wider rounded-sm hover:bg-stone-800"
+        >
+          Reset Filters
+        </button>
+      </div>
+
+      <!-- Custom Mandate Banner -->
+      <div class="mt-16 bg-gradient-to-r from-[#210940] via-[#351061] to-[#1D0838] text-white rounded-lg p-8 sm:p-10 flex flex-col lg:flex-row items-center justify-between gap-8 border border-purple-800/50 shadow-xl relative overflow-hidden">
+        <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-[#FDDB00]/10 rounded-full blur-2xl pointer-events-none"></div>
+        <div class="space-y-2 text-center lg:text-left relative z-10">
+          <span class="text-[#FDDB00] text-xs font-bold tracking-widest uppercase flex items-center gap-2 justify-center lg:justify-start">
+            <span class="w-2 h-2 rounded-full bg-[#FDDB00] animate-pulse"></span>
+            Off-Market Private Mandate
+          </span>
+          <h3 class="text-xl sm:text-2xl font-semibold tracking-tight text-white">Looking for unlisted penthouses or bespoke estates?</h3>
+          <p class="text-purple-200/90 text-sm max-w-2xl">
+            Over 60% of our high-value transactions occur strictly off-market. Share your confidential acquisition parameters with our managing partners.
+          </p>
+        </div>
+        <button 
+          onclick="openInquiryModal('Bespoke Off-Market Mandate')" 
+          class="whitespace-nowrap px-6 py-3.5 bg-[#FDDB00] hover:bg-[#FFE838] text-[#1D0838] font-bold text-xs uppercase tracking-widest transition-all rounded-sm shadow-md hover:shadow-lg relative z-10"
+        >
+          Submit Confidential Brief
+        </button>
+      </div>
+
+    </section>
+
+    <!-- ==================== 5. INVESTOR ADVISORY & VALUE PILLARS ==================== -->
+    <section id="why-butter" class="py-20 md:py-28 bg-[#F8F4FD] border-y border-purple-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="text-[#7323DC] text-xs font-bold tracking-widest uppercase mb-2 flex items-center justify-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-[#FDDB00]"></span>
+            <span>The Butter Standard</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-semibold text-stone-950 tracking-tight">
+            Why High-Net-Worth Investors Trust Us
+          </h2>
+          <p class="text-stone-600 mt-3 text-base">
+            Traditional real estate brokerage is noisy and transaction-driven. Butter Property operates as an independent buy-side advisory protecting private capital.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <!-- Pillar 1 -->
+          <div class="bg-white p-8 sm:p-10 rounded-lg border border-purple-100/90 shadow-xs flex flex-col justify-between hover:border-[#7323DC] hover:shadow-md transition-all">
+            <div>
+              <div class="w-12 h-12 rounded bg-[#F4EDFD] border border-[#E4D2FA] text-[#7323DC] flex items-center justify-center text-lg mb-6">
+                <i class="fa-solid fa-scale-balanced text-[#7323DC]"></i>
+              </div>
+              <h3 class="text-xl font-semibold text-stone-900 tracking-tight mb-3">Strict Due Diligence</h3>
+              <p class="text-stone-600 text-sm leading-relaxed">
+                Every asset passes a stringent 42-point scrutiny test: legal title verification, RERA compliance checks, encumbrance clearances, developer delivery histories, and realistic rental yield audits.
+              </p>
+            </div>
+            <div class="pt-6 mt-6 border-t border-purple-50 text-xs font-bold text-[#7323DC] uppercase tracking-widest flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#FDDB00]"></span>
+              <span>Zero Litigation Tolerance</span>
+            </div>
+          </div>
+
+          <!-- Pillar 2 -->
+          <div class="bg-white p-8 sm:p-10 rounded-lg border border-purple-100/90 shadow-xs flex flex-col justify-between hover:border-[#7323DC] hover:shadow-md transition-all">
+            <div>
+              <div class="w-12 h-12 rounded bg-[#FFFDE6] border border-[#FAE875] text-[#8C6D00] flex items-center justify-center text-lg mb-6">
+                <i class="fa-solid fa-key text-[#8C6D00]"></i>
+              </div>
+              <h3 class="text-xl font-semibold text-stone-900 tracking-tight mb-3">Off-Market Access</h3>
+              <p class="text-stone-600 text-sm leading-relaxed">
+                Trophy penthouses in Worli and signature beach villas on Palm Jumeirah rarely reach public portals. We unlock private owner mandates, family office reallocations, and pre-launch developer allocations.
+              </p>
+            </div>
+            <div class="pt-6 mt-6 border-t border-purple-50 text-xs font-bold text-[#7323DC] uppercase tracking-widest flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#FDDB00]"></span>
+              <span>Direct Principal Representation</span>
+            </div>
+          </div>
+
+          <!-- Pillar 3 -->
+          <div class="bg-white p-8 sm:p-10 rounded-lg border border-purple-100/90 shadow-xs flex flex-col justify-between hover:border-[#7323DC] hover:shadow-md transition-all">
+            <div>
+              <div class="w-12 h-12 rounded bg-[#F4EDFD] border border-[#E4D2FA] text-[#7323DC] flex items-center justify-center text-lg mb-6">
+                <i class="fa-solid fa-passport text-[#7323DC]"></i>
+              </div>
+              <h3 class="text-xl font-semibold text-stone-900 tracking-tight mb-3">Seamless Cross-Border Advisory</h3>
+              <p class="text-stone-600 text-sm leading-relaxed">
+                Navigating RBI Liberalised Remittance Scheme (LRS), UAE Golden Visa property thresholds, local bank escrow accounts, and Double Taxation Avoidance Agreements (DTAA) with seasoned legal partners.
+              </p>
+            </div>
+            <div class="pt-6 mt-6 border-t border-purple-50 text-xs font-bold text-[#7323DC] uppercase tracking-widest flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#FDDB00]"></span>
+              <span>End-to-End Capital Flow Guidance</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 6. EDITORIAL IMMERSION SECTION (Workspace Assets) ==================== -->
+    <section class="py-20 md:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        
+        <!-- Left: Curated Visual Showcase -->
+        <div class="space-y-6">
+          <a href="property.html?id=dxb-02" class="block relative rounded-lg overflow-hidden border border-stone-200 shadow-md group cursor-pointer">
+            <img 
+              src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1600&q=80" 
+              alt="Butter Property Architectural Portfolio"
+              class="w-full h-80 sm:h-96 object-cover group-hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+            />
+            <div class="absolute bottom-3 left-3 bg-stone-900/90 text-white text-[11px] font-medium px-3 py-1 rounded backdrop-blur-sm flex items-center gap-1.5">
+              <span>Architectural Refinement • Palm Jumeirah</span>
+              <span class="text-stone-400 group-hover:text-white">&rarr;</span>
+            </div>
+          </a>
+
+          <div class="grid grid-cols-2 gap-4">
+            <a href="property.html?id=dxb-03" class="block relative rounded-lg overflow-hidden border border-stone-200 shadow-xs group cursor-pointer">
+              <img 
+                src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1600&q=80" 
+                alt="Sky Penthouse Panoramas"
+                class="w-full h-36 object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+              <div class="absolute bottom-2 left-2 bg-stone-900/80 text-white text-[10px] px-2 py-0.5 rounded flex items-center gap-1">
+                <span>Horizon Terraces</span>
+                <span>&rarr;</span>
+              </div>
+            </a>
+            <a href="property.html?id=ind-01" class="block relative rounded-lg overflow-hidden border border-stone-200 shadow-xs group cursor-pointer">
+              <img 
+                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80" 
+                alt="Interior Craftsmanship"
+                class="w-full h-36 object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+              <div class="absolute bottom-2 left-2 bg-stone-900/80 text-white text-[10px] px-2 py-0.5 rounded flex items-center gap-1">
+                <span>Worli Sea Face</span>
+                <span>&rarr;</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Editorial Narrative -->
+        <div class="space-y-6">
+          <div class="text-[#A88B63] text-xs font-semibold tracking-widest uppercase">The Butter Philosophy</div>
+          <h2 class="text-3xl sm:text-4xl font-semibold text-stone-950 tracking-tight leading-tight">
+            Curating rare real estate for generational capital.
+          </h2>
+          <p class="text-stone-600 leading-relaxed text-base">
+            In prime real estate, more is not better. Overwhelming portals flooded with speculative listings cost serious investors time and compromise privacy.
+          </p>
+          <p class="text-stone-600 leading-relaxed text-base">
+            Butter Property operates by subtraction. We eliminate 95% of standard developments, curating strictly the top 5% that combine signature architecture, prime postcodes, genuine capital appreciation potential, and unencumbered titles.
+          </p>
+          
+          <div class="pt-4 grid grid-cols-2 gap-6 border-t border-stone-200">
+            <div>
+              <div class="text-2xl sm:text-3xl font-bold text-stone-950 font-serif-luxury">AED 1.2B+</div>
+              <div class="text-xs text-stone-500 uppercase tracking-wider mt-1">Cross-Border Assets Advised</div>
+            </div>
+            <div>
+              <div class="text-2xl sm:text-3xl font-bold text-stone-950 font-serif-luxury">100%</div>
+              <div class="text-xs text-stone-500 uppercase tracking-wider mt-1">Buy-Side Fiduciary Focus</div>
+            </div>
+          </div>
+
+          <div class="pt-4">
+            <button 
+              onclick="openInquiryModal('General Advisory Inquiry')" 
+              class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-stone-900 border-b-2 border-stone-900 pb-1 hover:text-[#A88B63] hover:border-[#A88B63] transition-colors"
+            >
+              <span>Connect with an In-House Advisor</span>
+              <i class="fa-solid fa-arrow-right text-xs"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ==================== 7. PRIVATE CONSULTATION FORM (INLINE / ANCHOR) ==================== -->
+    <section id="contact" class="py-20 bg-[#17052E] text-stone-100 scroll-mt-20 border-t border-purple-950/60 relative overflow-hidden">
+      <!-- Dual ambient glows: Royal Purple & Butter Gold -->
+      <div class="absolute top-0 right-1/4 w-96 h-96 bg-[#7323DC]/20 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute bottom-0 left-10 w-80 h-80 bg-[#FDDB00]/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <div class="text-center space-y-3 mb-12">
+          <div class="text-[#FDDB00] text-xs font-bold tracking-widest uppercase flex items-center justify-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-[#FDDB00]"></span>
+            <span>Direct Engagement</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-white">
+            Schedule a Private Consultation
+          </h2>
+          <p class="text-purple-200 text-sm max-w-lg mx-auto">
+            Speak directly with our senior principals in Mumbai or Dubai. All discussions are conducted under mutual non-disclosure.
+          </p>
+        </div>
+
+        <form id="inlineInquiryForm" onsubmit="handleInquirySubmit(event, 'inline')" class="bg-[#120424]/90 p-8 sm:p-10 rounded-lg border border-purple-900/60 shadow-2xl space-y-6">
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label for="inlineName" class="block text-xs font-semibold text-purple-200 uppercase tracking-wider mb-2">Investor Full Name *</label>
+              <input 
+                type="text" 
+                id="inlineName" 
+                required 
+                placeholder="e.g. Vikramaditya Singhania"
+                class="w-full bg-[#1F083B] border border-purple-800/60 rounded px-4 py-3 text-sm text-stone-100 placeholder-purple-300/40 focus:outline-none focus:border-[#FDDB00] focus:ring-1 focus:ring-[#FDDB00] transition-colors"
+              />
+            </div>
+            <div>
+              <label for="inlineEmail" class="block text-xs font-semibold text-purple-200 uppercase tracking-wider mb-2">Email Address *</label>
+              <input 
+                type="email" 
+                id="inlineEmail" 
+                required 
+                placeholder="investor@familyoffice.com"
+                class="w-full bg-[#1F083B] border border-purple-800/60 rounded px-4 py-3 text-sm text-stone-100 placeholder-purple-300/40 focus:outline-none focus:border-[#FDDB00] focus:ring-1 focus:ring-[#FDDB00] transition-colors"
+              />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label for="inlinePhone" class="block text-xs font-semibold text-purple-200 uppercase tracking-wider mb-2">Phone Number / WhatsApp *</label>
+              <input 
+                type="tel" 
+                id="inlinePhone" 
+                required 
+                placeholder="+971 50 123 4567 / +91 98200 12345"
+                class="w-full bg-[#1F083B] border border-purple-800/60 rounded px-4 py-3 text-sm text-stone-100 placeholder-purple-300/40 focus:outline-none focus:border-[#FDDB00] focus:ring-1 focus:ring-[#FDDB00] transition-colors"
+              />
+            </div>
+            <div>
+              <label for="inlineRegion" class="block text-xs font-semibold text-purple-200 uppercase tracking-wider mb-2">Primary Interest Region</label>
+              <select 
+                id="inlineRegion" 
+                class="w-full bg-[#1F083B] border border-purple-800/60 rounded px-4 py-3 text-sm text-stone-100 focus:outline-none focus:border-[#FDDB00] focus:ring-1 focus:ring-[#FDDB00] transition-colors"
+              >
+                <option value="Dubai Portfolio">Dubai Prime Portfolio (UAE)</option>
+                <option value="India Portfolio">India Luxury Portfolio (Worli, Bengaluru, NCR)</option>
+                <option value="Cross-Border Allocation">Dual Cross-Border Allocation (Both)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label for="inlineBudget" class="block text-xs font-semibold text-purple-200 uppercase tracking-wider mb-2">Target Investment Allocation</label>
+              <select 
+                id="inlineBudget" 
+                class="w-full bg-[#1F083B] border border-purple-800/60 rounded px-4 py-3 text-sm text-stone-100 focus:outline-none focus:border-[#FDDB00] focus:ring-1 focus:ring-[#FDDB00] transition-colors"
+              >
+                <option value="AED 5M - 10M / ₹10Cr - 25Cr">AED 5M – 10M / ₹10Cr – 25Cr</option>
+                <option value="AED 10M - 25M / ₹25Cr - 55Cr">AED 10M – 25M / ₹25Cr – 55Cr</option>
+                <option value="AED 25M+ / ₹55Cr+ (Trophy Estates)">AED 25M+ / ₹55Cr+ (Trophy Estates)</option>
+              </select>
+            </div>
+            <div>
+              <label for="inlineTimeline" class="block text-xs font-semibold text-purple-200 uppercase tracking-wider mb-2">Acquisition Horizon</label>
+              <select 
+                id="inlineTimeline" 
+                class="w-full bg-[#1F083B] border border-purple-800/60 rounded px-4 py-3 text-sm text-stone-100 focus:outline-none focus:border-[#FDDB00] focus:ring-1 focus:ring-[#FDDB00] transition-colors"
+              >
+                <option value="Immediate (0 - 30 Days)">Immediate (0 – 30 Days)</option>
+                <option value="1 - 3 Months">1 – 3 Months</option>
+                <option value="Strategic / Flexible">Strategic / Family Office Mandate</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label for="inlineNotes" class="block text-xs font-semibold text-purple-200 uppercase tracking-wider mb-2">Confidential Criteria / Specific Requirements</label>
+            <textarea 
+              id="inlineNotes" 
+              rows="3" 
+              placeholder="Specify preferred neighborhoods, duplex preferences, private berth requirements, or tax domicile questions..."
+              class="w-full bg-[#1F083B] border border-purple-800/60 rounded px-4 py-3 text-sm text-stone-100 placeholder-purple-300/40 focus:outline-none focus:border-[#FDDB00] focus:ring-1 focus:ring-[#FDDB00] transition-colors"
+            ></textarea>
+          </div>
+
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
+            <div class="text-xs text-purple-300 flex items-center gap-2">
+              <i class="fa-solid fa-lock text-[#FDDB00]"></i>
+              <span>Strict Non-Disclosure Guarantee. Encrypted Principal Dispatch.</span>
+            </div>
+            <button 
+              type="submit" 
+              class="w-full sm:w-auto px-8 py-3.5 bg-[#FDDB00] hover:bg-[#FFE838] text-stone-950 font-bold text-xs uppercase tracking-widest rounded-sm transition-all shadow-lg hover:shadow-xl border border-[#E5C700]"
+            >
+              Request Confidential Advisory
+            </button>
+          </div>
+
+        </form>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== 8. FOOTER ==================== -->
+  <footer class="bg-stone-950 text-stone-400 border-t border-stone-800 text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+        
+        <!-- Brand Info -->
+        <div class="space-y-4 md:col-span-1">
+          <div class="flex items-center gap-2">
+            <img 
+              src="./BUTTER-PROPERTY-LO-FF.png" 
+              alt="Butter Property Logo" 
+              class="h-10 w-auto object-contain brightness-0 invert opacity-90"
+            />
+          </div>
+          <p class="text-xs text-stone-400 leading-relaxed">
+            Butter Property is a boutique luxury real estate consultancy serving high-net-worth investors across India and Dubai.
+          </p>
+          <div class="text-[11px] text-stone-500">
+            butterproperty.com
+          </div>
+        </div>
+
+        <!-- Regional Desks -->
+        <div>
+          <h4 class="text-xs font-semibold text-stone-200 uppercase tracking-widest mb-4">Dubai Desk</h4>
+          <p class="text-xs text-stone-400 leading-relaxed">
+            Downtown Dubai &amp; DIFC Gate District<br>
+            Emirate of Dubai, United Arab Emirates<br>
+            <span class="text-stone-300 font-medium">dubai@butterproperty.com</span><br>
+            +971 4 800 BUTTER
+          </p>
+        </div>
+
+        <!-- India Desk -->
+        <div>
+          <h4 class="text-xs font-semibold text-stone-200 uppercase tracking-widest mb-4">India Desk</h4>
+          <p class="text-xs text-stone-400 leading-relaxed">
+            Worli Sea Face, Mumbai 400018<br>
+            Lavelle Road, Bengaluru 560001<br>
+            <span class="text-stone-300 font-medium">india@butterproperty.com</span><br>
+            +91 22 6100 8000
+          </p>
+        </div>
+
+        <!-- Quick Links & Regulatory -->
+        <div>
+          <h4 class="text-xs font-semibold text-stone-200 uppercase tracking-widest mb-4">Fiduciary Standards</h4>
+          <ul class="text-xs space-y-2 text-stone-400">
+            <li><a href="#properties" class="hover:text-stone-200">Curated Listings</a></li>
+            <li><a href="#why-butter" class="hover:text-stone-200">Due Diligence Protocol</a></li>
+            <li><button onclick="openInquiryModal('Regulatory Inquiry')" class="hover:text-stone-200 text-left">RERA &amp; LRS Compliance</button></li>
+            <li><button onclick="openInquiryModal('Private Consultation')" class="hover:text-stone-200 text-left">Confidential Client Mandate</button></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="mt-12 pt-8 border-t border-stone-800/80 flex flex-col sm:flex-row items-center justify-between text-xs text-stone-500 gap-4">
+        <div>
+          &copy; <span id="currentYear">2026</span> Butter Property (butterproperty.com). All rights reserved.
+        </div>
+        <div class="flex items-center space-x-6">
+          <a href="#" onclick="event.preventDefault(); alert('Butter Property operates under strict non-disclosure. Client records and inquiry notes are encrypted and never monetized.')" class="hover:text-stone-400">Privacy Policy</a>
+          <a href="#" onclick="event.preventDefault(); alert('Properties displayed are subject to prior sale, availability, and developer title verification.')" class="hover:text-stone-400">Terms of Advisory</a>
+          <a href="#contact" class="hover:text-stone-400">Private Desk</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ==================== 9. LEAD CAPTURE / PRIVATE CONSULTATION MODAL ==================== -->
+  <div 
+    id="inquiryModal" 
+    class="fixed inset-0 z-50 overflow-y-auto hidden items-center justify-center p-4 sm:p-6"
+    role="dialog" 
+    aria-modal="true"
+    aria-labelledby="modalTitle"
+  >
+    <!-- Backdrop overlay -->
+    <div 
+      class="fixed inset-0 bg-stone-950/70 backdrop-blur-sm transition-opacity" 
+      onclick="closeInquiryModal()"
+      aria-hidden="true"
+    ></div>
+
+    <!-- Modal Dialog Panel -->
+    <div class="relative bg-white rounded-lg shadow-2xl max-w-lg w-full p-6 sm:p-8 z-10 border border-stone-200 modal-panel">
+      
+      <!-- Close Button -->
+      <button 
+        onclick="closeInquiryModal()" 
+        class="absolute top-5 right-5 text-stone-400 hover:text-stone-800 p-1 rounded-sm focus:outline-none transition-colors"
+        aria-label="Close dialog"
+      >
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+
+      <!-- Modal Header -->
+      <div class="mb-6">
+        <div class="text-[#7323DC] text-xs font-semibold tracking-widest uppercase mb-1">Confidential Inquiry</div>
+        <h3 id="modalTitle" class="text-xl sm:text-2xl font-semibold text-stone-900 tracking-tight">
+          Request Private Allocation
+        </h3>
+        <p class="text-xs sm:text-sm text-stone-500 mt-1">
+          Complete the brief below to receive complete property dossiers, architectural floorplans, and audited financial projections.
+        </p>
+      </div>
+
+      <!-- Modal Form -->
+      <form id="modalInquiryForm" onsubmit="handleInquirySubmit(event, 'modal')" class="space-y-4">
+        
+        <div>
+          <label for="modalPropertyName" class="block text-[11px] font-semibold text-stone-600 uppercase tracking-wider mb-1">Selected Asset / Focus</label>
+          <input 
+            type="text" 
+            id="modalPropertyName" 
+            readonly 
+            class="w-full bg-stone-100 border border-stone-200 rounded px-3.5 py-2 text-xs font-semibold text-stone-800 cursor-not-allowed"
+            value="General Private Consultation"
+          />
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="modalName" class="block text-[11px] font-semibold text-stone-600 uppercase tracking-wider mb-1">Investor Name *</label>
+            <input 
+              type="text" 
+              id="modalName" 
+              required 
+              placeholder="e.g. Rahul Mehta"
+              class="w-full bg-stone-50 border border-stone-200 rounded px-3 py-2 text-xs text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-1 focus:ring-[#7323DC] focus:border-[#7323DC] transition-colors"
+            />
+          </div>
+          <div>
+            <label for="modalPhone" class="block text-[11px] font-semibold text-stone-600 uppercase tracking-wider mb-1">Phone / WhatsApp *</label>
+            <input 
+              type="tel" 
+              id="modalPhone" 
+              required 
+              placeholder="+971 50 123 4567"
+              class="w-full bg-stone-50 border border-stone-200 rounded px-3 py-2 text-xs text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-1 focus:ring-[#7323DC] focus:border-[#7323DC] transition-colors"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="modalEmail" class="block text-[11px] font-semibold text-stone-600 uppercase tracking-wider mb-1">Confidential Email *</label>
+          <input 
+            type="email" 
+            id="modalEmail" 
+            required 
+            placeholder="principal@investor.com"
+            class="w-full bg-stone-50 border border-stone-200 rounded px-3 py-2 text-xs text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-1 focus:ring-[#7323DC] focus:border-[#7323DC] transition-colors"
+          />
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="modalBudget" class="block text-[11px] font-semibold text-stone-600 uppercase tracking-wider mb-1">Investment Range</label>
+            <select 
+              id="modalBudget" 
+              class="w-full bg-stone-50 border border-stone-200 rounded px-3 py-2 text-xs text-stone-900 focus:outline-none focus:ring-1 focus:ring-[#7323DC] focus:border-[#7323DC]"
+            >
+              <option value="Under $3M USD">Under $3M USD / ₹25 Cr</option>
+              <option value="$3M - $6M USD">$3M – $6M USD / ₹25 – 50 Cr</option>
+              <option value="$6M+ USD">$6M+ USD / ₹50 Cr+ (Trophy)</option>
+            </select>
+          </div>
+          <div>
+            <label for="modalTimeline" class="block text-[11px] font-semibold text-stone-600 uppercase tracking-wider mb-1">Purchase Horizon</label>
+            <select 
+              id="modalTimeline" 
+              class="w-full bg-stone-50 border border-stone-200 rounded px-3 py-2 text-xs text-stone-900 focus:outline-none focus:ring-1 focus:ring-[#7323DC] focus:border-[#7323DC]"
+            >
+              <option value="Next 30 Days">Next 30 Days</option>
+              <option value="1 - 3 Months">1 – 3 Months</option>
+              <option value="Strategic / Family Office">Strategic Mandate</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label for="modalNotes" class="block text-[11px] font-semibold text-stone-600 uppercase tracking-wider mb-1">Specific Questions or Mandate Notes</label>
+          <textarea 
+            id="modalNotes" 
+            rows="2" 
+            placeholder="E.g. requesting floorplans, high-floor requirements, rental yield projections..."
+            class="w-full bg-stone-50 border border-stone-200 rounded px-3 py-2 text-xs text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-1 focus:ring-[#7323DC] focus:border-[#7323DC]"
+          ></textarea>
+        </div>
+
+        <div class="pt-2">
+          <button 
+            type="submit" 
+            class="w-full bg-[#FDDB00] hover:bg-[#FFE838] text-stone-950 text-xs font-bold uppercase tracking-widest py-3.5 px-4 rounded transition-all shadow-md hover:shadow-lg border border-[#E5C700]"
+          >
+            Submit Confidential Request &rarr;
+          </button>
+          <div class="flex items-center justify-center gap-2 mt-3 text-[11px] text-stone-500 font-medium">
+            <i class="fa-solid fa-shield-halved text-[#7323DC]"></i>
+            <span>Encrypted transmission. Senior Partner direct review.</span>
+          </div>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+  <!-- ==================== 10. CONFIRMATION TOAST ==================== -->
+  <div 
+    id="toastNotification" 
+    class="fixed bottom-6 right-6 z-50 bg-stone-900 text-white px-5 py-4 rounded-md shadow-2xl border border-stone-700 max-w-sm flex items-start gap-3 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none"
+    role="status" 
+    aria-live="polite"
+  >
+    <div class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 text-sm mt-0.5">
+      <i class="fa-solid fa-check"></i>
+    </div>
+    <div>
+      <div class="text-xs font-semibold text-white uppercase tracking-wider">Inquiry Received</div>
+      <p id="toastMessage" class="text-xs text-stone-300 mt-0.5 leading-relaxed">
+        Our Senior Principal will reach out under mutual non-disclosure within 4 hours.
+      </p>
+    </div>
+  </div>
+
+  <!-- Load Shared Master Data & Application Logic -->
+  <script src="./properties-data.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
+

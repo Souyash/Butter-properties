@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="pageTitle">Curated Property Allocation | Butter Property</title>
+  <meta name="description" id="pageMetaDescription" content="Exclusive private allocation overview by Butter Property. Curated luxury real estate across India and Dubai.">
+  <link rel="icon" type="image/png" href="./BUTTER-PROPERTY-LO-FF.png">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            butter: {
+              yellow: '#FDDB00',
+              'yellow-hover': '#F5D000',
+              'yellow-light': '#FFF066',
+              'yellow-warm': '#F5C800',
+              'yellow-soft': '#FFFDE6',
+              'yellow-border': '#FAE875',
+              'yellow-dark': '#8C6D00',
+              amber: '#B88E00',
+              charcoal: '#171510',
+              muted: '#78716C',
+            }
+          },
+          fontFamily: {
+            custom: ['"Butter Montserrat"', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    @font-face {
+      font-family: 'Butter Montserrat';
+      src: url('./FONT/Montserrat-Medium.ttf') format('truetype');
+      font-weight: 400 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Butter Montserrat';
+      src: url('./FONT/Montserrat-Bold.ttf') format('truetype');
+      font-weight: 600 700 800;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    body {
+      font-family: 'Butter Montserrat', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #FAFAF9;
+      color: #1C1917;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .font-serif-luxury {
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FAFAF9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #D6D3D1;
+      border-radius: 3px;
+    }
+
+    .glass-nav {
+      background: rgba(250, 250, 249, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .gallery-thumb.active {
+      outline: 2px solid #FDDB00;
+      opacity: 1;
+    }
+
+    /* Interactive Zoom Lens Frame */
+    .gallery-display-frame {
+      position: relative;
+      overflow: hidden;
+      cursor: zoom-in;
+    }
+    .gallery-display-frame.is-zoomed {
+      cursor: zoom-out;
+    }
+    .gallery-display-frame img.zoom-active {
+      transform: scale(2.2);
+      transition: transform 0.08s ease-out;
+      transform-origin: center center;
+    }
+    .gallery-display-frame img.zoom-idle {
+      transform: scale(1);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease-out;
+    }
+  </style>
+</head>
+<body class="bg-[#FAFAF9] text-stone-900 selection:bg-stone-200 selection:text-stone-900 min-h-screen flex flex-col antialiased">
+
+  <!-- ==================== 1. TOP TICKER ==================== -->
+  <aside aria-label="Announcement" class="border-b border-purple-900/40 bg-[#1D0838] text-purple-200/90 text-xs py-2 px-4 text-center tracking-wider uppercase font-medium flex items-center justify-center gap-3">
+    <span class="inline-flex items-center gap-1.5 text-[#FDDB00]">
+      <span class="w-2 h-2 rounded-full bg-[#FDDB00] shadow-sm animate-pulse"></span>
+      <span class="font-bold text-white">Private Client Desk Active</span>
+    </span>
+    <span class="hidden sm:inline text-purple-700">•</span>
+    <span class="hidden sm:inline text-purple-200">Direct Principal Representation • Zero Broker Noise</span>
+    <span class="text-purple-700">•</span>
+    <a href="index.html#contact" class="text-[#FDDB00] hover:text-[#FFF066] hover:underline underline-offset-4 font-bold tracking-widest text-[11px] transition-colors">Enquire Privately &rarr;</a>
+  </aside>
+
+  <!-- ==================== 2. STICKY HEADER ==================== -->
+  <header class="sticky top-0 z-40 w-full glass-nav border-b border-stone-200/80 shadow-xs transition-all duration-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Brand Logo -->
+        <a href="index.html" class="flex items-center gap-3 group focus:outline-none">
+          <div class="relative h-12 w-auto flex items-center justify-center overflow-hidden">
+            <img 
+              src="./BUTTER-PROPERTY-LO-FF.png" 
+              alt="Butter Property" 
+              class="h-10 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+            />
+          </div>
+          <span class="sr-only">Butter Property</span>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wide text-stone-600">
+          <a href="index.html#properties" class="hover:text-stone-950 transition-colors py-1 flex items-center gap-1.5 font-medium">
+            <i class="fa-solid fa-arrow-left text-xs text-[#7323DC]"></i>
+            <span>All Properties</span>
+          </a>
+          <a href="dubai-portfolio.html" class="hover:text-stone-950 transition-colors py-1">
+            Dubai Portfolio <span class="text-[10px] uppercase tracking-widest px-1.5 py-0.5 ml-1 bg-[#F4EDFD] text-[#7323DC] font-bold rounded border border-[#E4D2FA]">UAE</span>
+          </a>
+          <a href="india-portfolio.html" class="hover:text-stone-950 transition-colors py-1">
+            India Portfolio <span class="text-[10px] uppercase tracking-widest px-1.5 py-0.5 ml-1 bg-[#FFFDE6] text-[#8C6D00] font-bold rounded border border-[#FAE875]">IND</span>
+          </a>
+          <a href="index.html#why-butter" class="hover:text-stone-950 transition-colors py-1">
+            Why Butter
+          </a>
+          <a href="#contact-advisor" class="hover:text-stone-950 transition-colors py-1">
+            Advisory Desk
+          </a>
+        </nav>
+
+        <!-- Right Side: Currency & Consultation Action -->
+        <div class="hidden sm:flex items-center space-x-4">
+          <!-- Currency Toggle Button -->
+          <div class="flex items-center border border-stone-200 rounded-full p-1 bg-white text-xs font-semibold shadow-xs">
+            <button 
+              id="detailCurrencyBtnINR" 
+              onclick="setDetailCurrency('INR')" 
+              class="px-2.5 py-1 rounded-full transition-all text-stone-500 hover:text-stone-900"
+              title="View price in Indian Rupees"
+            >
+              ₹ INR
+            </button>
+            <button 
+              id="detailCurrencyBtnAED" 
+              onclick="setDetailCurrency('AED')" 
+              class="px-2.5 py-1 rounded-full bg-[#7323DC] text-white font-bold transition-all shadow-xs"
+              title="View price in UAE Dirhams"
+            >
+              AED
+            </button>
+          </div>
+
+          <!-- Primary Modal Trigger -->
+          <button 
+            onclick="openPropertyInquiryModal()" 
+            class="inline-flex items-center justify-center px-5 py-2.5 border border-[#E5C700] text-xs font-bold uppercase tracking-widest text-stone-950 bg-[#FDDB00] hover:bg-[#FFE524] transition-all rounded-sm shadow-sm"
+          >
+            Private Consultation
+          </button>
+        </div>
+
+        <!-- Mobile Quick Return -->
+        <div class="flex md:hidden items-center space-x-3">
+          <button 
+            onclick="toggleDetailCurrency()" 
+            id="mobileCurrBadge" 
+            class="text-[11px] font-semibold border border-stone-300 px-2 py-1 rounded bg-white text-stone-700"
+          >
+            AED
+          </button>
+          <a href="index.html#properties" class="text-xs font-semibold text-stone-800 border border-stone-200 px-3 py-1.5 rounded bg-white">
+            &larr; Portfolio
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== 3. BREADCRUMBS & TOP BAR ==================== -->
+  <div class="border-b border-stone-200 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap items-center justify-between gap-4 text-xs text-stone-500">
+      
+      <div class="flex items-center space-x-2">
+        <a href="index.html" class="hover:text-stone-900">Home</a>
+        <span>/</span>
+        <a href="index.html#properties" class="hover:text-stone-900">Portfolio</a>
+        <span>/</span>
+        <span class="text-stone-400" id="bcRegion">Region</span>
+        <span>/</span>
+        <span class="text-stone-900 font-semibold truncate max-w-xs" id="bcTitle">Property</span>
+      </div>
+
+      <div class="flex items-center gap-4 text-stone-500">
+        <span id="detailBadge" class="px-2.5 py-0.5 bg-stone-100 text-stone-800 font-semibold rounded text-[11px] uppercase tracking-wider">
+          Trophy Asset
+        </span>
+        <span class="hidden sm:inline text-stone-300">|</span>
+        <span class="hidden sm:inline" id="detailRefCode">REF: BP-DXB-01</span>
+      </div>
+
+    </div>
+  </div>
+
+  <main class="flex-grow">
+    
+    <!-- ==================== 4. PROPERTY HERO & IMMERSIVE GALLERY ==================== -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12">
+      
+      <!-- Title & Location Header -->
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8 pb-6 border-b border-stone-200">
+        <div>
+          <div class="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#A88B63] mb-2">
+            <span id="propRegionLabel">Dubai, UAE</span>
+            <span>•</span>
+            <span id="propType">Penthouses</span>
+            <span>•</span>
+            <span id="propOwnership">Freehold Title</span>
+          </div>
+
+          <h1 id="propTitle" class="text-3xl sm:text-4xl md:text-5xl font-semibold text-stone-950 tracking-tight leading-tight">
+            Loading Property...
+          </h1>
+
+          <p id="propTagline" class="text-stone-600 text-base sm:text-lg mt-2 max-w-3xl">
+            Shortlisted off-market allocation.
+          </p>
+        </div>
+
+        <!-- Price Block on Right -->
+        <div class="bg-white p-5 rounded-md border border-stone-200 shadow-xs lg:text-right shrink-0 min-w-[280px]">
+          <div class="text-[10px] font-semibold text-stone-400 uppercase tracking-widest">Confidential Guide Price</div>
+          <div id="propPricePrimary" class="text-2xl sm:text-3xl font-bold text-stone-950 tracking-tight mt-1">
+            Loading...
+          </div>
+          <div id="propPriceSecondary" class="text-xs text-stone-500 mt-1">
+            ≈ Loading...
+          </div>
+          <div class="mt-3 pt-3 border-t border-stone-100 flex items-center justify-between text-[11px]">
+            <span class="text-stone-400">Projected Yield</span>
+            <span id="propYield" class="font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">7.8% Net</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Photo & Gallery Showcase -->
+      <div class="space-y-4">
+        
+        <!-- Large Main Display Frame with Zoom & Fullscreen -->
+        <div 
+          id="galleryDisplayContainer" 
+          class="gallery-display-frame group relative rounded-lg overflow-hidden border border-stone-300 shadow-lg bg-stone-950 aspect-[16/9] sm:aspect-[21/10] max-h-[580px] select-none"
+          title="Click to zoom in • Hover to inspect fine architectural details"
+        >
+          <img 
+            id="mainGalleryImg" 
+            src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80" 
+            alt="Property Display" 
+            class="zoom-idle w-full h-full object-cover select-none"
+            draggable="false"
+          />
+
+          <!-- Floating Interactive Control Bar (Top Right) -->
+          <div class="absolute top-4 right-4 z-20 flex items-center gap-2">
+            <!-- Zoom Toggle Pill -->
+            <button 
+              id="zoomToggleBtn" 
+              type="button"
+              onclick="toggleZoomInspection(event)" 
+              class="px-3 py-1.5 bg-stone-950/85 hover:bg-stone-900 text-white text-xs font-semibold rounded-full border border-stone-700/80 backdrop-blur-md shadow-md flex items-center gap-1.5 transition-all"
+              title="Toggle interactive zoom inspection"
+            >
+              <i class="fa-solid fa-magnifying-glass-plus text-[#FDDB00]" id="zoomToggleIcon"></i>
+              <span id="zoomToggleText" class="hidden sm:inline">Zoom (2.2x)</span>
+            </button>
+
+            <!-- Fullscreen Lightbox Button -->
+            <button 
+              type="button" 
+              onclick="openFullscreenLightbox(event)" 
+              class="w-8 h-8 rounded-full bg-stone-950/85 hover:bg-stone-900 text-white text-xs border border-stone-700/80 backdrop-blur-md shadow-md flex items-center justify-center transition-all"
+              title="Open Fullscreen Lightbox"
+            >
+              <i class="fa-solid fa-expand text-stone-200"></i>
+            </button>
+          </div>
+
+          <!-- Floating Inspection Status Pill (Top Left) -->
+          <div id="zoomHintBadge" class="absolute top-4 left-4 z-20 pointer-events-none transition-all duration-300">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-950/85 backdrop-blur-md text-[11px] font-medium text-stone-200 border border-stone-700/80 shadow-md">
+              <span class="w-2 h-2 rounded-full bg-[#FDDB00]"></span>
+              <span id="zoomHintText">Move cursor to inspect details</span>
+            </span>
+          </div>
+
+          <!-- Carousel Prev / Next Overlay Arrows -->
+          <button 
+            type="button" 
+            onclick="navigateGallery(-1, event)" 
+            class="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-stone-950/75 hover:bg-stone-950 text-white border border-stone-700/60 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-md hover:scale-105"
+            aria-label="Previous Photo"
+          >
+            <i class="fa-solid fa-chevron-left text-xs"></i>
+          </button>
+
+          <button 
+            type="button" 
+            onclick="navigateGallery(1, event)" 
+            class="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-stone-950/75 hover:bg-stone-950 text-white border border-stone-700/60 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-md hover:scale-105"
+            aria-label="Next Photo"
+          >
+            <i class="fa-solid fa-chevron-right text-xs"></i>
+          </button>
+
+          <!-- Caption Gradient Overlay -->
+          <div class="pointer-events-none absolute inset-x-0 bottom-0 p-4 sm:p-6 bg-gradient-to-t from-stone-950/95 via-stone-950/50 to-transparent flex flex-col sm:flex-row sm:items-end justify-between gap-2 z-10">
+            <div>
+              <div id="mainImgTitle" class="text-white text-sm sm:text-base font-semibold">
+                Exterior Architecture & Promenade
+              </div>
+              <div id="mainImgCaption" class="text-stone-300 text-xs mt-0.5">
+                Cantilevered private infinity swimming pools on floating terraces.
+              </div>
+            </div>
+            <div class="text-stone-400 text-xs font-mono shrink-0">
+              <span id="currentImgIdx">1</span> / <span id="totalImgCount">5</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Thumbnail Strip -->
+        <div id="galleryThumbnails" class="grid grid-cols-4 sm:grid-cols-5 gap-3">
+          <!-- Injected via JavaScript -->
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ==================== 5. KEY SPECIFICATIONS & AMENITIES ==================== -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      
+      <!-- Quick Specs Metric Bar -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 bg-white p-6 rounded-lg border border-stone-200 shadow-xs text-center mb-12">
+        <div class="p-2 border-r border-stone-100 last:border-0">
+          <div class="text-[10px] font-semibold text-stone-400 uppercase tracking-widest">Built-Up Area</div>
+          <div id="metricSize" class="text-lg sm:text-xl font-bold text-stone-900 mt-1">11,400</div>
+          <div class="text-[10px] text-stone-500">Square Feet</div>
+        </div>
+        <div class="p-2 border-r border-stone-100 last:border-0">
+          <div class="text-[10px] font-semibold text-stone-400 uppercase tracking-widest">Bedrooms</div>
+          <div id="metricBeds" class="text-lg sm:text-xl font-bold text-stone-900 mt-1">6 Suites</div>
+          <div class="text-[10px] text-stone-500">En-Suite Private</div>
+        </div>
+        <div class="p-2 border-r border-stone-100 last:border-0">
+          <div class="text-[10px] font-semibold text-stone-400 uppercase tracking-widest">Bathrooms</div>
+          <div id="metricBaths" class="text-lg sm:text-xl font-bold text-stone-900 mt-1">8 Baths</div>
+          <div class="text-[10px] text-stone-500">Full Spa Specification</div>
+        </div>
+        <div class="p-2 border-r border-stone-100 last:border-0">
+          <div class="text-[10px] font-semibold text-stone-400 uppercase tracking-widest">Completion</div>
+          <div id="metricCompletion" class="text-sm sm:text-base font-bold text-stone-900 mt-1">Q4 2025</div>
+          <div class="text-[10px] text-stone-500">Status</div>
+        </div>
+        <div class="p-2 border-r border-stone-100 last:border-0">
+          <div class="text-[10px] font-semibold text-stone-400 uppercase tracking-widest">Title Deed</div>
+          <div id="metricOwnership" class="text-sm sm:text-base font-bold text-stone-900 mt-1">Freehold</div>
+          <div class="text-[10px] text-stone-500">100% Direct Title</div>
+        </div>
+        <div class="p-2">
+          <div class="text-[10px] font-semibold text-stone-400 uppercase tracking-widest">Residency / FEMA</div>
+          <div id="metricVisa" class="text-xs sm:text-sm font-bold text-[#A88B63] mt-1">Golden Visa</div>
+          <div class="text-[10px] text-stone-500">Compliance</div>
+        </div>
+      </div>
+
+      <!-- Main Two-Column Layout: Details + Sticky Advisory Card -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        <!-- Left Column: Architectural Narrative, Highlights, Financials (8 cols) -->
+        <div class="lg:col-span-8 space-y-12">
+          
+          <!-- Section A: Overview Narrative -->
+          <div class="bg-white p-8 rounded-lg border border-stone-200 shadow-xs space-y-4">
+            <h2 class="text-xl sm:text-2xl font-semibold text-stone-950 tracking-tight">
+              Architectural Profile &amp; Overview
+            </h2>
+            <div id="propDescription" class="text-stone-600 leading-relaxed text-sm sm:text-base space-y-4">
+              <!-- Injected description -->
+            </div>
+          </div>
+
+          <!-- Section B: Key Architectural Highlights -->
+          <div class="bg-white p-8 rounded-lg border border-stone-200 shadow-xs">
+            <h2 class="text-xl sm:text-2xl font-semibold text-stone-950 tracking-tight mb-6">
+              Investment &amp; Architectural Highlights
+            </h2>
+            <ul id="propHighlights" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <!-- Injected highlights -->
+            </ul>
+          </div>
+
+          <!-- Section C: Curated Amenities & Facilities -->
+          <div class="bg-white p-8 rounded-lg border border-stone-200 shadow-xs">
+            <h2 class="text-xl sm:text-2xl font-semibold text-stone-950 tracking-tight mb-6">
+              Exclusive Amenities &amp; Services
+            </h2>
+            <div id="propAmenities" class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+              <!-- Injected amenities -->
+            </div>
+          </div>
+
+          <!-- Section D: Institutional Financial & Tax Due Diligence -->
+          <div class="bg-[#F5F2EC] p-8 rounded-lg border border-stone-300 space-y-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <span class="text-xs font-semibold uppercase tracking-wider text-[#A88B63]">Fiduciary Assessment</span>
+                <h3 class="text-xl font-semibold text-stone-900 tracking-tight">Financial &amp; Yield Audit</h3>
+              </div>
+              <div class="text-xs px-3 py-1 bg-white border border-stone-200 rounded font-medium text-stone-600">
+                Audited Q4 2026
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
+              <div class="bg-white p-4 rounded border border-stone-200">
+                <div class="text-xs text-stone-500 font-medium">Annual Rental Value Est.</div>
+                <div id="finRental" class="text-base font-bold text-stone-900 mt-1">AED 1,911,000 / year</div>
+                <div class="text-[11px] text-stone-400 mt-1">Conservative corporate lease model</div>
+              </div>
+
+              <div class="bg-white p-4 rounded border border-stone-200">
+                <div class="text-xs text-stone-500 font-medium">Projected Net Yield</div>
+                <div id="finCapRate" class="text-base font-bold text-emerald-800 mt-1">7.8% Net</div>
+                <div class="text-[11px] text-stone-400 mt-1">Net of maintenance & service fees</div>
+              </div>
+
+              <div class="bg-white p-4 rounded border border-stone-200">
+                <div class="text-xs text-stone-500 font-medium">Medium-Term Capital Appreciation</div>
+                <div id="finAppreciation" class="text-base font-bold text-stone-900 mt-1">9.5% p.a. Forecast</div>
+                <div class="text-[11px] text-stone-400 mt-1">Backed by land scarcity in prime zip codes</div>
+              </div>
+
+              <div class="bg-white p-4 rounded border border-stone-200">
+                <div class="text-xs text-stone-500 font-medium">Tax &amp; Cross-Border Structuring</div>
+                <div id="finTax" class="text-xs font-semibold text-stone-900 mt-1 leading-snug">0% Capital Gains, 0% Income Tax</div>
+                <div class="text-[11px] text-stone-400 mt-1">DTAA / FEMA Compliant</div>
+              </div>
+            </div>
+
+            <p class="text-[11px] text-stone-500 italic">
+              * Note: Past yield metrics do not guarantee future returns. Comprehensive financial model and legal audit memorandum available upon executed NDA.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Right Column: Sticky Private Consultation & Dossier Request (4 cols) -->
+        <div class="lg:col-span-4 space-y-6">
+          
+          <div id="contact-advisor" class="sticky top-28 bg-white p-6 sm:p-8 rounded-lg border border-stone-200 shadow-md space-y-6">
+            
+            <div class="space-y-1">
+              <span class="text-[#A88B63] text-[10px] font-bold uppercase tracking-widest">Buy-Side Private Desk</span>
+              <h3 class="text-xl font-semibold text-stone-900">Request Full Dossier</h3>
+              <p class="text-xs text-stone-500 leading-relaxed">
+                Receive unwatermarked architectural floorplans, title deed audit report, and confidential video walkthrough.
+              </p>
+            </div>
+
+            <form onsubmit="handleDetailInquiry(event)" class="space-y-4">
+              
+              <div>
+                <label for="detailClientName" class="block text-[11px] font-semibold text-stone-600 uppercase tracking-wider mb-1">Full Legal Name *</label>
+                <input 
+                  type="text" 
+                  id="detailClientName" 
+                  required 
+                  placeholder="e.g. Anand Mahindra"
+                  class="w-full bg-stone-50 border border-stone-200 rounded px-3.5 py-2.5 text-xs text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-1 focus:ring-stone-400"
+                />
+              </div>
+
+              <div>
+                <label for="detailClientEmail" class="block text-[11px] font-semibold text-stone-600 uppercase tracking-wider mb-1">Corporate / Personal Email *</label>
+                <input 
+                  type="email" 
+                  id="detailClientEmail" 
+                  required 
+                  placeholder="principal@familyoffice.com"
+                  class="w-full bg-stone-50 border border-stone-200 rounded px-3.5 py-2.5 text-xs text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-1 focus:ring-stone-400"
+                />
+              </div>
+
+              <div>
+                <label for="detailClientPhone" class="block text-[11px] font-semibold text-stone-600 uppercase tracking-wider mb-1">Phone / WhatsApp *</label>
+                <input 
+                  type="tel" 
+                  id="detailClientPhone" 
+                  required 
+                  placeholder="+971 50 000 0000 / +91 98000 00000"
+                  class="w-full bg-stone-50 border border-stone-200 rounded px-3.5 py-2.5 text-xs text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-1 focus:ring-stone-400"
+                />
+              </div>
+
+              <div>
+                <label for="detailClientTimeline" class="block text-[11px] font-semibold text-stone-600 uppercase tracking-wider mb-1">Acquisition Window</label>
+                <select 
+                  id="detailClientTimeline" 
+                  class="w-full bg-stone-50 border border-stone-200 rounded px-3 py-2 text-xs text-stone-900 focus:outline-none focus:ring-1 focus:ring-stone-400"
+                >
+                  <option value="Immediate Allocation (30 Days)">Immediate Allocation (30 Days)</option>
+                  <option value="60 - 90 Days">60 – 90 Days</option>
+                  <option value="Evaluating Portfolio Allocation">Evaluating Portfolio Allocation</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="detailClientNotes" class="block text-[11px] font-semibold text-stone-600 uppercase tracking-wider mb-1">Specific Diligence Inquiries</label>
+                <textarea 
+                  id="detailClientNotes" 
+                  rows="2" 
+                  placeholder="Inquire about Golden Visa thresholds, RERA approvals, payment schedules..."
+                  class="w-full bg-stone-50 border border-stone-200 rounded px-3 py-2 text-xs text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-1 focus:ring-stone-400"
+                ></textarea>
+              </div>
+
+              <button 
+                type="submit" 
+                class="w-full bg-[#FDDB00] hover:bg-[#F5D000] text-stone-950 text-xs font-bold uppercase tracking-widest py-3.5 px-4 rounded transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2"
+              >
+                <span>Request Confidential Brief</span>
+                <span class="text-stone-950 font-bold">&rarr;</span>
+              </button>
+
+              <div class="pt-2 text-[11px] text-stone-600 font-medium flex items-center justify-center gap-1.5">
+                <i class="fa-solid fa-lock text-amber-500"></i>
+                <span>Strict Non-Disclosure Protected</span>
+              </div>
+
+            </form>
+
+            <!-- Direct Desk Access -->
+            <div class="pt-6 border-t border-stone-100 text-xs text-stone-500 space-y-2">
+              <div class="font-semibold text-stone-800 uppercase tracking-wider text-[10px]">Senior Partner In Charge:</div>
+              <div class="text-stone-700 font-medium">Boutique Buy-Side Advisory Desk</div>
+              <div class="flex items-center gap-2 text-stone-500">
+                <i class="fa-solid fa-envelope text-[#A88B63]"></i>
+                <a href="mailto:advisory@butterproperty.com" class="hover:underline">advisory@butterproperty.com</a>
+              </div>
+              <div class="flex items-center gap-2 text-stone-500">
+                <i class="fa-solid fa-phone text-[#A88B63]"></i>
+                <span>+971 4 800 BUTTER / +91 22 6100 8000</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ==================== 6. RELATED CURATED ALLOCATIONS ==================== -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-stone-200">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+        <div>
+          <span class="text-xs font-semibold uppercase tracking-widest text-[#A88B63]">Portfolio Context</span>
+          <h2 class="text-2xl font-semibold text-stone-950 tracking-tight">Other Curated Allocations</h2>
+        </div>
+        <a href="index.html#properties" class="text-xs font-semibold uppercase tracking-wider text-stone-900 hover:underline">
+          View Complete Portfolio &rarr;
+        </a>
+      </div>
+
+      <div id="relatedPropertiesGrid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Injected via JavaScript -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== 7. FOOTER ==================== -->
+  <footer class="bg-stone-950 text-stone-400 border-t border-stone-800 text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+        <div class="space-y-4">
+          <img 
+            src="./BUTTER-PROPERTY-LO-FF.png" 
+            alt="Butter Property" 
+            class="h-10 w-auto object-contain brightness-0 invert opacity-90"
+          />
+          <p class="text-xs text-stone-400 leading-relaxed">
+            Butter Property is a boutique luxury real estate consultancy serving high-net-worth investors across India and Dubai.
+          </p>
+        </div>
+        <div>
+          <h4 class="text-xs font-semibold text-stone-200 uppercase tracking-widest mb-3">Dubai Desk</h4>
+          <p class="text-xs text-stone-400 leading-relaxed">
+            Downtown Dubai &amp; DIFC Gate District<br>
+            dubai@butterproperty.com<br>
+            +971 4 800 BUTTER
+          </p>
+        </div>
+        <div>
+          <h4 class="text-xs font-semibold text-stone-200 uppercase tracking-widest mb-3">India Desk</h4>
+          <p class="text-xs text-stone-400 leading-relaxed">
+            Worli Sea Face, Mumbai 400018<br>
+            india@butterproperty.com<br>
+            +91 22 6100 8000
+          </p>
+        </div>
+        <div>
+          <h4 class="text-xs font-semibold text-stone-200 uppercase tracking-widest mb-3">Legal &amp; Title</h4>
+          <p class="text-xs text-stone-400 leading-relaxed">
+            Strict buy-side representation. Verified RERA registration, DED commercial licenses, and title escrow management.
+          </p>
+        </div>
+      </div>
+      <div class="mt-12 pt-8 border-t border-stone-800 text-xs text-stone-500 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>&copy; 2026 Butter Property (butterproperty.com). All rights reserved.</div>
+        <div class="flex gap-4">
+          <a href="index.html" class="hover:text-stone-300">Home</a>
+          <a href="index.html#properties" class="hover:text-stone-300">Properties</a>
+          <a href="index.html#why-butter" class="hover:text-stone-300">Why Butter</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== 8. CONFIRMATION TOAST ==================== -->
+  <div 
+    id="detailToast" 
+    class="fixed bottom-6 right-6 z-50 bg-stone-900 text-white px-5 py-4 rounded-md shadow-2xl border border-stone-700 max-w-sm flex items-start gap-3 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none"
+  >
+    <div class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 text-sm mt-0.5">
+      <i class="fa-solid fa-check"></i>
+    </div>
+    <div>
+      <div class="text-xs font-semibold text-white uppercase tracking-wider">Brief Logged</div>
+      <p id="detailToastMsg" class="text-xs text-stone-300 mt-0.5 leading-relaxed">
+        Our Senior Partner will dispatch the confidential property dossier within 4 business hours.
+      </p>
+  <!-- ==================== 8. FULLSCREEN HIGH-RES LIGHTBOX MODAL ==================== -->
+  <div 
+    id="fullscreenLightboxModal" 
+    class="fixed inset-0 z-50 bg-stone-950/95 backdrop-blur-xl hidden flex-col items-center justify-between p-4 sm:p-8 select-none"
+    role="dialog"
+    aria-modal="true"
+  >
+    <!-- Top Action Bar -->
+    <div class="w-full max-w-6xl flex items-center justify-between text-white z-20 pb-4 border-b border-stone-800">
+      <div class="flex items-center gap-3">
+        <span class="w-2.5 h-2.5 rounded-full bg-[#FDDB00]"></span>
+        <span id="lightboxTitle" class="text-sm sm:text-base font-semibold tracking-wide">
+          Exterior Architecture
+        </span>
+        <span class="text-stone-500">•</span>
+        <span id="lightboxCounter" class="text-xs font-mono text-stone-400">1 / 5</span>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <span class="hidden sm:inline text-xs text-stone-400">Press Esc or click Close</span>
+        <button 
+          type="button" 
+          onclick="closeFullscreenLightbox()" 
+          class="w-9 h-9 rounded-full bg-stone-900 hover:bg-stone-800 text-stone-300 hover:text-white border border-stone-700 flex items-center justify-center transition-colors"
+          aria-label="Close Lightbox"
+        >
+          <i class="fa-solid fa-xmark text-sm"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Center Stage: Fullscreen Photo with Navigation Arrows -->
+    <div class="relative w-full max-w-6xl flex-grow flex items-center justify-center my-4 overflow-hidden">
+      <!-- Lightbox Prev Button -->
+      <button 
+        type="button" 
+        onclick="navigateGallery(-1, event)" 
+        class="absolute left-2 sm:left-4 z-30 w-12 h-12 rounded-full bg-stone-900/80 hover:bg-stone-900 text-white border border-stone-700 backdrop-blur-md flex items-center justify-center transition-all hover:scale-105 shadow-xl"
+        aria-label="Previous image"
+      >
+        <i class="fa-solid fa-chevron-left text-sm"></i>
+      </button>
+
+      <!-- Lightbox Main Image -->
+      <img 
+        id="lightboxImg" 
+        src="" 
+        alt="Property Fullscreen View" 
+        class="max-h-[75vh] w-auto max-w-full object-contain rounded-md shadow-2xl transition-transform duration-200"
+      />
+
+      <!-- Lightbox Next Button -->
+      <button 
+        type="button" 
+        onclick="navigateGallery(1, event)" 
+        class="absolute right-2 sm:right-4 z-30 w-12 h-12 rounded-full bg-stone-900/80 hover:bg-stone-900 text-white border border-stone-700 backdrop-blur-md flex items-center justify-center transition-all hover:scale-105 shadow-xl"
+        aria-label="Next image"
+      >
+        <i class="fa-solid fa-chevron-right text-sm"></i>
+      </button>
+    </div>
+
+    <!-- Bottom Caption Bar -->
+    <div class="w-full max-w-6xl text-center text-xs text-stone-400 pt-3 border-t border-stone-800 z-20">
+      <p id="lightboxCaption">Architectural detail caption</p>
+    </div>
+  </div>
+
+  <!-- Shared Property Data & Detail Controller -->
+  <script src="./properties-data.js"></script>
+  <script>
+    // Property Detail Page Controller
+    let currentProp = null;
+    let currentCurrency = localStorage.getItem('butter_currency') || 'AED';
+    let currentGalleryIdx = 0;
+
+    function getQueryParam(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+    }
+
+    function formatDetailPrice(amount, curr) {
+      if (curr === 'AED') {
+        return `AED ${amount.toLocaleString('en-US')}`;
+      } else {
+        const crores = (amount / 10000000).toFixed(1);
+        const formatted = crores.endsWith('.0') ? crores.slice(0, -2) : crores;
+        return `₹ ${formatted} Cr`;
+      }
+    }
+
+    function setDetailCurrency(curr) {
+      currentCurrency = curr;
+      localStorage.setItem('butter_currency', curr);
+
+      const btnINR = document.getElementById('detailCurrencyBtnINR');
+      const btnAED = document.getElementById('detailCurrencyBtnAED');
+      const mobileBadge = document.getElementById('mobileCurrBadge');
+
+      if (curr === 'AED') {
+        if (btnAED) btnAED.className = 'px-2.5 py-1 rounded-full bg-[#7323DC] text-white font-bold transition-all shadow-xs';
+        if (btnINR) btnINR.className = 'px-2.5 py-1 rounded-full text-stone-500 hover:text-stone-900 transition-all font-medium';
+        if (mobileBadge) mobileBadge.textContent = 'AED';
+      } else {
+        if (btnINR) btnINR.className = 'px-2.5 py-1 rounded-full bg-[#7323DC] text-white font-bold transition-all shadow-xs';
+        if (btnAED) btnAED.className = 'px-2.5 py-1 rounded-full text-stone-500 hover:text-stone-900 transition-all font-medium';
+        if (mobileBadge) mobileBadge.textContent = '₹ INR';
+      }
+
+      if (currentProp) {
+        updatePriceDisplay();
+      }
+    }
+
+    function toggleDetailCurrency() {
+      setDetailCurrency(currentCurrency === 'AED' ? 'INR' : 'AED');
+    }
+
+    function updatePriceDisplay() {
+      if (!currentProp) return;
+      const primaryPriceEl = document.getElementById('propPricePrimary');
+      const secondaryPriceEl = document.getElementById('propPriceSecondary');
+
+      if (currentCurrency === 'AED') {
+        if (primaryPriceEl) primaryPriceEl.textContent = formatDetailPrice(currentProp.priceAED, 'AED');
+        if (secondaryPriceEl) secondaryPriceEl.textContent = `≈ ${formatDetailPrice(currentProp.priceINR, 'INR')}`;
+      } else {
+        if (primaryPriceEl) primaryPriceEl.textContent = formatDetailPrice(currentProp.priceINR, 'INR');
+        if (secondaryPriceEl) secondaryPriceEl.textContent = `≈ ${formatDetailPrice(currentProp.priceAED, 'AED')}`;
+      }
+    }
+
+    // Interactive Zoom & Lightbox State
+    let isZoomed = false;
+    let isLightboxOpen = false;
+
+    function selectGalleryImage(idx) {
+      if (!currentProp || !currentProp.gallery || !currentProp.gallery[idx]) return;
+      currentGalleryIdx = idx;
+      const item = currentProp.gallery[idx];
+
+      const mainImg = document.getElementById('mainGalleryImg');
+      const titleEl = document.getElementById('mainImgTitle');
+      const captionEl = document.getElementById('mainImgCaption');
+      const idxEl = document.getElementById('currentImgIdx');
+
+      // Reset zoom position when switching photo
+      resetZoomState();
+
+      if (mainImg) {
+        mainImg.style.opacity = '0.35';
+        setTimeout(() => {
+          mainImg.src = item.url;
+          mainImg.alt = item.title;
+          mainImg.style.opacity = '1';
+        }, 120);
+      }
+      if (titleEl) titleEl.textContent = item.title;
+      if (captionEl) captionEl.textContent = item.caption;
+      if (idxEl) idxEl.textContent = (idx + 1).toString();
+
+      // Update active thumbnail borders
+      const thumbs = document.querySelectorAll('.gallery-thumb');
+      thumbs.forEach((th, i) => {
+        if (i === idx) {
+          th.classList.add('ring-2', 'ring-[#FDDB00]', 'opacity-100');
+          th.classList.remove('opacity-60', 'ring-stone-900');
+        } else {
+          th.classList.remove('ring-2', 'ring-[#FDDB00]', 'ring-stone-900', 'opacity-100');
+          th.classList.add('opacity-60');
+        }
+      });
+
+      // Also update fullscreen lightbox if open
+      if (isLightboxOpen) {
+        updateLightboxImage();
+      }
+    }
+
+    function navigateGallery(direction, event) {
+      if (event) event.stopPropagation();
+      if (!currentProp || !currentProp.gallery) return;
+      const total = currentProp.gallery.length;
+      let nextIdx = (currentGalleryIdx + direction + total) % total;
+      selectGalleryImage(nextIdx);
+    }
+
+    // Zoom Inspection Logic (Cursor tracking & click toggle)
+    function initGalleryZoom() {
+      const container = document.getElementById('galleryDisplayContainer');
+      const img = document.getElementById('mainGalleryImg');
+      if (!container || !img) return;
+
+      container.addEventListener('mousemove', (e) => {
+        if (!isZoomed) return;
+        const rect = container.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        img.style.transformOrigin = `${x}% ${y}%`;
+      });
+
+      container.addEventListener('click', (e) => {
+        // Don't toggle zoom if clicked on buttons
+        if (e.target.closest('button')) return;
+        toggleZoomInspection(e);
+      });
+
+      container.addEventListener('mouseleave', () => {
+        if (isZoomed) {
+          resetZoomState();
+        }
+      });
+    }
+
+    function toggleZoomInspection(e) {
+      if (e) e.stopPropagation();
+      const container = document.getElementById('galleryDisplayContainer');
+      const img = document.getElementById('mainGalleryImg');
+      const hintText = document.getElementById('zoomHintText');
+      const toggleBtn = document.getElementById('zoomToggleBtn');
+      const toggleText = document.getElementById('zoomToggleText');
+      const toggleIcon = document.getElementById('zoomToggleIcon');
+
+      if (!container || !img) return;
+
+      isZoomed = !isZoomed;
+
+      if (isZoomed) {
+        container.classList.add('is-zoomed');
+        img.classList.remove('zoom-idle');
+        img.classList.add('zoom-active');
+        
+        // Center zoom origin on click position if available
+        if (e && e.clientX) {
+          const rect = container.getBoundingClientRect();
+          const x = ((e.clientX - rect.left) / rect.width) * 100;
+          const y = ((e.clientY - rect.top) / rect.height) * 100;
+          img.style.transformOrigin = `${x}% ${y}%`;
+        }
+
+        if (hintText) hintText.textContent = 'Zoomed 2.2x • Drag or move cursor • Click to exit';
+        if (toggleText) toggleText.textContent = 'Reset Zoom';
+        if (toggleIcon) toggleIcon.className = 'fa-solid fa-magnifying-glass-minus text-[#FDDB00]';
+        if (toggleBtn) toggleBtn.classList.add('border-[#FDDB00]');
+      } else {
+        resetZoomState();
+      }
+    }
+
+    function resetZoomState() {
+      isZoomed = false;
+      const container = document.getElementById('galleryDisplayContainer');
+      const img = document.getElementById('mainGalleryImg');
+      const hintText = document.getElementById('zoomHintText');
+      const toggleBtn = document.getElementById('zoomToggleBtn');
+      const toggleText = document.getElementById('zoomToggleText');
+      const toggleIcon = document.getElementById('zoomToggleIcon');
+
+      if (container) container.classList.remove('is-zoomed');
+      if (img) {
+        img.classList.remove('zoom-active');
+        img.classList.add('zoom-idle');
+        img.style.transformOrigin = 'center center';
+      }
+      if (hintText) hintText.textContent = 'Click to zoom & inspect details';
+      if (toggleText) toggleText.textContent = 'Zoom (2.2x)';
+      if (toggleIcon) toggleIcon.className = 'fa-solid fa-magnifying-glass-plus text-[#FDDB00]';
+      if (toggleBtn) toggleBtn.classList.remove('border-[#FDDB00]');
+    }
+
+    // Fullscreen High-Resolution Lightbox Modal
+    function openFullscreenLightbox(e) {
+      if (e) e.stopPropagation();
+      resetZoomState();
+      isLightboxOpen = true;
+      const modal = document.getElementById('fullscreenLightboxModal');
+      if (modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+        updateLightboxImage();
+      }
+    }
+
+    function closeFullscreenLightbox() {
+      isLightboxOpen = false;
+      const modal = document.getElementById('fullscreenLightboxModal');
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = '';
+      }
+    }
+
+    function updateLightboxImage() {
+      if (!currentProp || !currentProp.gallery || !currentProp.gallery[currentGalleryIdx]) return;
+      const item = currentProp.gallery[currentGalleryIdx];
+      const lbImg = document.getElementById('lightboxImg');
+      const lbTitle = document.getElementById('lightboxTitle');
+      const lbCaption = document.getElementById('lightboxCaption');
+      const lbCounter = document.getElementById('lightboxCounter');
+
+      if (lbImg) {
+        lbImg.src = item.url;
+        lbImg.alt = item.title;
+      }
+      if (lbTitle) lbTitle.textContent = item.title;
+      if (lbCaption) lbCaption.textContent = item.caption;
+      if (lbCounter) lbCounter.textContent = `${currentGalleryIdx + 1} / ${currentProp.gallery.length}`;
+    }
+
+    // Keyboard Shortcuts for Gallery: Arrows & Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (isLightboxOpen) closeFullscreenLightbox();
+        else if (isZoomed) resetZoomState();
+      } else if (e.key === 'ArrowLeft') {
+        navigateGallery(-1);
+      } else if (e.key === 'ArrowRight') {
+        navigateGallery(1);
+      }
+    });
+
+    function initPage() {
+      // 1. Resolve Property from Query Param (id or slug)
+      const paramId = getQueryParam('id');
+      const paramSlug = getQueryParam('slug');
+      
+      let prop = null;
+      if (paramId) {
+        prop = getPropertyById(paramId);
+      } else if (paramSlug) {
+        prop = getPropertyBySlug(paramSlug);
+      }
+
+      // Default fallback to first property if none found
+      if (!prop && typeof PROPERTIES !== 'undefined' && PROPERTIES.length > 0) {
+        prop = PROPERTIES[0];
+      }
+
+      if (!prop) {
+        document.body.innerHTML = `
+          <div class="min-h-screen flex items-center justify-center text-center p-6 bg-[#FAFAF9]">
+            <div>
+              <h1 class="text-2xl font-bold text-stone-900 mb-2">Property Not Found</h1>
+              <p class="text-stone-600 mb-6">The requested allocation may have been private or sold.</p>
+              <a href="index.html" class="px-5 py-2.5 bg-stone-900 text-white rounded text-xs font-semibold uppercase">Return to Home</a>
+            </div>
+          </div>
+        `;
+        return;
+      }
+
+      currentProp = prop;
+
+      // 2. Set Page Metadata
+      document.title = `${prop.title} | Butter Property Private Allocation`;
+      const pageTitle = document.getElementById('pageTitle');
+      if (pageTitle) pageTitle.textContent = `${prop.title} | Butter Property`;
+      const metaDesc = document.getElementById('pageMetaDescription');
+      if (metaDesc) metaDesc.setAttribute('content', prop.tagline);
+
+      // 3. Populate Breadcrumbs & Top Tags
+      document.getElementById('bcRegion').textContent = prop.regionLabel;
+      document.getElementById('bcTitle').textContent = prop.title;
+      document.getElementById('detailBadge').textContent = prop.badge;
+      document.getElementById('detailRefCode').textContent = `REF: BP-${prop.id.toUpperCase()}`;
+
+      // 4. Populate Titles & Location
+      document.getElementById('propRegionLabel').textContent = `${prop.flag} ${prop.regionLabel}`;
+      document.getElementById('propType').textContent = prop.type;
+      document.getElementById('propOwnership').textContent = prop.ownership;
+      document.getElementById('propTitle').textContent = prop.title;
+      document.getElementById('propTagline').textContent = prop.tagline;
+      document.getElementById('propYield').textContent = prop.rentalYield;
+
+      // 5. Populate Pricing
+      setDetailCurrency(currentCurrency);
+
+      // 6. Populate Metrics
+      document.getElementById('metricSize').textContent = prop.sizeSqFt.toLocaleString();
+      document.getElementById('metricBeds').textContent = `${prop.bedrooms} Bed`;
+      document.getElementById('metricBaths').textContent = `${prop.bathrooms} Bath`;
+      document.getElementById('metricCompletion').textContent = prop.completion.split('(')[0].trim();
+      document.getElementById('metricOwnership').textContent = prop.ownership.split('(')[0].trim();
+      document.getElementById('metricVisa').textContent = prop.visaEligible.split(' ')[0] + ' Golden Visa';
+
+      // 7. Populate Gallery
+      const thumbContainer = document.getElementById('galleryThumbnails');
+      if (thumbContainer && prop.gallery) {
+        document.getElementById('totalImgCount').textContent = prop.gallery.length.toString();
+        thumbContainer.innerHTML = prop.gallery.map((g, idx) => `
+          <button 
+            type="button" 
+            onclick="selectGalleryImage(${idx})"
+            class="gallery-thumb relative rounded overflow-hidden aspect-[16/10] bg-stone-100 border border-stone-200 transition-all ${idx === 0 ? 'ring-2 ring-[#FDDB00] opacity-100' : 'opacity-60 hover:opacity-100'}"
+            title="${g.title}"
+          >
+            <img src="${g.url}" alt="${g.title}" class="w-full h-full object-cover pointer-events-none" />
+          </button>
+        `).join('');
+        selectGalleryImage(0);
+        initGalleryZoom();
+      }
+
+      // 8. Populate Description Paragraphs
+      const descEl = document.getElementById('propDescription');
+      if (descEl) {
+        descEl.innerHTML = prop.description.split('\n\n').map(p => `<p>${p}</p>`).join('');
+      }
+
+      // 9. Populate Highlights
+      const highEl = document.getElementById('propHighlights');
+      if (highEl && prop.highlights) {
+        highEl.innerHTML = prop.highlights.map(h => `
+          <li class="flex items-start gap-2.5 p-3 rounded bg-stone-50 border border-stone-100 text-xs sm:text-sm text-stone-700">
+            <span class="text-[#FDDB00] mt-0.5 font-bold">✦</span>
+            <span class="leading-relaxed">${h}</span>
+          </li>
+        `).join('');
+      }
+
+      // 10. Populate Amenities
+      const amenEl = document.getElementById('propAmenities');
+      if (amenEl && prop.amenities) {
+        amenEl.innerHTML = prop.amenities.map(a => `
+          <div class="flex items-center gap-3 p-3.5 rounded border border-stone-200 bg-white">
+            <div class="w-8 h-8 rounded bg-[#F4EDFD] text-stone-800 flex items-center justify-center text-xs shrink-0 border border-[#E4D2FA]">
+              <i class="fa-solid ${a.icon} text-[#7323DC]"></i>
+            </div>
+            <div class="text-xs font-semibold text-stone-900">${a.name}</div>
+          </div>
+        `).join('');
+      }
+
+      // 11. Populate Financials
+      if (prop.financials) {
+        document.getElementById('finRental').textContent = prop.financials.annualRentalValueAED;
+        document.getElementById('finCapRate').textContent = prop.financials.projectedCapRate;
+        document.getElementById('finAppreciation').textContent = prop.financials.capitalAppreciationForecast;
+        document.getElementById('finTax').textContent = prop.financials.taxImplications;
+      }
+
+      // 12. Populate Related Curated Properties
+      const relatedGrid = document.getElementById('relatedPropertiesGrid');
+      if (relatedGrid) {
+        const related = getRelatedProperties(prop.id, 2);
+        relatedGrid.innerHTML = related.map(rel => `
+          <div class="bg-white border border-stone-200 rounded-md overflow-hidden flex flex-col justify-between p-4 sm:p-5 group hover:shadow-md transition-shadow">
+            <div class="flex gap-4">
+              <img src="${rel.mainImage}" alt="${rel.title}" class="w-24 h-24 sm:w-28 sm:h-28 object-cover rounded shrink-0" />
+              <div class="space-y-1">
+                <span class="text-[10px] uppercase font-bold text-[#7323DC]">${rel.flag} ${rel.regionLabel}</span>
+                <h4 class="text-sm font-semibold text-stone-900 group-hover:text-stone-700">${rel.title}</h4>
+                <p class="text-xs text-stone-500">${rel.neighborhood}</p>
+                <div class="text-xs font-bold text-stone-900 pt-1">
+                  ${formatDetailPrice(currentCurrency === 'AED' ? rel.priceAED : rel.priceINR, currentCurrency)}
+                </div>
+              </div>
+            </div>
+            <div class="mt-4 pt-3 border-t border-stone-100 flex justify-end">
+              <a href="property.html?id=${rel.id}" class="text-xs font-bold text-[#7323DC] uppercase tracking-wider hover:underline flex items-center gap-1">
+                <span>View Allocation</span>
+                <span class="text-[#FDDB00]">&rarr;</span>
+              </a>
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+
+    function handleDetailInquiry(e) {
+      e.preventDefault();
+      const name = document.getElementById('detailClientName').value.trim();
+      const toast = document.getElementById('detailToast');
+      const msg = document.getElementById('detailToastMsg');
+
+      if (msg) {
+        msg.textContent = `Thank you, ${name || 'Investor'}. The comprehensive due-diligence pack for "${currentProp.title}" has been prepared for dispatch.`;
+      }
+
+      if (toast) {
+        toast.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+        toast.classList.add('translate-y-0', 'opacity-100');
+        setTimeout(() => {
+          toast.classList.remove('translate-y-0', 'opacity-100');
+          toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+        }, 5000);
+      }
+
+      e.target.reset();
+    }
+
+    function openPropertyInquiryModal() {
+      const formEl = document.getElementById('contact-advisor');
+      if (formEl) {
+        formEl.scrollIntoView({ behavior: 'smooth' });
+        const nameInput = document.getElementById('detailClientName');
+        if (nameInput) setTimeout(() => nameInput.focus(), 300);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', initPage);
+  </script>
+</body>
+</html>
+
