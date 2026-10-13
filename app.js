@@ -109,7 +109,7 @@ function renderProperties() {
           </a>
 
             <!-- Card Content Body -->
-          <div class="p-6">
+          <div class="p-5 sm:p-6">
             
             <div class="flex items-center justify-between text-xs text-stone-500 font-medium mb-1">
               <span class="font-bold uppercase tracking-wider text-[10px] px-2 py-0.5 rounded border ${
@@ -147,11 +147,11 @@ function renderProperties() {
         </div>
 
         <!-- Card Footer & Pricing with Dual Actions: Purple View + Butter Yellow Brochure -->
-        <div class="px-6 pb-6 pt-2">
-          <div class="pt-4 border-t border-stone-100 flex items-center justify-between gap-3">
+        <div class="px-5 pb-5 pt-2 sm:px-6 sm:pb-6">
+          <div class="pt-4 border-t border-stone-100 flex items-center justify-between gap-2.5">
             <div>
               <div class="text-[10px] font-semibold text-stone-400 uppercase tracking-widest">Guide Price</div>
-              <div class="text-lg font-bold text-stone-950 tracking-tight leading-none mt-1">
+              <div class="text-base sm:text-lg font-bold text-stone-950 tracking-tight leading-none mt-1">
                 ${formattedPrice}
               </div>
               <div class="text-[10px] text-stone-400 mt-0.5">
@@ -160,17 +160,17 @@ function renderProperties() {
             </div>
 
             <!-- Dual Action: Purple View + Butter Yellow Brochure -->
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
               <a 
                 href="property.html?id=${item.id}" 
-                class="px-3 py-2 bg-[#F4EDFD] hover:bg-[#E4D2FA] text-[#7323DC] text-[11px] font-bold uppercase tracking-wider rounded-sm transition-colors border border-[#E4D2FA]"
+                class="px-2.5 py-1.5 sm:px-3 sm:py-2 bg-[#F4EDFD] hover:bg-[#E4D2FA] text-[#7323DC] text-[11px] font-bold uppercase tracking-wider rounded-sm transition-colors border border-[#E4D2FA]"
                 title="View full specs, gallery & financials"
               >
                 View
               </a>
               <button 
                 onclick="openInquiryModal('${item.title} (${item.regionLabel})')"
-                class="px-3.5 py-2 bg-[#FDDB00] hover:bg-[#FFE524] text-stone-950 text-[11px] font-bold uppercase tracking-wider rounded-sm transition-colors flex items-center gap-1.5 shadow-sm border border-[#E5C700]"
+                class="px-2.5 py-1.5 sm:px-3.5 sm:py-2 bg-[#FDDB00] hover:bg-[#FFE524] text-stone-950 text-[11px] font-bold uppercase tracking-wider rounded-sm transition-colors flex items-center gap-1 shadow-xs border border-[#E5C700]"
               >
                 <span>Brochure</span>
               </button>
