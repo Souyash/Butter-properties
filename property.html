@@ -719,6 +719,11 @@
           <a href="index.html" class="hover:text-stone-300">Home</a>
           <a href="index.html#properties" class="hover:text-stone-300">Properties</a>
           <a href="index.html#why-butter" class="hover:text-stone-300">Why Butter</a>
+          <span class="text-stone-700 hidden sm:inline">•</span>
+          <a href="admin.html" class="hover:text-[#FDDB00] text-stone-500 flex items-center gap-1 transition-colors" title="Executive Workflow Portal">
+            <i class="fa-solid fa-lock text-[10px] text-[#FDDB00]"></i>
+            <span>Admin</span>
+          </a>
         </div>
       </div>
     </div>
@@ -1268,12 +1273,33 @@
 
     function handleDetailInquiry(e) {
       e.preventDefault();
-      const name = document.getElementById('detailClientName').value.trim();
+      const name = document.getElementById('detailClientName')?.value.trim() || '';
+      const email = document.getElementById('detailClientEmail')?.value.trim() || '';
+      const phone = document.getElementById('detailClientPhone')?.value.trim() || '';
+      const timeline = document.getElementById('detailClientTimeline')?.value || 'Immediate Allocation';
+      const notes = document.getElementById('detailClientNotes')?.value.trim() || '';
+
+      // Record in CRM workflow
+      if (typeof recordLeadInquiry === 'function' && currentProp) {
+        recordLeadInquiry({
+          source: 'Property Dossier Form',
+          name: name || 'Anonymous Principal',
+          email: email,
+          phone: phone,
+          property: currentProp.title,
+          propertyId: currentProp.id,
+          region: currentProp.regionLabel,
+          timeline: timeline,
+          estimatedBudget: formatDetailPrice(currentProp.priceAED, 'AED'),
+          notes: notes
+        });
+      }
+
       const toast = document.getElementById('detailToast');
       const msg = document.getElementById('detailToastMsg');
 
       if (msg) {
-        msg.textContent = `Thank you, ${name || 'Investor'}. The comprehensive due-diligence pack for "${currentProp.title}" has been prepared for dispatch.`;
+        msg.textContent = `Thank you, ${name || 'Investor'}. The comprehensive due-diligence pack for "${currentProp?.title || 'this allocation'}" has been prepared for dispatch.`;
       }
 
       if (toast) {

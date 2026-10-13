@@ -342,17 +342,47 @@ function handleInquirySubmit(event, type) {
   event.preventDefault();
 
   let name = '';
+  let email = '';
+  let phone = '';
   let property = '';
+  let timeline = '';
+  let notes = '';
+  let budget = '';
 
   if (type === 'modal') {
-    name = document.getElementById('modalName').value.trim();
-    property = document.getElementById('modalPropertyName').value;
+    name = document.getElementById('modalName')?.value.trim() || '';
+    phone = document.getElementById('modalPhone')?.value.trim() || '';
+    email = document.getElementById('modalEmail')?.value.trim() || '';
+    timeline = document.getElementById('modalTimeline')?.value || 'Next 30 Days';
+    property = document.getElementById('modalPropertyName')?.value || 'General Consultation';
+    notes = document.getElementById('modalNotes')?.value.trim() || '';
+    
     closeInquiryModal();
-    document.getElementById('modalInquiryForm').reset();
+    document.getElementById('modalInquiryForm')?.reset();
   } else {
-    name = document.getElementById('inlineName').value.trim();
-    property = document.getElementById('inlineRegion').value;
-    document.getElementById('inlineInquiryForm').reset();
+    name = document.getElementById('inlineName')?.value.trim() || '';
+    email = document.getElementById('inlineEmail')?.value.trim() || '';
+    phone = document.getElementById('inlinePhone')?.value.trim() || '';
+    property = document.getElementById('inlineRegion')?.value || 'Bespoke Advisory';
+    timeline = document.getElementById('inlineTimeline')?.value || 'Immediate Allocation';
+    budget = document.getElementById('inlineBudget')?.value || '';
+    notes = document.getElementById('inlineNotes')?.value.trim() || '';
+
+    document.getElementById('inlineInquiryForm')?.reset();
+  }
+
+  // Persist into workflow CRM if helper is available
+  if (typeof recordLeadInquiry === 'function') {
+    recordLeadInquiry({
+      source: type === 'modal' ? 'Modal Consultation' : 'Homepage Inline Brief',
+      name: name || 'Anonymous Principal',
+      email: email,
+      phone: phone,
+      property: property,
+      timeline: timeline,
+      estimatedBudget: budget,
+      notes: notes
+    });
   }
 
   showToast(`Thank you, ${name || 'Investor'}. Your mandate for "${property}" has been securely logged. Our Senior Principal will contact you shortly.`);

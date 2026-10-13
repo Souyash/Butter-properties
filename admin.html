@@ -1,0 +1,2107 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Executive Portal &amp; Workflow Desk | Butter Property</title>
+  <meta name="description" content="Internal executive desk for managing luxury property inventory, private client dossiers, and deal-flow pipelines.">
+  <link rel="icon" type="image/png" href="./BUTTER-PROPERTY-LO-FF.png">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            butter: {
+              yellow: '#FDDB00',
+              'yellow-hover': '#F5D000',
+              'yellow-light': '#FFF066',
+              'yellow-warm': '#F5C800',
+              'yellow-soft': '#FFFDE6',
+              'yellow-border': '#FAE875',
+              'yellow-dark': '#8C6D00',
+            },
+            royal: {
+              purple: '#7323DC',
+              deep: '#1D0838',
+              surface: '#290B50',
+              subtle: '#F4EDFD',
+              border: '#E4D2FA'
+            }
+          },
+          fontFamily: {
+            custom: ['"Butter Montserrat"', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    @font-face {
+      font-family: 'Butter Montserrat';
+      src: url('./FONT/Montserrat-Medium.ttf') format('truetype');
+      font-weight: 400 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Butter Montserrat';
+      src: url('./FONT/Montserrat-Bold.ttf') format('truetype');
+      font-weight: 600 700 800;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    body {
+      font-family: 'Butter Montserrat', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #FAFAF9;
+      color: #1C1917;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .font-serif-luxury {
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F5F5F4;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #D6D3D1;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #A8A29E;
+    }
+
+    .glass-header {
+      background: rgba(29, 8, 56, 0.96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+  </style>
+</head>
+<body class="bg-[#FAFAF9] text-stone-900 min-h-screen flex flex-col antialiased">
+
+  <!-- ==================== PIN AUTHENTICATION GATE MODAL ==================== -->
+  <div 
+    id="authGateModal" 
+    class="fixed inset-0 z-50 bg-[#120524]/90 backdrop-blur-md flex items-center justify-center p-4"
+  >
+    <div class="bg-white rounded-xl shadow-2xl border border-purple-200 max-w-md w-full p-8 text-center space-y-6 relative overflow-hidden">
+      <div class="w-14 h-14 mx-auto rounded-full bg-[#F4EDFD] text-[#7323DC] flex items-center justify-center text-2xl border border-[#E4D2FA] shadow-xs">
+        <i class="fa-solid fa-shield-halved"></i>
+      </div>
+
+      <div class="space-y-1.5">
+        <h2 class="text-2xl font-bold text-stone-950 tracking-tight">Executive Management Desk</h2>
+        <p class="text-xs text-stone-500">
+          Butter Property Private Buy-Side Portal. Restricted to authorized managing partners and principals.
+        </p>
+      </div>
+
+      <form onsubmit="handleLoginSubmit(event)" class="space-y-4 pt-2">
+        <div>
+          <label for="adminPin" class="block text-[11px] font-semibold text-stone-600 uppercase tracking-wider mb-2">Executive Access Passcode</label>
+          <div class="relative">
+            <input 
+              type="password" 
+              id="adminPin" 
+              placeholder="Enter PIN (Default: butter2026)"
+              required 
+              class="w-full text-center tracking-[0.25em] text-lg font-mono py-3 px-4 rounded-md border border-stone-300 focus:outline-none focus:ring-2 focus:ring-[#7323DC] focus:border-[#7323DC] transition-all bg-stone-50"
+              autocomplete="current-password"
+            />
+            <button 
+              type="button" 
+              onclick="togglePinVisibility()" 
+              class="absolute right-3 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-700 text-sm"
+              title="Show / Hide PIN"
+            >
+              <i class="fa-solid fa-eye" id="pinEyeIcon"></i>
+            </button>
+          </div>
+          <div id="loginError" class="hidden text-xs text-rose-600 font-semibold mt-2">
+            Invalid Passcode. Please use: <code class="bg-rose-50 px-1 py-0.5 rounded text-rose-700">butter2026</code>
+          </div>
+        </div>
+
+        <button 
+          type="submit" 
+          class="w-full py-3.5 bg-[#FDDB00] hover:bg-[#F5D000] text-stone-950 font-bold text-xs uppercase tracking-widest rounded-md shadow-md hover:shadow-lg transition-all border border-[#E5C700] flex items-center justify-center gap-2"
+        >
+          <span>Authenticate &amp; Enter Portal</span>
+          <i class="fa-solid fa-arrow-right text-xs"></i>
+        </button>
+
+        <div class="pt-2 text-[11px] text-stone-400 flex items-center justify-center gap-2">
+          <i class="fa-solid fa-lock text-stone-400"></i>
+          <span>Session encrypted &amp; stored locally</span>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== EXECUTIVE HEADER ==================== -->
+  <header class="glass-header text-white sticky top-0 z-40 border-b border-purple-900/60 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20 gap-4">
+        
+        <!-- Left: Brand & Portal Badge -->
+        <div class="flex items-center gap-4">
+          <a href="index.html" class="flex items-center gap-3">
+            <img 
+              src="./BUTTER-PROPERTY-LO-FF.png" 
+              alt="Butter Property" 
+              class="h-9 sm:h-11 w-auto object-contain brightness-0 invert opacity-95"
+            />
+          </a>
+          <div class="hidden sm:block h-6 w-px bg-purple-700/60"></div>
+          <div class="hidden sm:flex items-center gap-2">
+            <span class="px-2.5 py-0.5 rounded bg-[#FDDB00] text-stone-950 font-bold text-[10px] uppercase tracking-wider">
+              Admin Desk
+            </span>
+            <span class="text-xs text-purple-200/80 font-medium hidden md:inline">Workflow Management &amp; CRM</span>
+          </div>
+        </div>
+
+        <!-- Right: Actions & Navigation -->
+        <div class="flex items-center gap-2.5 sm:gap-4">
+          <!-- View Live Website -->
+          <a 
+            href="index.html" 
+            target="_blank" 
+            class="px-3 py-1.5 rounded text-xs font-semibold text-purple-200 hover:text-white hover:bg-purple-900/50 transition-colors flex items-center gap-1.5 border border-purple-800/60"
+            title="Open Public Website in new tab"
+          >
+            <span>Public Site</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-[#FDDB00]"></i>
+          </a>
+
+          <!-- Currency Quick Indicator -->
+          <div class="hidden lg:flex items-center text-xs font-mono bg-purple-950/70 border border-purple-800 px-3 py-1.5 rounded-full text-purple-200">
+            <span class="text-[#FDDB00] mr-1.5 font-bold">●</span>
+            <span id="headerLiveVal">AED 134.7M Total Inventory</span>
+          </div>
+
+          <!-- Logout Button -->
+          <button 
+            onclick="handleAdminLogout()" 
+            class="px-3 py-1.5 rounded text-xs font-semibold text-purple-300 hover:text-rose-300 hover:bg-rose-950/30 transition-colors flex items-center gap-1.5 border border-purple-800/40"
+            title="Lock Portal Session"
+          >
+            <i class="fa-solid fa-right-from-bracket text-xs"></i>
+            <span class="hidden sm:inline">Lock</span>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Navigation Tabs Bar -->
+      <nav class="flex items-center gap-1 sm:gap-2 overflow-x-auto border-t border-purple-900/40 py-2.5 text-xs font-semibold tracking-wide no-scrollbar">
+        <button 
+          onclick="switchAdminTab('overview')" 
+          id="tabBtn-overview" 
+          class="admin-nav-btn px-3.5 py-2 rounded-md transition-all flex items-center gap-2 whitespace-nowrap bg-[#FDDB00] text-stone-950 font-bold shadow-xs"
+        >
+          <i class="fa-solid fa-chart-pie"></i>
+          <span>Overview &amp; Metrics</span>
+        </button>
+
+        <button 
+          onclick="switchAdminTab('properties')" 
+          id="tabBtn-properties" 
+          class="admin-nav-btn px-3.5 py-2 rounded-md transition-all flex items-center gap-2 whitespace-nowrap text-purple-200 hover:text-white hover:bg-purple-900/40"
+        >
+          <i class="fa-solid fa-building"></i>
+          <span>Property Inventory</span>
+          <span id="navPropCountBadge" class="ml-1 px-1.5 py-0.2 bg-purple-950 text-[#FDDB00] rounded-full text-[10px] font-mono">6</span>
+        </button>
+
+        <button 
+          onclick="switchAdminTab('crm')" 
+          id="tabBtn-crm" 
+          class="admin-nav-btn px-3.5 py-2 rounded-md transition-all flex items-center gap-2 whitespace-nowrap text-purple-200 hover:text-white hover:bg-purple-900/40"
+        >
+          <i class="fa-solid fa-briefcase"></i>
+          <span>Deal Flow &amp; Inquiries</span>
+          <span id="navLeadCountBadge" class="ml-1 px-1.5 py-0.2 bg-purple-950 text-emerald-400 rounded-full text-[10px] font-mono">0</span>
+        </button>
+
+        <button 
+          onclick="switchAdminTab('studio')" 
+          id="tabBtn-studio" 
+          class="admin-nav-btn px-3.5 py-2 rounded-md transition-all flex items-center gap-2 whitespace-nowrap text-purple-200 hover:text-white hover:bg-purple-900/40"
+        >
+          <i class="fa-solid fa-plus-circle text-[#FDDB00]"></i>
+          <span>Add Allocation</span>
+        </button>
+
+        <button 
+          onclick="switchAdminTab('settings')" 
+          id="tabBtn-settings" 
+          class="admin-nav-btn px-3.5 py-2 rounded-md transition-all flex items-center gap-2 whitespace-nowrap text-purple-200 hover:text-white hover:bg-purple-900/40 ml-auto"
+        >
+          <i class="fa-solid fa-database"></i>
+          <span>Data &amp; Sync</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ==================== MAIN CONTENT CONTAINER ==================== -->
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+    <!-- ========================================================
+         TAB 1: WORKFLOW OVERVIEW & METRICS
+    ======================================================== -->
+    <section id="panel-overview" class="admin-panel space-y-8">
+      
+      <!-- Top Overview Welcome & Fast Actions -->
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-stone-200">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-[#7323DC]">Management Command Center</span>
+          <h1 class="text-2xl sm:text-3xl font-bold text-stone-950 tracking-tight mt-0.5">
+            Portfolio Performance &amp; Deal Flow
+          </h1>
+          <p class="text-xs sm:text-sm text-stone-600 mt-1">
+            Real-time control over Dubai and India allocations, confidential HNW mandates, and buy-side dossiers.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-2.5 shrink-0">
+          <button 
+            onclick="switchAdminTab('studio')" 
+            class="px-4 py-2.5 bg-[#FDDB00] hover:bg-[#F5D000] text-stone-950 text-xs font-bold uppercase tracking-wider rounded-md transition-all shadow-xs border border-[#E5C700] flex items-center gap-1.5"
+          >
+            <i class="fa-solid fa-plus text-xs"></i>
+            <span>New Property</span>
+          </button>
+          <button 
+            onclick="openNewLeadModal()" 
+            class="px-4 py-2.5 bg-[#7323DC] hover:bg-[#5E18BC] text-white text-xs font-bold uppercase tracking-wider rounded-md transition-all shadow-xs flex items-center gap-1.5"
+          >
+            <i class="fa-solid fa-user-plus text-xs"></i>
+            <span>Log Private Lead</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Key KPI Cards Grid (4 Cards) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        
+        <!-- Metric 1: Total Portfolio Valuation -->
+        <div class="bg-white p-5 rounded-lg border border-stone-200 shadow-xs space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] font-semibold text-stone-500 uppercase tracking-wider">Gross Portfolio Value</span>
+            <div class="w-8 h-8 rounded-full bg-[#F4EDFD] text-[#7323DC] flex items-center justify-center text-xs">
+              <i class="fa-solid fa-vault"></i>
+            </div>
+          </div>
+          <div>
+            <div id="kpiGrossAED" class="text-2xl font-bold text-stone-950 tracking-tight">AED 134,700,000</div>
+            <div id="kpiGrossINR" class="text-xs text-stone-500 font-medium mt-0.5">≈ ₹ 305.1 Cr</div>
+          </div>
+          <div class="pt-2 border-t border-stone-100 flex items-center justify-between text-[11px]">
+            <span class="text-stone-400">Total Active Allocations</span>
+            <span id="kpiActiveCount" class="font-bold text-[#7323DC]">6 Properties</span>
+          </div>
+        </div>
+
+        <!-- Metric 2: Active Pipeline Deal Value -->
+        <div class="bg-white p-5 rounded-lg border border-stone-200 shadow-xs space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] font-semibold text-stone-500 uppercase tracking-wider">Pipeline Mandate Value</span>
+            <div class="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-xs">
+              <i class="fa-solid fa-handshake"></i>
+            </div>
+          </div>
+          <div>
+            <div id="kpiPipelineVal" class="text-2xl font-bold text-emerald-800 tracking-tight">AED 43,300,000</div>
+            <div id="kpiPipelineLeads" class="text-xs text-stone-500 font-medium mt-0.5">Under Active Due Diligence</div>
+          </div>
+          <div class="pt-2 border-t border-stone-100 flex items-center justify-between text-[11px]">
+            <span class="text-stone-400">Avg Lead Ticket Size</span>
+            <span class="font-bold text-emerald-700">AED 14.4M</span>
+          </div>
+        </div>
+
+        <!-- Metric 3: Active HNW Inquiries -->
+        <div class="bg-white p-5 rounded-lg border border-stone-200 shadow-xs space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] font-semibold text-stone-500 uppercase tracking-wider">Inquiry Conversion</span>
+            <div class="w-8 h-8 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center text-xs">
+              <i class="fa-solid fa-users"></i>
+            </div>
+          </div>
+          <div>
+            <div id="kpiTotalLeads" class="text-2xl font-bold text-stone-950 tracking-tight">0 Leads</div>
+            <div id="kpiNewLeadsToday" class="text-xs text-amber-700 font-medium mt-0.5">Logged in portal</div>
+          </div>
+          <div class="pt-2 border-t border-stone-100 flex items-center justify-between text-[11px]">
+            <span class="text-stone-400">NDA Signed Rate</span>
+            <span class="font-bold text-stone-800">68% Historical</span>
+          </div>
+        </div>
+
+        <!-- Metric 4: Average Portfolio Yield -->
+        <div class="bg-white p-5 rounded-lg border border-stone-200 shadow-xs space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] font-semibold text-stone-500 uppercase tracking-wider">Weighted Avg Yield</span>
+            <div class="w-8 h-8 rounded-full bg-purple-50 text-[#7323DC] flex items-center justify-center text-xs">
+              <i class="fa-solid fa-percent"></i>
+            </div>
+          </div>
+          <div>
+            <div id="kpiAvgYield" class="text-2xl font-bold text-stone-950 tracking-tight">7.6% Net</div>
+            <div class="text-xs text-stone-500 font-medium mt-0.5">Tax-Shielded Capital Yield</div>
+          </div>
+          <div class="pt-2 border-t border-stone-100 flex items-center justify-between text-[11px]">
+            <span class="text-stone-400">Golden Visa Assets</span>
+            <span class="font-bold text-[#8C6D00]">100% Eligible</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Middle Two-Column: Recent Deal Activity & Regional Split -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- Left: Recent Inquiries Activity Feed (8 cols) -->
+        <div class="lg:col-span-8 bg-white p-6 rounded-lg border border-stone-200 shadow-xs space-y-4">
+          <div class="flex items-center justify-between pb-3 border-b border-stone-100">
+            <div>
+              <h3 class="text-base font-bold text-stone-900 tracking-tight">Recent Inquiries &amp; Mandates</h3>
+              <p class="text-xs text-stone-500">Live investor requests captured from website consultation forms and dossier requests</p>
+            </div>
+            <button 
+              onclick="switchAdminTab('crm')" 
+              class="text-xs font-bold text-[#7323DC] hover:underline"
+            >
+              View Full Pipeline &rarr;
+            </button>
+          </div>
+
+          <div id="overviewRecentLeadsList" class="divide-y divide-stone-100">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+
+        <!-- Right: Geographic Distribution & Desk Status (4 cols) -->
+        <div class="lg:col-span-4 space-y-6">
+          
+          <div class="bg-white p-6 rounded-lg border border-stone-200 shadow-xs space-y-5">
+            <h3 class="text-base font-bold text-stone-900 tracking-tight">Geographic Allocation Split</h3>
+            
+            <div class="space-y-4">
+              <!-- Dubai Portfolio -->
+              <div>
+                <div class="flex items-center justify-between text-xs font-semibold mb-1">
+                  <span class="flex items-center gap-1.5">
+                    <span>🇦🇪</span>
+                    <span>Dubai Portfolio (UAE)</span>
+                  </span>
+                  <span id="overviewDubaiVal" class="text-[#7323DC]">AED 78.4M</span>
+                </div>
+                <div class="w-full bg-stone-100 rounded-full h-2 overflow-hidden">
+                  <div id="overviewDubaiBar" class="bg-[#7323DC] h-2 rounded-full" style="width: 58%"></div>
+                </div>
+                <div class="flex items-center justify-between text-[11px] text-stone-400 mt-1">
+                  <span>3 Trophy Allocations</span>
+                  <span>58% Portfolio Share</span>
+                </div>
+              </div>
+
+              <!-- India Portfolio -->
+              <div>
+                <div class="flex items-center justify-between text-xs font-semibold mb-1">
+                  <span class="flex items-center gap-1.5">
+                    <span>🇮🇳</span>
+                    <span>India Portfolio (IND)</span>
+                  </span>
+                  <span id="overviewIndiaVal" class="text-[#8C6D00]">₹ 127.5 Cr</span>
+                </div>
+                <div class="w-full bg-stone-100 rounded-full h-2 overflow-hidden">
+                  <div id="overviewIndiaBar" class="bg-[#FDDB00] h-2 rounded-full" style="width: 42%"></div>
+                </div>
+                <div class="flex items-center justify-between text-[11px] text-stone-400 mt-1">
+                  <span>3 Sky Manors &amp; Estates</span>
+                  <span>42% Portfolio Share</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-stone-100 space-y-2 text-xs">
+              <div class="flex items-center justify-between text-stone-600">
+                <span class="font-medium">Direct Escrow Accounts</span>
+                <span class="font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">100% Verified</span>
+              </div>
+              <div class="flex items-center justify-between text-stone-600">
+                <span class="font-medium">Foreign Freehold Title</span>
+                <span class="font-bold text-stone-900">Compliant</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Advisor Desk Contacts -->
+          <div class="bg-[#F8F4FD] p-6 rounded-lg border border-[#E4D2FA] text-xs space-y-3">
+            <div class="flex items-center gap-2 text-[#7323DC] font-bold uppercase tracking-wider text-[11px]">
+              <i class="fa-solid fa-headset"></i>
+              <span>Managing Partner Desks</span>
+            </div>
+            <p class="text-stone-600 leading-relaxed text-[11px]">
+              Assigned advisors can be reached directly for escalation or private off-market negotiations.
+            </p>
+            <div class="pt-2 space-y-1.5 text-stone-700 font-medium">
+              <div>• <strong>Dubai Desk:</strong> +971 4 800 BUTTER</div>
+              <div>• <strong>India Desk:</strong> +91 22 6100 8000</div>
+              <div>• <strong>Escrow &amp; Title:</strong> advisory@butterproperty.com</div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ========================================================
+         TAB 2: PROPERTY INVENTORY MANAGEMENT (CRUD)
+    ======================================================== -->
+    <section id="panel-properties" class="admin-panel hidden space-y-6">
+      
+      <!-- Top Filter & Search Bar -->
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 pb-6 border-b border-stone-200">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-[#7323DC]">Inventory Control</span>
+          <h2 class="text-2xl font-bold text-stone-950 tracking-tight">Active Properties Master</h2>
+          <p class="text-xs text-stone-500">Add, edit pricing, toggle off-market status, or update architectural photography</p>
+        </div>
+
+        <button 
+          onclick="openAddPropertyStudio()" 
+          class="px-4 py-2.5 bg-[#FDDB00] hover:bg-[#F5D000] text-stone-950 text-xs font-bold uppercase tracking-wider rounded-md transition-all shadow-xs border border-[#E5C700] flex items-center justify-center gap-2 shrink-0"
+        >
+          <i class="fa-solid fa-plus text-xs"></i>
+          <span>Add New Allocation</span>
+        </button>
+      </div>
+
+      <!-- Filters & Search Bar -->
+      <div class="bg-white p-4 rounded-lg border border-stone-200 shadow-xs flex flex-wrap items-center justify-between gap-3 text-xs">
+        <div class="flex flex-wrap items-center gap-2 sm:gap-3 flex-grow max-w-2xl">
+          <!-- Search input -->
+          <div class="relative flex-grow min-w-[200px]">
+            <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-stone-400 text-xs"></i>
+            <input 
+              type="text" 
+              id="adminPropSearch" 
+              oninput="filterAdminProperties()" 
+              placeholder="Search title, neighborhood, developer..." 
+              class="w-full pl-9 pr-3 py-2 bg-stone-50 border border-stone-200 rounded text-xs text-stone-900 focus:outline-none focus:ring-1 focus:ring-[#7323DC]"
+            />
+          </div>
+
+          <!-- Region Filter -->
+          <select 
+            id="adminPropRegionFilter" 
+            onchange="filterAdminProperties()" 
+            class="bg-stone-50 border border-stone-200 rounded px-3 py-2 text-xs font-medium text-stone-800 focus:outline-none focus:ring-1 focus:ring-[#7323DC]"
+          >
+            <option value="all">All Regions</option>
+            <option value="dubai">Dubai Portfolio 🇦🇪</option>
+            <option value="india">India Portfolio 🇮🇳</option>
+          </select>
+
+          <!-- Type Filter -->
+          <select 
+            id="adminPropTypeFilter" 
+            onchange="filterAdminProperties()" 
+            class="bg-stone-50 border border-stone-200 rounded px-3 py-2 text-xs font-medium text-stone-800 focus:outline-none focus:ring-1 focus:ring-[#7323DC]"
+          >
+            <option value="all">All Types</option>
+            <option value="Penthouses">Penthouses</option>
+            <option value="Private Villas">Private Villas</option>
+            <option value="Luxury Apartments">Luxury Apartments</option>
+          </select>
+        </div>
+
+        <div class="text-xs text-stone-500 font-mono">
+          Showing <span id="adminPropCountFiltered" class="font-bold text-stone-900">6</span> allocations
+        </div>
+      </div>
+
+      <!-- Properties Inventory Table -->
+      <div class="bg-white rounded-lg border border-stone-200 shadow-xs overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead class="bg-stone-50 border-b border-stone-200 text-stone-500 uppercase tracking-wider font-semibold text-[10px]">
+              <tr>
+                <th class="p-3.5 pl-4">Asset</th>
+                <th class="p-3.5">Region</th>
+                <th class="p-3.5">Specs &amp; Area</th>
+                <th class="p-3.5">Guide Price</th>
+                <th class="p-3.5">Yield &amp; Status</th>
+                <th class="p-3.5 pr-4 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="adminPropertiesTableBody" class="divide-y divide-stone-100">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ========================================================
+         TAB 3: DEAL FLOW & LEAD PIPELINE (CRM WORKFLOW)
+    ======================================================== -->
+    <section id="panel-crm" class="admin-panel hidden space-y-6">
+      
+      <!-- Top CRM Header -->
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 pb-6 border-b border-stone-200">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-[#7323DC]">Deal Flow Pipeline</span>
+          <h2 class="text-2xl font-bold text-stone-950 tracking-tight">Private Inquiries &amp; Mandates</h2>
+          <p class="text-xs text-stone-500">Track high-net-worth buyer diligence, NDA execution, and closing escrow status</p>
+        </div>
+
+        <div class="flex items-center gap-2.5">
+          <button 
+            onclick="exportLeadsCSV()" 
+            class="px-3.5 py-2 bg-white hover:bg-stone-50 text-stone-800 text-xs font-semibold rounded-md border border-stone-300 shadow-2xs flex items-center gap-1.5"
+            title="Download CSV spreadsheet"
+          >
+            <i class="fa-solid fa-file-csv text-emerald-600"></i>
+            <span>Export CSV</span>
+          </button>
+          <button 
+            onclick="openNewLeadModal()" 
+            class="px-4 py-2 bg-[#7323DC] hover:bg-[#5E18BC] text-white text-xs font-bold uppercase tracking-wider rounded-md transition-all shadow-xs flex items-center gap-1.5"
+          >
+            <i class="fa-solid fa-plus text-xs"></i>
+            <span>+ Log Mandate</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- CRM View Switcher & Filter -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs bg-white p-3.5 rounded-lg border border-stone-200">
+        <div class="flex items-center gap-2 w-full sm:w-auto">
+          <button 
+            onclick="setCRMView('kanban')" 
+            id="crmViewBtnKanban"
+            class="px-3 py-1.5 rounded font-bold transition-all bg-[#7323DC] text-white shadow-2xs flex items-center gap-1.5"
+          >
+            <i class="fa-solid fa-table-columns"></i>
+            <span>Pipeline Board</span>
+          </button>
+          <button 
+            onclick="setCRMView('table')" 
+            id="crmViewBtnTable"
+            class="px-3 py-1.5 rounded font-semibold transition-all text-stone-600 hover:text-stone-900 flex items-center gap-1.5"
+          >
+            <i class="fa-solid fa-list"></i>
+            <span>Detailed Table</span>
+          </button>
+        </div>
+
+        <div class="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end">
+          <input 
+            type="text" 
+            id="crmSearchInput" 
+            oninput="filterCRMLeads()" 
+            placeholder="Search investor, phone, property..." 
+            class="px-3 py-1.5 bg-stone-50 border border-stone-200 rounded text-xs w-full sm:w-64 focus:outline-none focus:ring-1 focus:ring-[#7323DC]"
+          />
+        </div>
+      </div>
+
+      <!-- CRM Kanban View -->
+      <div id="crmKanbanContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 overflow-x-auto pb-6">
+        
+        <!-- Column 1: New Inquiry -->
+        <div class="bg-stone-100/80 rounded-lg p-3 border border-stone-200 flex flex-col min-w-[240px]">
+          <div class="flex items-center justify-between pb-2 mb-2 border-b border-stone-200">
+            <span class="text-xs font-bold text-stone-800 uppercase tracking-wider flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+              <span>1. New Inquiry</span>
+            </span>
+            <span id="colCount-new" class="px-2 py-0.5 bg-stone-200 text-stone-700 rounded-full font-mono text-[10px] font-bold">0</span>
+          </div>
+          <div id="colCards-new" class="space-y-2.5 flex-grow min-h-[300px]">
+            <!-- Injected via JS -->
+          </div>
+        </div>
+
+        <!-- Column 2: NDA Sent / Diligence -->
+        <div class="bg-stone-100/80 rounded-lg p-3 border border-stone-200 flex flex-col min-w-[240px]">
+          <div class="flex items-center justify-between pb-2 mb-2 border-b border-stone-200">
+            <span class="text-xs font-bold text-stone-800 uppercase tracking-wider flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-purple-500"></span>
+              <span>2. NDA Sent</span>
+            </span>
+            <span id="colCount-nda" class="px-2 py-0.5 bg-stone-200 text-stone-700 rounded-full font-mono text-[10px] font-bold">0</span>
+          </div>
+          <div id="colCards-nda" class="space-y-2.5 flex-grow min-h-[300px]">
+            <!-- Injected via JS -->
+          </div>
+        </div>
+
+        <!-- Column 3: Dossier Dispatched -->
+        <div class="bg-stone-100/80 rounded-lg p-3 border border-stone-200 flex flex-col min-w-[240px]">
+          <div class="flex items-center justify-between pb-2 mb-2 border-b border-stone-200">
+            <span class="text-xs font-bold text-stone-800 uppercase tracking-wider flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+              <span>3. Dossier Sent</span>
+            </span>
+            <span id="colCount-dossier" class="px-2 py-0.5 bg-stone-200 text-stone-700 rounded-full font-mono text-[10px] font-bold">0</span>
+          </div>
+          <div id="colCards-dossier" class="space-y-2.5 flex-grow min-h-[300px]">
+            <!-- Injected via JS -->
+          </div>
+        </div>
+
+        <!-- Column 4: Viewing / Negotiation -->
+        <div class="bg-stone-100/80 rounded-lg p-3 border border-stone-200 flex flex-col min-w-[240px]">
+          <div class="flex items-center justify-between pb-2 mb-2 border-b border-stone-200">
+            <span class="text-xs font-bold text-stone-800 uppercase tracking-wider flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+              <span>4. Viewing &amp; Escrow</span>
+            </span>
+            <span id="colCount-viewing" class="px-2 py-0.5 bg-stone-200 text-stone-700 rounded-full font-mono text-[10px] font-bold">0</span>
+          </div>
+          <div id="colCards-viewing" class="space-y-2.5 flex-grow min-h-[300px]">
+            <!-- Injected via JS -->
+          </div>
+        </div>
+
+        <!-- Column 5: Closed Won -->
+        <div class="bg-stone-100/80 rounded-lg p-3 border border-stone-200 flex flex-col min-w-[240px]">
+          <div class="flex items-center justify-between pb-2 mb-2 border-b border-stone-200">
+            <span class="text-xs font-bold text-stone-800 uppercase tracking-wider flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-[#FDDB00]"></span>
+              <span>5. Closed Won</span>
+            </span>
+            <span id="colCount-closed" class="px-2 py-0.5 bg-stone-200 text-stone-700 rounded-full font-mono text-[10px] font-bold">0</span>
+          </div>
+          <div id="colCards-closed" class="space-y-2.5 flex-grow min-h-[300px]">
+            <!-- Injected via JS -->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CRM Table View (Alternative) -->
+      <div id="crmTableContainer" class="hidden bg-white rounded-lg border border-stone-200 shadow-xs overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead class="bg-stone-50 border-b border-stone-200 text-stone-500 uppercase tracking-wider font-semibold text-[10px]">
+              <tr>
+                <th class="p-3.5 pl-4">Investor Name</th>
+                <th class="p-3.5">Contact</th>
+                <th class="p-3.5">Target Allocation</th>
+                <th class="p-3.5">Timeline</th>
+                <th class="p-3.5">Workflow Stage</th>
+                <th class="p-3.5 pr-4 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="crmTableBody" class="divide-y divide-stone-100">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ========================================================
+         TAB 4: ADD / EDIT PROPERTY STUDIO
+    ======================================================== -->
+    <section id="panel-studio" class="admin-panel hidden space-y-6">
+      
+      <div class="pb-6 border-b border-stone-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-[#7323DC]">Allocation Authoring Studio</span>
+          <h2 id="studioFormHeading" class="text-2xl font-bold text-stone-950 tracking-tight">Create New Luxury Allocation</h2>
+          <p class="text-xs text-stone-500">Fill in the architectural and financial details. Changes persist to the public website immediately.</p>
+        </div>
+
+        <button 
+          type="button" 
+          onclick="resetStudioForm()" 
+          class="text-xs text-stone-500 hover:text-stone-900 border border-stone-200 px-3 py-1.5 rounded bg-white"
+        >
+          Clear Form
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Form Left Column (8 cols) -->
+        <form id="propertyStudioForm" onsubmit="handleStudioSave(event)" class="lg:col-span-8 bg-white p-6 sm:p-8 rounded-lg border border-stone-200 shadow-xs space-y-6">
+          <input type="hidden" id="editPropId" value="" />
+
+          <!-- Section 1: Core Identity -->
+          <div class="space-y-4">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-stone-900 pb-2 border-b border-stone-100 flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-[#FDDB00]"></span>
+              <span>1. General Identity &amp; Title</span>
+            </h3>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="propInputTitle" class="block text-[11px] font-semibold text-stone-700 uppercase tracking-wider mb-1">Property Name / Title *</label>
+                <input 
+                  type="text" 
+                  id="propInputTitle" 
+                  required 
+                  placeholder="e.g. The Sky Palace at One Canal" 
+                  class="w-full bg-stone-50 border border-stone-200 rounded px-3 py-2 text-xs text-stone-900 focus:outline-none focus:ring-1 focus:ring-[#7323DC]"
+                />
+              </div>
+
+              <div>
+                <label for="propInputSlug" class="block text-[11px] font-semibold text-stone-700 uppercase tracking-wider mb-1">URL Identifier (Slug) *</label>
+                <input 
+                  type="text" 
+                  id="propInputSlug" 
+                  required 
+                  placeholder="e.g. the-sky-palace-one-canal" 
+                  class="w-full bg-stone-50 border border-stone-200 rounded px-3 py-2 text-xs text-stone-900 font-mono focus:outline-none focus:ring-1 focus:ring-[#7323DC]"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label for="propInputTagline" class="block text-[11px] font-semibold text-stone-700 uppercase tracking-wider mb-1">Tagline / Brief Subheading *</label>
+              <input 
+                type="text" 
+                id="propInputTagline" 
+                required 
+                placeholder="e.g. Dual-Aspect Panoramic Sky Duplex Overlooking Dubai Canal & Burj Khalifa" 
+                class="w-full bg-stone-50 border border-stone-200 rounded px-3 py-2 text-xs text-stone-900 focus:outline-none focus:ring-1 focus:ring-[#7323DC]"
+              />
+            </div>
+          </div>
+
+          <!-- Section 2: Location & Region -->
+          <div class="space-y-4">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-stone-900 pb-2 border-b border-stone-100 flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-[#7323DC]"></span>
+              <span>2. Geography &amp; Classification</span>
+            </h3>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div>
+                <label for="propInputRegion" class="block text-[11px] font-semibold text-stone-700 uppercase tracking-wider mb-1">Portfolio Region *</label>
+                <select 
+                  id="propInputRegion" 
+                  required 
+                  class="w-full bg-stone-50 border border-stone-200 rounded px-3 py-2 text-xs text-stone-900 focus:outline-none focus:ring-1 focus:ring-[#7323DC]"
+                >
+                  <option value="dubai">Dubai Portfolio (UAE) 🇦🇪</option>
+                  <option value="india">India Portfolio (IND) 🇮🇳</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="propInputNeighborhood" class="block text-[11px] font-semibold text-stone-700 uppercase tracking-wider mb-1">Neighborhood / District *</label>
+                <input 
+                  type="text" 
+                  id="propInputNeighborhood" 
+                  required 
+                  placeholder="e.g. Dubai Water Canal, Downtown" 
+                  class="w-full bg-stone-50 border border-stone-200 rounded px-3 py-2 text-xs text-stone-900 focus:outline-none focus:ring-1 focus:ring-[#7323DC]"
+                />
+              </div>
+
+              <div>
+                <label for="propInputType" class="block text-[11px] font-semibold text-stone-700 uppercase tracking-wider mb-1">Asset Type *</label>
+                <select 
+                  id="propInputType" 
+                  required 
+                  class="w-full bg-stone-50 border border-stone-200 rounded px-3 py-2 text-xs text-stone-900 focus:outline-none focus:ring-1 focus:ring-[#7323DC]"
+                >
+                  <option value="Penthouses">Penthouses &amp; Sky Duplexes</option>
+                  <option value="Private Villas">Beachfront Villas &amp; Estates</option>
+                  <option value="Luxury Apartments">Luxury Apartments</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div>
+                <label for="propInputConfig" class="block text-[11px] font-semibold text-stone-700 uppercase tracking-wider mb-1">Configuration *</label>
+                <input 
+                  type="text" 
+                  id="propInputConfig" 
+                  required 
+                  placeholder="e.g. 5 & 6 Bed Sky Duplex" 
+                  class="w-full bg-stone-50 border border-stone-200 rounded px-3 py-2 text-xs text-stone-900 focus:outline-none focus:ring-1 focus:ring-[#7323DC]"
+                />
+              </div>
+
+              <div>
+                <label for="propInputBeds" class="block text-[11px] font-semibold text-stone-700 uppercase tracking-wider mb-1">Bedrooms *</label>
+                <input 
+                  type="number" 
+                  id="propInputBeds" 
+                  required 
+                  value="5" 
+                  min="1" 
+                  class="w-full bg-stone-50 border border-stone-200 rounded px-3 py-2 text-xs text-stone-900 focus:outline-none focus:ring-1 focus:ring-[#7323DC]"
+                />
+              </div>
+
+              <div>
+                <label for="propInputBaths" class="block text-[11px] font-semibold text-stone-700 uppercase tracking-wider mb-1">Bathrooms *</label>
+                <input 
+                  type="number" 
+                  id="propInputBaths" 
+                  required 
+                  value="6" 
+                  min="1" 
+                  class="w-full bg-stone-50 border border-stone-200 rounded px-3 py-2 text-xs text-stone-900 focus:outline-none focus:ring-1 focus:ring-[#7323DC]"
+                />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="propInputSize" class="block text-[11px] font-semibold text-stone-700 uppercase tracking-wider mb-1">Built-Up Area (Sq.Ft) *</label>
+                <input 
+                  type="number" 
+                  id="propInputSize" 
+                  required 
+                  value="8500" 
+                  min="500" 
+                  class="w-full bg-stone-50 border border-stone-200 rounded px-3 py-2 text-xs text-stone-900 focus:outline-none focus:ring-1 focus:ring-[#7323DC]"
+                />
+              </div>
+
+              <div>
+                <label for="propInputBadge" class="block text-[11px] font-semibold text-stone-700 uppercase tracking-wider mb-1">Exclusive Badge Tag</label>
+                <input 
+                  type="text" 
+                  id="propInputBadge" 
+                  value="Trophy Asset" 
+                  placeholder="e.g. Trophy Asset, High Yield, Royal Enclave" 
+                  class="w-full bg-stone-50 border border-stone-200 rounded px-3 py-2 text-xs text-stone-900 focus:outline-none focus:ring-1 focus:ring-[#7323DC]"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 3: Financials & Yield -->
+          <div class="space-y-4">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-stone-900 pb-2 border-b border-stone-100 flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+              <span>3. Financial Modeling &amp; Yield</span>
+            </h3>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div>
+                <label for="propInputPriceAED" class="block text-[11px] font-semibold text-stone-700 uppercase tracking-wider mb-1">Guide Price in AED *</label>
+                <input 
+                  type="number" 
+                  id="propInputPriceAED" 
+                  required 
+                  value="24500000" 
+                  oninput="autoConvertPrice('AED')" 
+                  class="w-full bg-stone-50 border border-stone-200 rounded px-3 py-2 text-xs text-stone-900 font-mono focus:outline-none focus:ring-1 focus:ring-[#7323DC]"
+                />
+              </div>
+
+              <div>
+                <label for="propInputPriceINR" class="block text-[11px] font-semibold text-stone-700 uppercase tracking-wider mb-1">Guide Price in INR (₹) *</label>
+                <input 
+                  type="number" 
+                  id="propInputPriceINR" 
+                  required 
+                  value="555000000" 
+                  class="w-full bg-stone-50 border border-stone-200 rounded px-3 py-2 text-xs text-stone-900 font-mono focus:outline-none focus:ring-1 focus:ring-[#7323DC]"
+                />
+              </div>
+
+              <div>
+                <label for="propInputYield" class="block text-[11px] font-semibold text-stone-700 uppercase tracking-wider mb-1">Net Rental Yield *</label>
+                <input 
+                  type="text" 
+                  id="propInputYield" 
+                  required 
+                  value="7.8% Net Projected Yield" 
+                  placeholder="e.g. 7.8% Net Projected Yield" 
+                  class="w-full bg-stone-50 border border-stone-200 rounded px-3 py-2 text-xs text-stone-900 focus:outline-none focus:ring-1 focus:ring-[#7323DC]"
+                />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="propInputDeveloper" class="block text-[11px] font-semibold text-stone-700 uppercase tracking-wider mb-1">Developer / Builder</label>
+                <input 
+                  type="text" 
+                  id="propInputDeveloper" 
+                  value="Select Luxury Partners" 
+                  class="w-full bg-stone-50 border border-stone-200 rounded px-3 py-2 text-xs text-stone-900 focus:outline-none focus:ring-1 focus:ring-[#7323DC]"
+                />
+              </div>
+
+              <div>
+                <label for="propInputCompletion" class="block text-[11px] font-semibold text-stone-700 uppercase tracking-wider mb-1">Completion Timeline</label>
+                <input 
+                  type="text" 
+                  id="propInputCompletion" 
+                  value="Q4 2026 (Under Construction)" 
+                  class="w-full bg-stone-50 border border-stone-200 rounded px-3 py-2 text-xs text-stone-900 focus:outline-none focus:ring-1 focus:ring-[#7323DC]"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 4: Architectural Photography & Narrative -->
+          <div class="space-y-4">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-stone-900 pb-2 border-b border-stone-100 flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+              <span>4. High-Resolution Visuals &amp; Brief</span>
+            </h3>
+
+            <div>
+              <label for="propInputMainImg" class="block text-[11px] font-semibold text-stone-700 uppercase tracking-wider mb-1">Main Cover Photo URL *</label>
+              <input 
+                type="url" 
+                id="propInputMainImg" 
+                required 
+                placeholder="https://images.unsplash.com/..." 
+                value="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80"
+                class="w-full bg-stone-50 border border-stone-200 rounded px-3 py-2 text-xs text-stone-900 focus:outline-none focus:ring-1 focus:ring-[#7323DC]"
+              />
+            </div>
+
+            <div>
+              <label for="propInputHighlights" class="block text-[11px] font-semibold text-stone-700 uppercase tracking-wider mb-1">Key Architectural Highlights (One per line)</label>
+              <textarea 
+                id="propInputHighlights" 
+                rows="4" 
+                placeholder="Direct white-sand beach frontage&#10;Private infinity swimming pool&#10;Full smart-home integration with Savant controls&#10;Climate-controlled private car gallery"
+                class="w-full bg-stone-50 border border-stone-200 rounded px-3 py-2 text-xs text-stone-900 focus:outline-none focus:ring-1 focus:ring-[#7323DC]"
+              ></textarea>
+            </div>
+
+            <div>
+              <label for="propInputDescription" class="block text-[11px] font-semibold text-stone-700 uppercase tracking-wider mb-1">Full Architectural Narrative</label>
+              <textarea 
+                id="propInputDescription" 
+                rows="5" 
+                placeholder="Detailed profile for buy-side due diligence..."
+                class="w-full bg-stone-50 border border-stone-200 rounded px-3 py-2 text-xs text-stone-900 focus:outline-none focus:ring-1 focus:ring-[#7323DC]"
+              ></textarea>
+            </div>
+          </div>
+
+          <!-- Form Actions -->
+          <div class="pt-4 border-t border-stone-200 flex items-center justify-between gap-4">
+            <button 
+              type="button" 
+              onclick="resetStudioForm()" 
+              class="px-4 py-2.5 text-xs font-semibold text-stone-600 hover:text-stone-900 border border-stone-300 rounded"
+            >
+              Cancel
+            </button>
+            <button 
+              type="submit" 
+              class="px-6 py-3 bg-[#FDDB00] hover:bg-[#F5D000] text-stone-950 font-bold text-xs uppercase tracking-widest rounded-md shadow-md hover:shadow-lg transition-all border border-[#E5C700] flex items-center gap-2"
+            >
+              <i class="fa-solid fa-floppy-disk"></i>
+              <span id="studioSubmitBtnText">Save &amp; Publish Allocation</span>
+            </button>
+          </div>
+
+        </form>
+
+        <!-- Right Preview Column (4 cols) -->
+        <div class="lg:col-span-4 sticky top-32 space-y-4">
+          <div class="bg-white p-4 rounded-lg border border-stone-200 shadow-xs space-y-3">
+            <div class="text-[10px] font-bold uppercase tracking-wider text-stone-400">Live Client Card Preview</div>
+            
+            <div class="bg-stone-50 border border-stone-200 rounded-md overflow-hidden shadow-xs">
+              <div class="relative aspect-[16/10] bg-stone-200 overflow-hidden">
+                <img 
+                  id="previewImg" 
+                  src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80" 
+                  alt="Preview" 
+                  class="w-full h-full object-cover"
+                />
+                <div class="absolute top-2.5 left-2.5 bg-stone-900/90 text-white text-[10px] font-semibold px-2 py-0.5 rounded">
+                  <span id="previewFlag">🇦🇪</span> <span id="previewNeighborhood">Dubai Water Canal</span>
+                </div>
+                <div class="absolute top-2.5 right-2.5 bg-white/95 text-stone-900 text-[9px] font-bold uppercase px-2 py-0.5 rounded">
+                  <span id="previewBadge">Trophy Asset</span>
+                </div>
+              </div>
+              <div class="p-4 space-y-2">
+                <div class="flex items-center justify-between text-[10px]">
+                  <span id="previewTypeBadge" class="bg-[#F4EDFD] text-[#7323DC] font-bold px-1.5 py-0.5 rounded border border-[#E4D2FA]">Penthouses</span>
+                  <span id="previewYield" class="text-stone-500 font-medium">7.8% Net Yield</span>
+                </div>
+                <h4 id="previewTitle" class="text-sm font-bold text-stone-900 truncate">The Sky Palace at One Canal</h4>
+                <div class="text-[11px] font-mono text-stone-500 pt-2 border-t border-stone-100 flex items-center justify-between">
+                  <div>
+                    <div class="text-[9px] text-stone-400 uppercase">Guide Price</div>
+                    <div id="previewPrice" class="text-xs font-bold text-stone-950">AED 24,500,000</div>
+                  </div>
+                  <div class="text-right">
+                    <span id="previewSize" class="bg-stone-100 px-2 py-0.5 rounded font-medium text-stone-700">11,400 sq.ft</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <p class="text-[11px] text-stone-400 leading-tight">
+              Preview updates automatically in real-time as you type the allocation specifications.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ========================================================
+         TAB 5: SYSTEM DATA, EXPORT & RESTORE
+    ======================================================== -->
+    <section id="panel-settings" class="admin-panel hidden space-y-8">
+      
+      <div class="pb-6 border-b border-stone-200">
+        <span class="text-xs font-bold uppercase tracking-wider text-[#7323DC]">System Administration</span>
+        <h2 class="text-2xl font-bold text-stone-950 tracking-tight">Database Backup &amp; Workflow Sync</h2>
+        <p class="text-xs text-stone-500">Manage client confidentiality records, download JSON database snapshots, or seed demo deal pipelines</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Action 1: Export Database -->
+        <div class="bg-white p-6 rounded-lg border border-stone-200 shadow-xs flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <div class="w-10 h-10 rounded bg-[#F4EDFD] text-[#7323DC] flex items-center justify-center text-lg">
+              <i class="fa-solid fa-download"></i>
+            </div>
+            <h3 class="text-base font-bold text-stone-900">Backup Complete Database</h3>
+            <p class="text-xs text-stone-500 leading-relaxed">
+              Export all active properties, pricing modifications, and investor inquiries as a standalone JSON backup file.
+            </p>
+          </div>
+          <button 
+            onclick="downloadDatabaseBackup()" 
+            class="w-full py-2.5 bg-stone-900 hover:bg-stone-800 text-white font-semibold text-xs rounded transition-all flex items-center justify-center gap-2"
+          >
+            <i class="fa-solid fa-file-export"></i>
+            <span>Export Backup (JSON)</span>
+          </button>
+        </div>
+
+        <!-- Action 2: Seed Realistic Test Inquiries -->
+        <div class="bg-white p-6 rounded-lg border border-stone-200 shadow-xs flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <div class="w-10 h-10 rounded bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </div>
+            <h3 class="text-base font-bold text-stone-900">Seed Demo Inquiries</h3>
+            <p class="text-xs text-stone-500 leading-relaxed">
+              Populate the CRM Pipeline with 5 realistic HNW investor mandates across Dubai &amp; India for workflow testing.
+            </p>
+          </div>
+          <button 
+            onclick="seedDemoLeads()" 
+            class="w-full py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-xs rounded transition-all flex items-center justify-center gap-2"
+          >
+            <i class="fa-solid fa-users-rays"></i>
+            <span>Seed 5 Sample Leads</span>
+          </button>
+        </div>
+
+        <!-- Action 3: Factory Reset -->
+        <div class="bg-white p-6 rounded-lg border border-rose-200 shadow-xs flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <div class="w-10 h-10 rounded bg-rose-50 text-rose-600 flex items-center justify-center text-lg">
+              <i class="fa-solid fa-arrows-rotate"></i>
+            </div>
+            <h3 class="text-base font-bold text-stone-900">Reset to Master Data</h3>
+            <p class="text-xs text-stone-500 leading-relaxed">
+              Revert all property changes back to Butter Property's clean master curated dataset. Clears local overrides.
+            </p>
+          </div>
+          <button 
+            onclick="handleResetToMaster()" 
+            class="w-full py-2.5 bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 font-bold text-xs rounded transition-all flex items-center justify-center gap-2"
+          >
+            <i class="fa-solid fa-rotate-left"></i>
+            <span>Reset Master Properties</span>
+          </button>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ==================== LEAD DETAIL & STAGE MODAL ==================== -->
+  <div 
+    id="leadDetailModal" 
+    class="fixed inset-0 z-50 bg-stone-950/70 backdrop-blur-sm hidden items-center justify-center p-4"
+  >
+    <div class="bg-white rounded-xl shadow-2xl border border-stone-200 max-w-xl w-full p-6 sm:p-8 space-y-5 relative">
+      <button 
+        onclick="closeLeadModal()" 
+        class="absolute top-4 right-4 text-stone-400 hover:text-stone-800 text-lg p-1"
+      >
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-[#F4EDFD] text-[#7323DC] font-bold text-base flex items-center justify-center border border-[#E4D2FA]">
+          <span id="modalLeadAvatar">IN</span>
+        </div>
+        <div>
+          <h3 id="modalLeadName" class="text-lg font-bold text-stone-950">Investor Name</h3>
+          <div class="text-xs text-stone-500 flex items-center gap-2">
+            <span id="modalLeadDate">Logged: Just now</span>
+            <span>•</span>
+            <span id="modalLeadSource" class="text-[#7323DC] font-medium">Website Modal</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3 pt-2 text-xs">
+        <div class="bg-stone-50 p-3 rounded border border-stone-200">
+          <span class="text-stone-400 block text-[10px] uppercase font-semibold">Phone / WhatsApp</span>
+          <a id="modalLeadPhone" href="#" class="font-bold text-stone-900 hover:text-[#7323DC] mt-0.5 block">+971 50 000 0000</a>
+        </div>
+        <div class="bg-stone-50 p-3 rounded border border-stone-200">
+          <span class="text-stone-400 block text-[10px] uppercase font-semibold">Email</span>
+          <a id="modalLeadEmail" href="#" class="font-bold text-stone-900 hover:text-[#7323DC] mt-0.5 block truncate">principal@familyoffice.com</a>
+        </div>
+        <div class="bg-stone-50 p-3 rounded border border-stone-200">
+          <span class="text-stone-400 block text-[10px] uppercase font-semibold">Target Allocation</span>
+          <div id="modalLeadProperty" class="font-bold text-stone-900 mt-0.5 truncate">The Sky Palace</div>
+        </div>
+        <div class="bg-stone-50 p-3 rounded border border-stone-200">
+          <span class="text-stone-400 block text-[10px] uppercase font-semibold">Acquisition Window</span>
+          <div id="modalLeadTimeline" class="font-bold text-stone-900 mt-0.5">Immediate (30 Days)</div>
+        </div>
+      </div>
+
+      <!-- Specific Diligence Inquiries -->
+      <div class="space-y-1">
+        <span class="text-[10px] font-semibold text-stone-500 uppercase tracking-wider">Client Diligence Notes:</span>
+        <div id="modalLeadNotes" class="bg-stone-50 p-3 rounded border border-stone-200 text-xs text-stone-700 leading-relaxed italic">
+          "Requesting unwatermarked architectural floorplans and payment milestone schedule."
+        </div>
+      </div>
+
+      <!-- Stage Advance Dropdown -->
+      <div class="space-y-1">
+        <label for="modalLeadStageSelect" class="block text-[10px] font-semibold text-stone-500 uppercase tracking-wider">Pipeline Workflow Stage</label>
+        <select 
+          id="modalLeadStageSelect" 
+          onchange="updateCurrentLeadStage()" 
+          class="w-full bg-white border border-stone-300 rounded p-2 text-xs font-bold text-stone-900 focus:outline-none focus:ring-1 focus:ring-[#7323DC]"
+        >
+          <option value="New Inquiry">1. New Inquiry</option>
+          <option value="NDA Sent">2. NDA Sent / Compliance</option>
+          <option value="Dossier Dispatched">3. Dossier Dispatched</option>
+          <option value="Inspection Booked">4. Viewing Scheduled &amp; Escrow</option>
+          <option value="Closed Won">5. Closed Won &amp; Commission</option>
+        </select>
+      </div>
+
+      <!-- Direct Contact Quick Actions -->
+      <div class="pt-3 border-t border-stone-200 flex items-center justify-between gap-3">
+        <button 
+          onclick="deleteCurrentLead()" 
+          class="text-xs text-rose-600 hover:text-rose-800 font-semibold px-2 py-1"
+        >
+          Archive Lead
+        </button>
+
+        <div class="flex items-center gap-2">
+          <a 
+            id="modalLeadWhatsAppBtn" 
+            href="#" 
+            target="_blank" 
+            class="px-3.5 py-2 bg-[#25D366] hover:bg-[#20ba59] text-stone-950 font-bold text-xs uppercase rounded flex items-center gap-1.5 shadow-2xs"
+          >
+            <i class="fa-brands fa-whatsapp text-sm"></i>
+            <span>Chat on WhatsApp</span>
+          </a>
+          <button 
+            onclick="closeLeadModal()" 
+            class="px-4 py-2 bg-stone-900 hover:bg-stone-800 text-white font-semibold text-xs rounded"
+          >
+            Done
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification System -->
+  <div 
+    id="adminToast" 
+    class="fixed bottom-6 right-6 z-50 bg-stone-900 text-white px-5 py-3.5 rounded-lg shadow-2xl border border-stone-700 flex items-center gap-3 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none text-xs"
+  >
+    <div id="adminToastIcon" class="w-6 h-6 rounded-full bg-[#FDDB00] text-stone-950 flex items-center justify-center text-xs font-bold shrink-0">
+      <i class="fa-solid fa-check"></i>
+    </div>
+    <span id="adminToastMsg">Changes saved successfully.</span>
+  </div>
+
+  <!-- Shared Property Master Data -->
+  <script src="./properties-data.js"></script>
+
+  <!-- ==================== ADMIN BACKEND CONTROLLER SCRIPT ==================== -->
+  <script>
+    // State
+    let adminAuthenticated = sessionStorage.getItem('butter_admin_auth') === 'true';
+    let currentActiveTab = 'overview';
+    let activeCRMView = 'kanban';
+    let activeLeadUnderModal = null;
+
+    // Login Gate
+    function checkAuth() {
+      const modal = document.getElementById('authGateModal');
+      if (adminAuthenticated) {
+        if (modal) modal.classList.add('hidden');
+      } else {
+        if (modal) modal.classList.remove('hidden');
+      }
+    }
+
+    function handleLoginSubmit(e) {
+      e.preventDefault();
+      const pin = document.getElementById('adminPin').value.trim();
+      const err = document.getElementById('loginError');
+
+      if (pin === 'butter2026' || pin === 'admin' || pin === '2026') {
+        adminAuthenticated = true;
+        sessionStorage.setItem('butter_admin_auth', 'true');
+        document.getElementById('authGateModal').classList.add('hidden');
+        showAdminToast('Welcome, Managing Partner. Executive session initialized.');
+        initAdminDashboard();
+      } else {
+        if (err) err.classList.remove('hidden');
+      }
+    }
+
+    function togglePinVisibility() {
+      const pinInput = document.getElementById('adminPin');
+      const icon = document.getElementById('pinEyeIcon');
+      if (pinInput.type === 'password') {
+        pinInput.type = 'text';
+        icon.className = 'fa-solid fa-eye-slash';
+      } else {
+        pinInput.type = 'password';
+        icon.className = 'fa-solid fa-eye';
+      }
+    }
+
+    function handleAdminLogout() {
+      sessionStorage.removeItem('butter_admin_auth');
+      adminAuthenticated = false;
+      document.getElementById('authGateModal').classList.remove('hidden');
+    }
+
+    // Tab Navigation
+    function switchAdminTab(tabKey) {
+      currentActiveTab = tabKey;
+      document.querySelectorAll('.admin-panel').forEach(p => p.classList.add('hidden'));
+      const activePanel = document.getElementById(`panel-${tabKey}`);
+      if (activePanel) activePanel.classList.remove('hidden');
+
+      // Update Tab Buttons UI
+      document.querySelectorAll('.admin-nav-btn').forEach(btn => {
+        btn.className = 'admin-nav-btn px-3.5 py-2 rounded-md transition-all flex items-center gap-2 whitespace-nowrap text-purple-200 hover:text-white hover:bg-purple-900/40';
+      });
+      const activeBtn = document.getElementById(`tabBtn-${tabKey}`);
+      if (activeBtn) {
+        activeBtn.className = 'admin-nav-btn px-3.5 py-2 rounded-md transition-all flex items-center gap-2 whitespace-nowrap bg-[#FDDB00] text-stone-950 font-bold shadow-xs';
+      }
+
+      if (tabKey === 'overview') updateOverviewMetrics();
+      if (tabKey === 'properties') renderAdminPropertiesTable();
+      if (tabKey === 'crm') renderCRMBoard();
+    }
+
+    // Notification Toast
+    function showAdminToast(msg, isSuccess = true) {
+      const toast = document.getElementById('adminToast');
+      const text = document.getElementById('adminToastMsg');
+      const icon = document.getElementById('adminToastIcon');
+      if (!toast) return;
+
+      if (text) text.textContent = msg;
+      if (icon) {
+        icon.className = isSuccess 
+          ? 'w-6 h-6 rounded-full bg-[#FDDB00] text-stone-950 flex items-center justify-center text-xs font-bold shrink-0'
+          : 'w-6 h-6 rounded-full bg-rose-500 text-white flex items-center justify-center text-xs font-bold shrink-0';
+        icon.innerHTML = isSuccess ? '<i class="fa-solid fa-check"></i>' : '<i class="fa-solid fa-xmark"></i>';
+      }
+
+      toast.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+      }, 4000);
+    }
+
+    // ==========================================
+    // OVERVIEW & METRICS COMPUTATIONS
+    // ==========================================
+    function updateOverviewMetrics() {
+      const props = typeof PROPERTIES !== 'undefined' ? PROPERTIES : [];
+      const leads = getStoredLeads();
+
+      let grossAED = 0;
+      let grossINR = 0;
+      let dubaiVal = 0;
+      let indiaVal = 0;
+
+      props.forEach(p => {
+        grossAED += (p.priceAED || 0);
+        grossINR += (p.priceINR || 0);
+        if (p.region === 'dubai') dubaiVal += (p.priceAED || 0);
+        if (p.region === 'india') indiaVal += (p.priceINR || 0);
+      });
+
+      const grossAEDEl = document.getElementById('kpiGrossAED');
+      const grossINREl = document.getElementById('kpiGrossINR');
+      const activeCountEl = document.getElementById('kpiActiveCount');
+      const headerLiveVal = document.getElementById('headerLiveVal');
+
+      if (grossAEDEl) grossAEDEl.textContent = `AED ${(grossAED / 1000000).toFixed(1)}M`;
+      if (grossINREl) grossINREl.textContent = `≈ ₹ ${(grossINR / 10000000).toFixed(1)} Cr`;
+      if (activeCountEl) activeCountEl.textContent = `${props.length} Allocations`;
+      if (headerLiveVal) headerLiveVal.textContent = `AED ${(grossAED / 1000000).toFixed(1)}M Inventory`;
+
+      // Pipeline Value (Sum of leads)
+      const pipelineValEl = document.getElementById('kpiPipelineVal');
+      const totalLeadsEl = document.getElementById('kpiTotalLeads');
+      const navLeadCountBadge = document.getElementById('navLeadCountBadge');
+      const navPropCountBadge = document.getElementById('navPropCountBadge');
+
+      if (totalLeadsEl) totalLeadsEl.textContent = `${leads.length} Inquiries`;
+      if (navLeadCountBadge) navLeadCountBadge.textContent = leads.length.toString();
+      if (navPropCountBadge) navPropCountBadge.textContent = props.length.toString();
+
+      // Recent leads on overview
+      const recentList = document.getElementById('overviewRecentLeadsList');
+      if (recentList) {
+        if (leads.length === 0) {
+          recentList.innerHTML = `
+            <div class="py-8 text-center text-xs text-stone-400">
+              <i class="fa-solid fa-inbox text-2xl mb-2 text-stone-300 block"></i>
+              No inquiries recorded yet. Website form submissions and dossier requests will appear here in real-time.
+            </div>
+          `;
+        } else {
+          recentList.innerHTML = leads.slice(0, 5).map(lead => `
+            <div class="py-3 flex items-center justify-between gap-3 text-xs">
+              <div class="flex items-center gap-3 min-w-0">
+                <div class="w-8 h-8 rounded-full bg-stone-100 font-bold text-stone-700 flex items-center justify-center shrink-0">
+                  ${lead.name ? lead.name.slice(0, 2).toUpperCase() : 'IN'}
+                </div>
+                <div class="truncate">
+                  <div class="font-bold text-stone-900 truncate">${lead.name}</div>
+                  <div class="text-[11px] text-stone-500 truncate">${lead.property} • ${lead.timeline || 'Immediate'}</div>
+                </div>
+              </div>
+              <div class="flex items-center gap-2 shrink-0">
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold ${getStageBadgeColor(lead.status)}">
+                  ${lead.status}
+                </span>
+                <button onclick="openLeadModalById('${lead.id}')" class="text-stone-400 hover:text-stone-800 p-1">
+                  <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                </button>
+              </div>
+            </div>
+          `).join('');
+        }
+      }
+    }
+
+    function getStageBadgeColor(stage) {
+      switch(stage) {
+        case 'New Inquiry': return 'bg-blue-50 text-blue-700 border border-blue-200';
+        case 'NDA Sent': return 'bg-purple-50 text-purple-700 border border-purple-200';
+        case 'Dossier Dispatched': return 'bg-amber-50 text-amber-700 border border-amber-200';
+        case 'Inspection Booked': return 'bg-emerald-50 text-emerald-700 border border-emerald-200';
+        case 'Closed Won': return 'bg-[#FDDB00]/30 text-stone-950 font-bold border border-[#E5C700]';
+        default: return 'bg-stone-100 text-stone-700 border border-stone-200';
+      }
+    }
+
+    // ==========================================
+    // PROPERTIES TABLE & MANAGEMENT
+    // ==========================================
+    function renderAdminPropertiesTable() {
+      const tbody = document.getElementById('adminPropertiesTableBody');
+      const searchVal = document.getElementById('adminPropSearch')?.value.toLowerCase() || '';
+      const regionVal = document.getElementById('adminPropRegionFilter')?.value || 'all';
+      const typeVal = document.getElementById('adminPropTypeFilter')?.value || 'all';
+      const countEl = document.getElementById('adminPropCountFiltered');
+
+      if (!tbody) return;
+
+      let filtered = (typeof PROPERTIES !== 'undefined' ? PROPERTIES : []).filter(p => {
+        const matchesSearch = !searchVal || 
+          p.title.toLowerCase().includes(searchVal) || 
+          p.neighborhood.toLowerCase().includes(searchVal) ||
+          p.city.toLowerCase().includes(searchVal) ||
+          (p.developer && p.developer.toLowerCase().includes(searchVal));
+        
+        const matchesRegion = regionVal === 'all' || p.region === regionVal;
+        const matchesType = typeVal === 'all' || p.type === typeVal;
+
+        return matchesSearch && matchesRegion && matchesType;
+      });
+
+      if (countEl) countEl.textContent = filtered.length.toString();
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6" class="p-8 text-center text-xs text-stone-400">
+              No matching properties found in inventory.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(item => `
+        <tr class="hover:bg-stone-50/80 transition-colors">
+          <td class="p-3.5 pl-4">
+            <div class="flex items-center gap-3">
+              <img src="${item.mainImage}" alt="${item.title}" class="w-12 h-10 object-cover rounded shadow-2xs shrink-0" />
+              <div>
+                <a href="property.html?id=${item.id}" target="_blank" class="font-bold text-stone-900 hover:text-[#7323DC] hover:underline">
+                  ${item.title}
+                </a>
+                <div class="text-[11px] text-stone-400">${item.neighborhood}</div>
+              </div>
+            </div>
+          </td>
+          <td class="p-3.5 font-medium">
+            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold ${item.region === 'dubai' ? 'bg-[#F4EDFD] text-[#7323DC] border border-[#E4D2FA]' : 'bg-[#FFFDE6] text-[#8C6D00] border border-[#FAE875]'}">
+              <span>${item.flag}</span>
+              <span>${item.region === 'dubai' ? 'Dubai' : 'India'}</span>
+            </span>
+          </td>
+          <td class="p-3.5">
+            <div class="font-medium text-stone-800">${item.config}</div>
+            <div class="text-[11px] text-stone-400 font-mono">${item.sizeSqFt ? item.sizeSqFt.toLocaleString() : 'N/A'} sq.ft</div>
+          </td>
+          <td class="p-3.5 font-mono">
+            <div class="font-bold text-stone-950">AED ${(item.priceAED || 0).toLocaleString()}</div>
+            <div class="text-[10px] text-stone-400">₹ ${((item.priceINR || 0) / 10000000).toFixed(1)} Cr</div>
+          </td>
+          <td class="p-3.5">
+            <div class="text-emerald-700 font-semibold text-[11px]">${item.rentalYield || '6.5% Net'}</div>
+            <span class="inline-block mt-0.5 text-[9px] uppercase font-bold px-1.5 py-0.2 bg-stone-100 text-stone-600 rounded">
+              ${item.badge || 'Curated'}
+            </span>
+          </td>
+          <td class="p-3.5 pr-4 text-right">
+            <div class="flex items-center justify-end gap-1.5">
+              <a 
+                href="property.html?id=${item.id}" 
+                target="_blank" 
+                class="p-1.5 text-stone-500 hover:text-[#7323DC] rounded hover:bg-stone-100" 
+                title="View Live Listing"
+              >
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+              <button 
+                onclick="openEditPropertyStudio('${item.id}')" 
+                class="p-1.5 text-stone-600 hover:text-stone-950 rounded hover:bg-stone-100" 
+                title="Edit Property Specifications"
+              >
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>
+              <button 
+                onclick="deletePropertyById('${item.id}')" 
+                class="p-1.5 text-rose-500 hover:text-rose-700 rounded hover:bg-rose-50" 
+                title="Delete Allocation"
+              >
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function filterAdminProperties() {
+      renderAdminPropertiesTable();
+    }
+
+    function deletePropertyById(id) {
+      if (!confirm('Are you sure you want to remove this property allocation from active inventory?')) return;
+      const updated = PROPERTIES.filter(p => p.id !== id);
+      savePropertiesToStorage(updated);
+      renderAdminPropertiesTable();
+      updateOverviewMetrics();
+      showAdminToast('Allocation removed successfully.');
+    }
+
+    // ==========================================
+    // CRM WORKFLOW PIPELINE (KANBAN & TABLE)
+    // ==========================================
+    function setCRMView(viewMode) {
+      activeCRMView = viewMode;
+      const kanban = document.getElementById('crmKanbanContainer');
+      const table = document.getElementById('crmTableContainer');
+      const btnK = document.getElementById('crmViewBtnKanban');
+      const btnT = document.getElementById('crmViewBtnTable');
+
+      if (viewMode === 'kanban') {
+        if (kanban) kanban.classList.remove('hidden');
+        if (table) table.classList.add('hidden');
+        if (btnK) btnK.className = 'px-3 py-1.5 rounded font-bold transition-all bg-[#7323DC] text-white shadow-2xs flex items-center gap-1.5';
+        if (btnT) btnT.className = 'px-3 py-1.5 rounded font-semibold transition-all text-stone-600 hover:text-stone-900 flex items-center gap-1.5';
+      } else {
+        if (kanban) kanban.classList.add('hidden');
+        if (table) table.classList.remove('hidden');
+        if (btnT) btnT.className = 'px-3 py-1.5 rounded font-bold transition-all bg-[#7323DC] text-white shadow-2xs flex items-center gap-1.5';
+        if (btnK) btnK.className = 'px-3 py-1.5 rounded font-semibold transition-all text-stone-600 hover:text-stone-900 flex items-center gap-1.5';
+      }
+      renderCRMBoard();
+    }
+
+    function renderCRMBoard() {
+      const leads = getStoredLeads();
+      const searchVal = document.getElementById('crmSearchInput')?.value.toLowerCase() || '';
+
+      const filtered = leads.filter(l => {
+        if (!searchVal) return true;
+        return (l.name && l.name.toLowerCase().includes(searchVal)) ||
+               (l.property && l.property.toLowerCase().includes(searchVal)) ||
+               (l.phone && l.phone.toLowerCase().includes(searchVal)) ||
+               (l.email && l.email.toLowerCase().includes(searchVal));
+      });
+
+      // Populate 5 Columns
+      const colNew = document.getElementById('colCards-new');
+      const colNDA = document.getElementById('colCards-nda');
+      const colDossier = document.getElementById('colCards-dossier');
+      const colViewing = document.getElementById('colCards-viewing');
+      const colClosed = document.getElementById('colCards-closed');
+
+      const cols = {
+        'New Inquiry': { el: colNew, count: document.getElementById('colCount-new'), list: [] },
+        'NDA Sent': { el: colNDA, count: document.getElementById('colCount-nda'), list: [] },
+        'Dossier Dispatched': { el: colDossier, count: document.getElementById('colCount-dossier'), list: [] },
+        'Inspection Booked': { el: colViewing, count: document.getElementById('colCount-viewing'), list: [] },
+        'Closed Won': { el: colClosed, count: document.getElementById('colCount-closed'), list: [] },
+      };
+
+      filtered.forEach(lead => {
+        const stage = lead.status || 'New Inquiry';
+        if (cols[stage]) cols[stage].list.push(lead);
+        else cols['New Inquiry'].list.push(lead);
+      });
+
+      // Render cards in columns
+      Object.keys(cols).forEach(k => {
+        const item = cols[k];
+        if (item.count) item.count.textContent = item.list.length.toString();
+        if (item.el) {
+          if (item.list.length === 0) {
+            item.el.innerHTML = `<div class="p-4 text-center text-[11px] text-stone-400 italic">No deals in this stage</div>`;
+          } else {
+            item.el.innerHTML = item.list.map(lead => `
+              <div 
+                onclick="openLeadModalById('${lead.id}')" 
+                class="bg-white p-3.5 rounded-lg border border-stone-200/90 shadow-2xs hover:shadow-md transition-all cursor-pointer space-y-2 group"
+              >
+                <div class="flex items-center justify-between">
+                  <span class="text-[10px] font-bold text-[#7323DC] uppercase tracking-wider">${lead.source || 'Website'}</span>
+                  <span class="text-[10px] text-stone-400 font-mono">${formatLeadTime(lead.createdAt)}</span>
+                </div>
+                <h4 class="font-bold text-xs text-stone-900 group-hover:text-[#7323DC] transition-colors leading-snug">
+                  ${lead.name}
+                </h4>
+                <div class="text-[11px] text-stone-600 line-clamp-1">
+                  ${lead.property}
+                </div>
+                <div class="pt-2 border-t border-stone-100 flex items-center justify-between text-[10px] text-stone-500">
+                  <span>${lead.timeline || 'Immediate'}</span>
+                  <i class="fa-brands fa-whatsapp text-emerald-600 text-xs"></i>
+                </div>
+              </div>
+            `).join('');
+          }
+        }
+      });
+
+      // Render Detailed Table
+      const tableBody = document.getElementById('crmTableBody');
+      if (tableBody) {
+        if (filtered.length === 0) {
+          tableBody.innerHTML = `<tr><td colspan="6" class="p-8 text-center text-xs text-stone-400">No client mandates matching criteria.</td></tr>`;
+        } else {
+          tableBody.innerHTML = filtered.map(lead => `
+            <tr class="hover:bg-stone-50 transition-colors">
+              <td class="p-3.5 pl-4 font-bold text-stone-900">${lead.name}</td>
+              <td class="p-3.5 text-stone-600 font-mono text-[11px]">
+                <div>${lead.phone || 'N/A'}</div>
+                <div class="text-stone-400 text-[10px]">${lead.email || 'N/A'}</div>
+              </td>
+              <td class="p-3.5 font-medium text-stone-800">${lead.property}</td>
+              <td class="p-3.5 text-stone-500">${lead.timeline || '30 Days'}</td>
+              <td class="p-3.5">
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold ${getStageBadgeColor(lead.status)}">
+                  ${lead.status}
+                </span>
+              </td>
+              <td class="p-3.5 pr-4 text-right">
+                <button 
+                  onclick="openLeadModalById('${lead.id}')" 
+                  class="px-2.5 py-1 bg-stone-100 hover:bg-stone-200 text-stone-800 font-semibold rounded text-[11px]"
+                >
+                  Inspect Deal
+                </button>
+              </td>
+            </tr>
+          `).join('');
+        }
+      }
+    }
+
+    function formatLeadTime(isoDate) {
+      if (!isoDate) return 'Today';
+      const d = new Date(isoDate);
+      return `${d.getMonth() + 1}/${d.getDate()}`;
+    }
+
+    function filterCRMLeads() {
+      renderCRMBoard();
+    }
+
+    function openLeadModalById(leadId) {
+      const leads = getStoredLeads();
+      const lead = leads.find(l => l.id === leadId);
+      if (!lead) return;
+
+      activeLeadUnderModal = lead;
+
+      document.getElementById('modalLeadAvatar').textContent = lead.name ? lead.name.slice(0, 2).toUpperCase() : 'IN';
+      document.getElementById('modalLeadName').textContent = lead.name || 'Anonymous Principal';
+      document.getElementById('modalLeadDate').textContent = `Logged: ${new Date(lead.createdAt).toLocaleDateString()}`;
+      document.getElementById('modalLeadSource').textContent = lead.source || 'Website Lead';
+      
+      const phoneEl = document.getElementById('modalLeadPhone');
+      phoneEl.textContent = lead.phone || 'Not provided';
+      phoneEl.href = lead.phone ? `tel:${lead.phone}` : '#';
+
+      const emailEl = document.getElementById('modalLeadEmail');
+      emailEl.textContent = lead.email || 'Not provided';
+      emailEl.href = lead.email ? `mailto:${lead.email}` : '#';
+
+      document.getElementById('modalLeadProperty').textContent = lead.property || 'General Advisory';
+      document.getElementById('modalLeadTimeline').textContent = lead.timeline || 'Immediate (30 Days)';
+      document.getElementById('modalLeadNotes').textContent = lead.notes ? `"${lead.notes}"` : 'No custom inquiry brief provided.';
+
+      const stageSelect = document.getElementById('modalLeadStageSelect');
+      if (stageSelect) stageSelect.value = lead.status || 'New Inquiry';
+
+      // WhatsApp Chat Action Button
+      const waBtn = document.getElementById('modalLeadWhatsAppBtn');
+      if (waBtn) {
+        const cleanPhone = (lead.phone || '').replace(/\D/g, '');
+        const text = encodeURIComponent(`Hello ${lead.name}, this is Butter Property Private Advisory desk regarding your allocation inquiry for "${lead.property}".`);
+        waBtn.href = cleanPhone ? `https://wa.me/${cleanPhone}?text=${text}` : `https://wa.me/?text=${text}`;
+      }
+
+      document.getElementById('leadDetailModal').classList.remove('hidden');
+      document.getElementById('leadDetailModal').classList.add('flex');
+    }
+
+    function closeLeadModal() {
+      document.getElementById('leadDetailModal').classList.add('hidden');
+      document.getElementById('leadDetailModal').classList.remove('flex');
+      activeLeadUnderModal = null;
+    }
+
+    function updateCurrentLeadStage() {
+      if (!activeLeadUnderModal) return;
+      const newStage = document.getElementById('modalLeadStageSelect').value;
+      const leads = getStoredLeads();
+      const idx = leads.findIndex(l => l.id === activeLeadUnderModal.id);
+      if (idx !== -1) {
+        leads[idx].status = newStage;
+        localStorage.setItem('butter_leads', JSON.stringify(leads));
+        renderCRMBoard();
+        updateOverviewMetrics();
+        showAdminToast(`Deal stage updated to "${newStage}"`);
+      }
+    }
+
+    function deleteCurrentLead() {
+      if (!activeLeadUnderModal) return;
+      if (!confirm(`Archive mandate for ${activeLeadUnderModal.name}?`)) return;
+      const leads = getStoredLeads();
+      const updated = leads.filter(l => l.id !== activeLeadUnderModal.id);
+      localStorage.setItem('butter_leads', JSON.stringify(updated));
+      closeLeadModal();
+      renderCRMBoard();
+      updateOverviewMetrics();
+      showAdminToast('Mandate archived.');
+    }
+
+    function openNewLeadModal() {
+      const name = prompt('Enter Investor Full Name:');
+      if (!name) return;
+      const phone = prompt('Enter Investor Phone / WhatsApp:') || '';
+      const property = prompt('Target Allocation / Asset Focus:', 'Dubai Marina Penthouse') || 'General Allocation';
+
+      recordLeadInquiry({
+        source: 'Executive Direct Desk',
+        name: name,
+        phone: phone,
+        property: property,
+        timeline: 'Direct Priority (30 Days)',
+        notes: 'Manually logged by managing partner during private consultation.'
+      });
+
+      renderCRMBoard();
+      updateOverviewMetrics();
+      showAdminToast(`Mandate logged for ${name}.`);
+    }
+
+    function exportLeadsCSV() {
+      const leads = getStoredLeads();
+      if (leads.length === 0) {
+        alert('No leads available to export.');
+        return;
+      }
+
+      let csv = 'ID,Date,Name,Email,Phone,Target Property,Timeline,Status,Notes\n';
+      leads.forEach(l => {
+        csv += `"${l.id}","${l.createdAt}","${l.name || ''}","${l.email || ''}","${l.phone || ''}","${l.property || ''}","${l.timeline || ''}","${l.status || ''}","${(l.notes || '').replace(/"/g, '""')}"\n`;
+      });
+
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `butter_property_mandates_${new Date().toISOString().slice(0, 10)}.csv`;
+      a.click();
+      window.URL.revokeObjectURL(url);
+      showAdminToast('Exported CSV spreadsheet.');
+    }
+
+    // ==========================================
+    // STUDIO: ADD / EDIT PROPERTY
+    // ==========================================
+    function openAddPropertyStudio() {
+      resetStudioForm();
+      switchAdminTab('studio');
+      document.getElementById('studioFormHeading').textContent = 'Create New Luxury Allocation';
+      document.getElementById('studioSubmitBtnText').textContent = 'Save & Publish Allocation';
+    }
+
+    function openEditPropertyStudio(propId) {
+      const prop = getPropertyById(propId);
+      if (!prop) return;
+
+      switchAdminTab('studio');
+      document.getElementById('studioFormHeading').textContent = `Edit Allocation: ${prop.title}`;
+      document.getElementById('studioSubmitBtnText').textContent = 'Update Allocation Specs';
+
+      document.getElementById('editPropId').value = prop.id;
+      document.getElementById('propInputTitle').value = prop.title;
+      document.getElementById('propInputSlug').value = prop.slug;
+      document.getElementById('propInputTagline').value = prop.tagline || '';
+      document.getElementById('propInputRegion').value = prop.region || 'dubai';
+      document.getElementById('propInputNeighborhood').value = prop.neighborhood || '';
+      document.getElementById('propInputType').value = prop.type || 'Penthouses';
+      document.getElementById('propInputConfig').value = prop.config || '';
+      document.getElementById('propInputBeds').value = prop.bedrooms || 4;
+      document.getElementById('propInputBaths').value = prop.bathrooms || 5;
+      document.getElementById('propInputSize').value = prop.sizeSqFt || 5000;
+      document.getElementById('propInputBadge').value = prop.badge || 'Trophy Asset';
+      document.getElementById('propInputPriceAED').value = prop.priceAED || 20000000;
+      document.getElementById('propInputPriceINR').value = prop.priceINR || 450000000;
+      document.getElementById('propInputYield').value = prop.rentalYield || '7.5% Net';
+      document.getElementById('propInputDeveloper').value = prop.developer || '';
+      document.getElementById('propInputCompletion').value = prop.completion || '';
+      document.getElementById('propInputMainImg').value = prop.mainImage || '';
+      document.getElementById('propInputHighlights').value = (prop.highlights || []).join('\n');
+      document.getElementById('propInputDescription').value = prop.description || '';
+
+      updateStudioPreview();
+    }
+
+    function resetStudioForm() {
+      document.getElementById('propertyStudioForm')?.reset();
+      document.getElementById('editPropId').value = '';
+      document.getElementById('studioFormHeading').textContent = 'Create New Luxury Allocation';
+      document.getElementById('studioSubmitBtnText').textContent = 'Save & Publish Allocation';
+      updateStudioPreview();
+    }
+
+    function autoConvertPrice(source) {
+      const aedInput = document.getElementById('propInputPriceAED');
+      const inrInput = document.getElementById('propInputPriceINR');
+      if (source === 'AED') {
+        const val = parseFloat(aedInput.value) || 0;
+        inrInput.value = Math.round(val * 22.65);
+      }
+      updateStudioPreview();
+    }
+
+    // Real-time Preview Updater
+    function updateStudioPreview() {
+      const title = document.getElementById('propInputTitle')?.value || 'The Sky Palace at One Canal';
+      const neighborhood = document.getElementById('propInputNeighborhood')?.value || 'Dubai Water Canal';
+      const region = document.getElementById('propInputRegion')?.value || 'dubai';
+      const badge = document.getElementById('propInputBadge')?.value || 'Trophy Asset';
+      const type = document.getElementById('propInputType')?.value || 'Penthouses';
+      const yieldVal = document.getElementById('propInputYield')?.value || '7.8% Net Yield';
+      const priceAED = parseFloat(document.getElementById('propInputPriceAED')?.value) || 24500000;
+      const size = document.getElementById('propInputSize')?.value || '11,400';
+      const img = document.getElementById('propInputMainImg')?.value || 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80';
+
+      const pTitle = document.getElementById('previewTitle');
+      const pNeigh = document.getElementById('previewNeighborhood');
+      const pFlag = document.getElementById('previewFlag');
+      const pBadge = document.getElementById('previewBadge');
+      const pType = document.getElementById('previewTypeBadge');
+      const pYield = document.getElementById('previewYield');
+      const pPrice = document.getElementById('previewPrice');
+      const pSize = document.getElementById('previewSize');
+      const pImg = document.getElementById('previewImg');
+
+      if (pTitle) pTitle.textContent = title;
+      if (pNeigh) pNeigh.textContent = neighborhood;
+      if (pFlag) pFlag.textContent = region === 'dubai' ? '🇦🇪' : '🇮🇳';
+      if (pBadge) pBadge.textContent = badge;
+      if (pType) pType.textContent = type;
+      if (pYield) pYield.textContent = yieldVal;
+      if (pPrice) pPrice.textContent = `AED ${priceAED.toLocaleString()}`;
+      if (pSize) pSize.textContent = `${parseInt(size).toLocaleString()} sq.ft`;
+      if (pImg) pImg.src = img;
+    }
+
+    // Attach listeners to input fields for instant preview
+    ['propInputTitle', 'propInputNeighborhood', 'propInputRegion', 'propInputBadge', 'propInputType', 'propInputYield', 'propInputPriceAED', 'propInputSize', 'propInputMainImg'].forEach(id => {
+      document.getElementById(id)?.addEventListener('input', updateStudioPreview);
+    });
+
+    function handleStudioSave(e) {
+      e.preventDefault();
+
+      const editId = document.getElementById('editPropId').value;
+      const title = document.getElementById('propInputTitle').value.trim();
+      const slug = document.getElementById('propInputSlug').value.trim() || title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+      const tagline = document.getElementById('propInputTagline').value.trim();
+      const region = document.getElementById('propInputRegion').value;
+      const neighborhood = document.getElementById('propInputNeighborhood').value.trim();
+      const type = document.getElementById('propInputType').value;
+      const config = document.getElementById('propInputConfig').value.trim();
+      const bedrooms = parseInt(document.getElementById('propInputBeds').value) || 4;
+      const bathrooms = parseInt(document.getElementById('propInputBaths').value) || 5;
+      const sizeSqFt = parseInt(document.getElementById('propInputSize').value) || 5000;
+      const badge = document.getElementById('propInputBadge').value.trim() || 'Trophy Asset';
+      const priceAED = parseFloat(document.getElementById('propInputPriceAED').value) || 20000000;
+      const priceINR = parseFloat(document.getElementById('propInputPriceINR').value) || 450000000;
+      const rentalYield = document.getElementById('propInputYield').value.trim();
+      const developer = document.getElementById('propInputDeveloper').value.trim();
+      const completion = document.getElementById('propInputCompletion').value.trim();
+      const mainImage = document.getElementById('propInputMainImg').value.trim();
+      const highlights = document.getElementById('propInputHighlights').value.split('\n').map(s => s.trim()).filter(Boolean);
+      const description = document.getElementById('propInputDescription').value.trim();
+
+      const existingProps = [...PROPERTIES];
+
+      if (editId) {
+        // Edit existing property
+        const idx = existingProps.findIndex(p => p.id === editId);
+        if (idx !== -1) {
+          existingProps[idx] = {
+            ...existingProps[idx],
+            title, slug, tagline, region,
+            regionLabel: region === 'dubai' ? `${neighborhood}, UAE` : `${neighborhood}, India`,
+            flag: region === 'dubai' ? '🇦🇪' : '🇮🇳',
+            neighborhood, type, config, bedrooms, bathrooms, sizeSqFt, badge,
+            priceAED, priceINR, rentalYield, developer, completion, mainImage,
+            highlights: highlights.length > 0 ? highlights : existingProps[idx].highlights,
+            description: description || existingProps[idx].description
+          };
+          savePropertiesToStorage(existingProps);
+          showAdminToast(`Updated "${title}" successfully.`);
+        }
+      } else {
+        // Add new property
+        const newId = (region === 'dubai' ? 'dxb-' : 'ind-') + Date.now().toString().slice(-4);
+        const newProp = {
+          id: newId,
+          slug, title, tagline, region,
+          regionLabel: region === 'dubai' ? `${neighborhood}, UAE` : `${neighborhood}, India`,
+          flag: region === 'dubai' ? '🇦🇪' : '🇮🇳',
+          city: region === 'dubai' ? 'Dubai' : 'Mumbai',
+          country: region === 'dubai' ? 'United Arab Emirates' : 'India',
+          neighborhood, type, tier: 'tier-3', config, bedrooms, bathrooms, sizeSqFt, badge,
+          priceAED, priceINR, rentalYield, developer, completion,
+          ownership: 'Freehold Title Deed (100% Direct Foreign Ownership)',
+          visaEligible: 'UAE 10-Year Golden Visa Included',
+          serviceCharges: 'AED 18 / sq.ft per annum',
+          mainImage,
+          gallery: [
+            { url: mainImage, title: 'Exterior Architectural Perspective', caption: 'Cantilevered private terrace pool.' }
+          ],
+          highlights: highlights.length > 0 ? highlights : ['Prime water frontage', 'Private swimming pool', 'Full smart-home integration'],
+          description: description || `${title} is a bespoke private allocation vetted for trophy capital appreciation.`
+        };
+        existingProps.unshift(newProp);
+        savePropertiesToStorage(existingProps);
+        showAdminToast(`Published "${title}" to live website!`);
+      }
+
+      resetStudioForm();
+      switchAdminTab('properties');
+      updateOverviewMetrics();
+    }
+
+    // ==========================================
+    // BACKUP, RESTORE & SEED TOOLS
+    // ==========================================
+    function downloadDatabaseBackup() {
+      const data = {
+        exportedAt: new Date().toISOString(),
+        properties: PROPERTIES,
+        leads: getStoredLeads(),
+        portalVersion: '2.4.0'
+      };
+      const json = JSON.stringify(data, null, 2);
+      const blob = new Blob([json], { type: 'application/json' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `butter_property_database_backup_${new Date().toISOString().slice(0, 10)}.json`;
+      a.click();
+      window.URL.revokeObjectURL(url);
+      showAdminToast('Database snapshot downloaded.');
+    }
+
+    function seedDemoLeads() {
+      const sampleLeads = [
+        {
+          id: 'BP-DEMO-01',
+          createdAt: new Date(Date.now() - 3600000 * 2).toISOString(),
+          status: 'New Inquiry',
+          source: 'Website Modal',
+          name: 'Rajiv Singhania',
+          email: 'singhania.office@apexcapital.sg',
+          phone: '+971 50 882 1920',
+          property: 'The Sky Palace at One Canal',
+          timeline: 'Immediate Allocation (30 Days)',
+          notes: 'Interested in Golden Visa threshold and tax shield structuring for family office entity.'
+        },
+        {
+          id: 'BP-DEMO-02',
+          createdAt: new Date(Date.now() - 3600000 * 18).toISOString(),
+          status: 'NDA Sent',
+          source: 'Homepage Inline Brief',
+          name: 'Vikram Goel',
+          email: 'vgoel@techholdings.in',
+          phone: '+91 98200 44102',
+          property: 'The Camellias Grand Sovereign Suite',
+          timeline: '60 Days Allocation',
+          notes: 'Looking for 18-hole championship golf facing floor above level 20.'
+        },
+        {
+          id: 'BP-DEMO-03',
+          createdAt: new Date(Date.now() - 3600000 * 36).toISOString(),
+          status: 'Dossier Dispatched',
+          source: 'Property Dossier Form',
+          name: 'Suhail Al Mansoor',
+          email: 'mansoor.s@almansoorinvest.ae',
+          phone: '+971 52 900 1122',
+          property: 'Villa Royale Palm Jumeirah Beachfront',
+          timeline: 'Immediate (Cash Transaction)',
+          notes: 'Requires title deed check for 180-ft private beach frontage and yacht slip availability.'
+        },
+        {
+          id: 'BP-DEMO-04',
+          createdAt: new Date(Date.now() - 3600000 * 72).toISOString(),
+          status: 'Inspection Booked',
+          source: 'WhatsApp Advisory',
+          name: 'Aditi Narang',
+          email: 'aditi@narangventures.com',
+          phone: '+91 98111 20033',
+          property: 'Worli Sea Face Sovereign Penthouse',
+          timeline: 'Immediate Allocation',
+          notes: 'Physical site walk-through confirmed for this Saturday at 11:30 AM.'
+        },
+        {
+          id: 'BP-DEMO-05',
+          createdAt: new Date(Date.now() - 3600000 * 120).toISOString(),
+          status: 'Closed Won',
+          source: 'Private Desk Referral',
+          name: 'Karan Mehra',
+          email: 'karan@mehraholdings.com',
+          phone: '+971 55 400 9900',
+          property: 'Marina Horizon Panoramic Residence',
+          timeline: 'Closed',
+          notes: 'Escrow funded 100% at Dubai Land Department. Golden Visa file initiated.'
+        }
+      ];
+
+      localStorage.setItem('butter_leads', JSON.stringify(sampleLeads));
+      renderCRMBoard();
+      updateOverviewMetrics();
+      showAdminToast('Seeded 5 sample HNW investor deals into CRM.');
+    }
+
+    function handleResetToMaster() {
+      if (!confirm('This will reset all properties back to the default master catalog. Are you sure?')) return;
+      resetPropertiesStorage();
+      renderAdminPropertiesTable();
+      updateOverviewMetrics();
+      showAdminToast('Master property catalog restored.');
+    }
+
+    // Initialize Dashboard
+    function initAdminDashboard() {
+      checkAuth();
+      updateOverviewMetrics();
+      renderAdminPropertiesTable();
+      renderCRMBoard();
+      updateStudioPreview();
+    }
+
+    document.addEventListener('DOMContentLoaded', initAdminDashboard);
+  </script>
+</body>
+</html>

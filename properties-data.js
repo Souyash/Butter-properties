@@ -3,7 +3,7 @@
  * butterproperty.com
  */
 
-const PROPERTIES = [
+const DEFAULT_PROPERTIES = [
   // ==========================================
   // DUBAI PORTFOLIO (UAE)
   // ==========================================
@@ -504,6 +504,109 @@ Directly overlooking the Gary Player 18-hole championship golf course, the Grand
     }
   }
 ];
+
+// ==========================================
+// DYNAMIC LOCALSTORAGE SYNCHRONIZATION
+// ==========================================
+function getLiveProperties() {
+  try {
+    if (typeof localStorage !== 'undefined') {
+      const custom = localStorage.getItem('butter_custom_properties');
+      if (custom) {
+        const parsed = JSON.parse(custom);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return parsed;
+        }
+      }
+    }
+  } catch (e) {
+    console.warn('Using default master property data:', e);
+  }
+  return DEFAULT_PROPERTIES;
+}
+
+// Active Global Properties Reference
+let PROPERTIES = getLiveProperties();
+
+function savePropertiesToStorage(props) {
+  PROPERTIES = props;
+  if (typeof localStorage !== 'undefined') {
+    localStorage.setItem('butter_custom_properties', JSON.stringify(props));
+  }
+}
+
+function resetPropertiesStorage() {
+  if (typeof localStorage !== 'undefined') {
+    localStorage.removeItem('butter_custom_properties');
+  }
+  PROPERTIES = JSON.parse(JSON.stringify(DEFAULT_PROPERTIES));
+  return PROPERTIES;
+}
+
+// ==========================================
+// WORKFLOW & LEAD MANAGEMENT HELPERS
+// ==========================================
+function getStoredLeads() {
+  try {
+    if (typeof localStorage !== 'undefined') {
+      const data = localStorage.getItem('butter_leads');
+      if (data) {
+        const parsed = JSON.parse(data);
+        if (Array.isArray(parsed)) return parsed;
+      }
+    }
+  } catch (e) {
+    console.warn('Error reading stored leads:', e);
+  }
+  return [];
+}
+
+function recordLeadInquiry(leadData) {
+  try {
+    const leads = getStoredLeads();
+    const newLead = {
+      id: 'BP-' + Date.now().toString(36).toUpperCase(),
+      createdAt: new Date().toISOString(),
+      status: 'New Inquiry', // 'New Inquiry', 'NDA Sent', 'Dossier Dispatched', 'Inspection Booked', 'Under Negotiation', 'Closed Won', 'Archived'
+      source: leadData.source || 'Website Portal',
+      name: leadData.name || 'Anonymous Investor',
+      email: leadData.email || 'N/A',
+      phone: leadData.phone || 'N/A',
+      property: leadData.property || 'General Advisory',
+      propertyId: leadData.propertyId || '',
+      region: leadData.region || 'Both (India & Dubai)',
+      timeline: leadData.timeline || 'Immediate Allocation (30 Days)',
+      notes: leadData.notes || '',
+      advisorNotes: leadData.advisorNotes || '',
+      assignedAdvisor: leadData.assignedAdvisor || 'Managing Partner Desk',
+      estimatedBudget: leadData.estimatedBudget || '',
+      ...leadData
+    };
+    leads.unshift(newLead);
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem('butter_leads', JSON.stringify(leads));
+    }
+    return newLead;
+  } catch (e) {
+    console.error('Error saving lead inquiry:', e);
+  }
+}
+
+// Node.js module export support
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = {
+    DEFAULT_PROPERTIES,
+    PROPERTIES,
+    getPropertyById,
+    getPropertyBySlug,
+    getRelatedProperties,
+    getLiveProperties,
+    savePropertiesToStorage,
+    resetPropertiesStorage,
+    getStoredLeads,
+    recordLeadInquiry
+  };
+}
 
 // Helper Functions
 function getPropertyById(id) {
