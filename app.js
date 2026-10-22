@@ -385,6 +385,24 @@ function handleInquirySubmit(event, type) {
     });
   }
 
+  // Sync to PHP backend API if available
+  try {
+    fetch('api/inquiry.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        source: type === 'modal' ? 'Modal Consultation (Web)' : 'Homepage Inline Brief (Web)',
+        name: name,
+        email: email,
+        phone: phone,
+        property: property,
+        timeline: timeline,
+        estimatedBudget: budget,
+        notes: notes
+      })
+    }).catch(() => {});
+  } catch (e) {}
+
   showToast(`Thank you, ${name || 'Investor'}. Your mandate for "${property}" has been securely logged. Our Senior Principal will contact you shortly.`);
 }
 

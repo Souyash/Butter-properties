@@ -1290,6 +1290,25 @@
         });
       }
 
+      // Sync with PHP backend API if available
+      try {
+        fetch('api/inquiry.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            source: 'Property Dossier Form (Web API)',
+            name: name,
+            email: email,
+            phone: phone,
+            propertyId: currentProp?.id || '',
+            property: currentProp?.title || '',
+            region: currentProp?.regionLabel || '',
+            timeline: timeline,
+            notes: notes
+          })
+        }).catch(() => {});
+      } catch (err) {}
+
       const toast = document.getElementById('detailToast');
       const msg = document.getElementById('detailToastMsg');
 

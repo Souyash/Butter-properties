@@ -1,0 +1,19 @@
+[
+    {
+        "id": "BP-6ADA5E28-B52C",
+        "createdAt": "2026-10-22T19:04:08+00:00",
+        "status": "New Inquiry",
+        "source": "Property Dossier Form (PHP)",
+        "name": "Rohan Sharma",
+        "email": "rohan@example.com",
+        "phone": "+971 50 123 4567",
+        "property": "The Sky Palace at One Canal",
+        "propertyId": "dxb-01",
+        "region": "Dubai, UAE",
+        "timeline": "Immediate Allocation",
+        "estimatedBudget": "",
+        "notes": "Interested in 5 bed sky duplex",
+        "ipAddress": "127.0.0.1",
+        "userAgent": ""
+    }
+]
