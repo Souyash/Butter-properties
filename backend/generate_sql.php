@@ -172,3 +172,4 @@ file_put_contents(__DIR__ . '/../butter_property.sql', $sql);
 file_put_contents(__DIR__ . '/schema.sql', $sql);
 
 echo "SUCCESS: Generated butter_property.sql (" . strlen($sql) . " bytes)\n";
+

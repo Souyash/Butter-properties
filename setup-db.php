@@ -283,3 +283,4 @@ if ($action === 'install' && $connectionStatus === 'connected') {
 
 </body>
 </html>
+
