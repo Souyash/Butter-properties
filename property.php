@@ -67,7 +67,7 @@ $waMessage = rawurlencode("Hello Butter Property, I am interested in private due
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?= $pageTitle ?></title>
   <meta name="description" content="<?= $pageDesc ?>">
-  <link rel="icon" type="image/png" href="./BUTTER-PROPERTY-LO-FF.png">
+  <link rel="icon" type="image/png" href="./BUTTER-PROPERTY-LO-FF.png?v=2">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
@@ -235,9 +235,9 @@ $waMessage = rawurlencode("Hello Butter Property, I am interested in private due
         <a href="index.html" class="flex items-center gap-3 group focus:outline-none">
           <div class="relative flex items-center justify-center py-1">
             <img 
-              src="./BUTTER-PROPERTY-LO-FF.png" 
+              src="./BUTTER-PROPERTY-LO-FF.png?v=2" 
               alt="Butter Property" 
-              class="h-12 sm:h-14 md:h-16 w-auto max-h-16 object-contain transition-transform duration-300 group-hover:scale-105"
+              class="h-14 sm:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105" style="height: 56px; max-height: 64px; width: auto;"
             />
           </div>
           <span class="sr-only">Butter Property</span>
@@ -893,7 +893,7 @@ $waMessage = rawurlencode("Hello Butter Property, I am interested in private due
       <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
         <div class="space-y-4">
           <img 
-            src="./BUTTER-PROPERTY-LO-FF.png" 
+            src="./BUTTER-PROPERTY-LO-FF.png?v=2" 
             alt="Butter Property" 
             class="h-10 w-auto object-contain brightness-0 invert opacity-90"
           />
